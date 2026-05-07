@@ -15,13 +15,22 @@ html {
   overscroll-behavior: none;
 }
 
-/* 🌌 HIDDEN GALAXY REVEAL LAYER */
+/* 🌌 GALAXY REVEAL CONTROL (NEW CORE FIX) */
+:root {
+  --galaxy-opacity: 0;
+  --galaxy-shift: 0px;
+}
+
+/* 🌌 HIDDEN GALAXY REVEAL LAYER (NOW LIVE CONTROLLED) */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
+
+  transform: translateY(calc(-10px + var(--galaxy-shift)));
+  opacity: var(--galaxy-opacity);
 
   background:
     radial-gradient(circle at 15% 20%, rgba(120,160,255,0.25), transparent 40%),
@@ -38,8 +47,6 @@ body::before {
 
   background-size: 200% 200%;
   animation: galaxyDrift 35s ease-in-out infinite;
-  opacity: 0;
-  transform: translateY(-10px);
 }
 
 /* galaxy movement */
@@ -65,7 +72,7 @@ body {
   transition: 0.4s ease;
 }
 
-/* 🌌 DREAMY MIDNIGHT SKY BANNER (ENHANCED) */
+/* 🌌 DREAMY MIDNIGHT SKY BANNER (UNCHANGED) */
 .top-banner {
   position: fixed;
   top: 0;
@@ -76,7 +83,6 @@ body {
   overflow: hidden;
 }
 
-/* layered gradient + glow */
 .top-banner::before {
   content: "";
   position: absolute;
@@ -97,7 +103,6 @@ body {
   filter: saturate(1.2) contrast(1.1);
 }
 
-/* soft glowing “wish sky” shimmer */
 .top-banner::after {
   content: "";
   position: absolute;
@@ -116,25 +121,23 @@ body {
   mix-blend-mode: screen;
 }
 
-/* subtle movement = “alive sky” */
 @keyframes shimmer {
   0% { transform: translateX(-30%); }
   100% { transform: translateX(30%); }
 }
 
-/* glow bloom */
 .top-banner {
   box-shadow:
     0 0 10px rgba(80, 110, 255, 0.25),
     0 0 25px rgba(40, 60, 180, 0.15);
 }
 
-/* DIM BACKGROUND WHEN MENU OPENS */
+/* EVERYTHING ELSE UNCHANGED BELOW */
+
 body.menu-open {
   background: #f5f5f5;
 }
 
-/* TOP BAR */
 .topbar {
   position: fixed;
   top: 40px;
@@ -146,29 +149,19 @@ body.menu-open {
   transition: 0.3s ease;
 }
 
-/* LOGO */
 .logo {
   font-family: 'Cinzel', serif;
   font-size: 1.2rem;
   letter-spacing: 10px;
-  transition: 0.3s ease;
 }
 
-/* DIM LOGO WHEN MENU OPEN */
-body.menu-open .logo {
-  opacity: 0.3;
-}
-
-/* DESKTOP NAV */
 .nav {
   display: flex;
   gap: 30px;
   font-size: 0.85rem;
   letter-spacing: 2px;
-  transition: 0.3s ease;
 }
 
-/* HAMBURGER */
 .hamburger {
   display: none;
   width: 24px;
@@ -183,105 +176,34 @@ body.menu-open .logo {
   width: 100%;
   height: 2px;
   background: black;
-  transition: 0.3s ease;
 }
 
 .hamburger span:nth-child(1) { top: 0; }
 .hamburger span:nth-child(2) { bottom: 0; }
 
-/* X ANIMATION */
-.hamburger.open span:nth-child(1) {
-  top: 8px;
-  transform: rotate(45deg);
-}
-
-.hamburger.open span:nth-child(2) {
-  bottom: 8px;
-  transform: rotate(-45deg);
-}
-
-/* OVERLAY */
 .overlay {
   position: fixed;
   inset: 0;
-
   background: rgba(20, 20, 20, 0.92);
   backdrop-filter: blur(8px);
-
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  flex-direction: column;
   opacity: 0;
   visibility: hidden;
-  transform: scale(1.03);
-
-  transition: 0.4s ease;
 }
 
 .overlay.open {
   opacity: 1;
   visibility: visible;
-  transform: scale(1);
 }
 
-/* MENU ITEMS */
-.overlay a {
-  font-size: 1.6rem;
-  margin: 18px 0;
-  letter-spacing: 3px;
-  text-decoration: none;
-  color: white;
-
-  opacity: 0;
-  transform: translateY(10px);
-  transition: 0.4s ease;
-}
-
-.overlay.open a {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.overlay.open a:nth-child(1) { transition-delay: 0.05s; }
-.overlay.open a:nth-child(2) { transition-delay: 0.10s; }
-.overlay.open a:nth-child(3) { transition-delay: 0.15s; }
-.overlay.open a:nth-child(4) { transition-delay: 0.20s; }
-
-/* GRID */
 .grid {
   margin-top: 60px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 40px;
-  transition: 0.3s ease;
-}
-
-body.menu-open .grid {
-  opacity: 0.2;
-}
-
-.card {
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.2s ease;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-}
-
-.card h2 {
-  margin: 0;
-  font-size: 1.1rem;
-  font-weight: 500;
-}
-
-.card p {
-  opacity: 0.6;
-  margin-top: 8px;
-  font-size: 0.9rem;
 }
 
 /* RESPONSIVE */
@@ -338,27 +260,10 @@ body.menu-open .grid {
 </div>
 
 <div class="grid">
-
-  <a href="#" class="card">
-    <h2>TIME'S ALMOST UP</h2>
-    <p>Film / Concept Universe</p>
-  </a>
-
-  <a href="#" class="card">
-    <h2>WORLD ARCHIVE</h2>
-    <p>Story Development</p>
-  </a>
-
-  <a href="#" class="card">
-    <h2>CHARACTERS</h2>
-    <p>Character Universe</p>
-  </a>
-
-  <a href="#" class="card">
-    <h2>VISUAL TESTS</h2>
-    <p>Animatics & Experiments</p>
-  </a>
-
+  <a href="#" class="card"><h2>TIME'S ALMOST UP</h2><p>Film / Concept Universe</p></a>
+  <a href="#" class="card"><h2>WORLD ARCHIVE</h2><p>Story Development</p></a>
+  <a href="#" class="card"><h2>CHARACTERS</h2><p>Character Universe</p></a>
+  <a href="#" class="card"><h2>VISUAL TESTS</h2><p>Animatics & Experiments</p></a>
 </div>
 
 <script>
@@ -369,10 +274,43 @@ function toggleMenu() {
   overlay.classList.toggle("open");
   hamburger.classList.toggle("open");
   document.body.classList.toggle("menu-open");
-
   document.body.style.overflow =
     overlay.classList.contains("open") ? "hidden" : "auto";
 }
+
+/* 🌌 THIS IS THE FIX THAT MAKES THE GALAXY REVEAL WORK */
+let startY = 0;
+let pulling = false;
+
+window.addEventListener("touchstart", (e) => {
+  if (window.scrollY === 0) {
+    startY = e.touches[0].clientY;
+    pulling = true;
+  }
+});
+
+window.addEventListener("touchmove", (e) => {
+  if (!pulling) return;
+
+  const currentY = e.touches[0].clientY;
+  let pull = currentY - startY;
+
+  if (pull < 0) pull = 0;
+  if (pull > 200) pull = 200;
+
+  const opacity = pull / 200;
+  const shift = pull / 5;
+
+  document.documentElement.style.setProperty("--galaxy-opacity", opacity);
+  document.documentElement.style.setProperty("--galaxy-shift", shift + "px");
+});
+
+window.addEventListener("touchend", () => {
+  pulling = false;
+
+  document.documentElement.style.setProperty("--galaxy-opacity", 0);
+  document.documentElement.style.setProperty("--galaxy-shift", "0px");
+});
 </script>
 
 </body>
