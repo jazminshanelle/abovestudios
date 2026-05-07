@@ -18,28 +18,46 @@ body {
   transition: 0.4s ease;
 }
 
-/* 🌌 DISNEY-STYLE TOP GRADIENT BANNER (UPDATED) */
+/* 🌌 DISNEY “WISH SKY” TOP BANNER (UPGRADED) */
 .top-banner {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 10px;
+  height: 12px;
 
   z-index: 2000;
 
+  /* richer layered night sky */
   background: linear-gradient(
     90deg,
-    #050713 0%,
-    #0b1030 15%,
-    #1a1f4a 35%,
-    #2f3570 50%,
-    #1a1f4a 70%,
-    #0b1030 85%,
-    #050713 100%
+    #040514 0%,
+    #090c25 18%,
+    #1b1f4a 40%,
+    #2d3475 55%,
+    #1b1f4a 75%,
+    #090c25 92%,
+    #040514 100%
   );
 
-  box-shadow: 0 0 12px rgba(60, 80, 200, 0.25);
+  /* ✨ softer “atmosphere glow” */
+  box-shadow:
+    0 0 18px rgba(90, 120, 255, 0.18),
+    0 0 40px rgba(40, 60, 160, 0.12);
+
+  /* 🌫 slight dream blur feel */
+  filter: blur(0.2px);
+  opacity: 0.97;
+
+  /* 🌠 subtle motion = “alive sky” */
+  background-size: 200% 100%;
+  animation: skyFlow 10s ease-in-out infinite;
+}
+
+@keyframes skyFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* DIM BACKGROUND WHEN MENU OPENS */
@@ -223,7 +241,7 @@ body.menu-open .grid {
 
 <body>
 
-<!-- 🌌 TOP BANNER (NEW ADDITION) -->
+<!-- 🌌 TOP BANNER -->
 <div class="top-banner"></div>
 
 <!-- TOP BAR -->
