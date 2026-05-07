@@ -150,6 +150,7 @@ body {
   object-fit: cover;
   display: block;
   transition: transform 0.6s ease;
+  background: black;
 }
 
 .card:hover img,
@@ -234,10 +235,11 @@ body {
 <!-- PIXAR-STYLE GRID -->
 <div class="grid">
 
-  <!-- ✅ UPDATED FIRST CARD (YOUR VIDEO INSERTED HERE) -->
+  <!-- ✅ FIXED VIDEO CARD -->
   <a href="#" class="card">
-    <video autoplay muted loop playsinline>
+    <video autoplay muted loop playsinline preload="auto">
       <source src="0f135c8d11e04ebd84a4e88b0ef4111e.mp4" type="video/mp4">
+      Your browser does not support video.
     </video>
 
     <div class="card-info">
