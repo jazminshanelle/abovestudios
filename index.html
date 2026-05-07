@@ -9,238 +9,273 @@
 
 <style>
 
-body{
-  margin:0;
-  background:white;
-  color:black;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  padding:120px 60px 60px 60px;
+body {
+  margin: 0;
+  background: white;
+  color: black;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  padding: 120px 60px 60px 60px;
+  transition: 0.4s ease;
 }
 
 /* =========================================================
-   🌌 DREAMY EARTH-LIMB GALAXY HEADER
+   🌌 ULTRA DREAMY MOVING GALAXY BANNER (REPLACED VERSION)
 ========================================================= */
 
-.top-banner{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:42px;
-
-  overflow:visible; /* IMPORTANT FIX */
-
-  z-index:9999;
-
-  isolation:isolate;
-
-  background:
-    linear-gradient(
-      to bottom,
-      #02030a 0%,
-      #071226 45%,
-      rgba(7,18,38,0) 100%
-    );
+.top-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 14px;
+  z-index: 2000;
+  overflow: hidden;
+  background: black;
 }
 
-/* 🌌 DREAMY MOVING GALAXY */
-.top-banner::before{
-  content:"";
-  position:absolute;
+/* moving nebula layer */
+.top-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
 
-  inset:-120px;
+  background: linear-gradient(
+    90deg,
+    #02030a 0%,
+    #05061a 10%,
+    #0b1030 25%,
+    #1a1f4a 45%,
+    #2a3575 55%,
+    #1a1f4a 75%,
+    #0b1030 90%,
+    #02030a 100%
+  );
 
-  background:
-
-    radial-gradient(
-      circle at 20% 50%,
-      rgba(120,170,255,.95) 0%,
-      transparent 18%
-    ),
-
-    radial-gradient(
-      circle at 70% 40%,
-      rgba(80,120,255,.8) 0%,
-      transparent 22%
-    ),
-
-    radial-gradient(
-      circle at 45% 75%,
-      rgba(200,230,255,.35) 0%,
-      transparent 28%
-    ),
-
-    linear-gradient(
-      90deg,
-      #02030a 0%,
-      #081229 20%,
-      #1b2f73 50%,
-      #081229 80%,
-      #02030a 100%
-    );
-
-  background-size:300% 100%;
-
-  animation:galaxyDrift 18s linear infinite;
-
-  filter:
-    blur(10px)
-    saturate(1.6)
-    contrast(1.2);
-
-  opacity:1;
+  filter: saturate(1.4) contrast(1.15);
+  animation: nebulaShift 12s ease-in-out infinite;
 }
 
-/* ✨ FLOATING STARS */
-.top-banner::after{
-  content:"";
-  position:absolute;
-  inset:0;
+/* glowing light bloom under banner */
+.top-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
 
-  background-image:
-    radial-gradient(white 1px, transparent 1px),
-    radial-gradient(rgba(180,220,255,.9) 1px, transparent 1px),
-    radial-gradient(rgba(120,170,255,.8) 1px, transparent 1px);
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(120, 160, 255, 0.35),
+    transparent 60%
+  );
 
-  background-size:
-    80px 80px,
-    140px 140px,
-    220px 220px;
-
-  background-position:
-    0 0,
-    40px 60px,
-    120px 20px;
-
-  animation:starsMove 14s linear infinite;
-
-  opacity:.9;
+  mix-blend-mode: screen;
+  animation: glowPulse 6s ease-in-out infinite;
 }
 
-/* 🌍 EARTH HORIZON GLOW */
-.top-banner-glow{
-  position:absolute;
+/* neon underside glow */
+.banner-glow {
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 100%;
+  height: 20px;
 
-  width:160%;
-  height:240px;
+  background: linear-gradient(
+    to bottom,
+    rgba(80, 120, 255, 0.35),
+    transparent
+  );
 
-  left:-30%;
-  bottom:-225px;
-
-  border-radius:50%;
-
-  background:
-    radial-gradient(
-      ellipse at center,
-
-      rgba(140,210,255,1) 0%,
-      rgba(90,160,255,.95) 10%,
-      rgba(70,120,255,.55) 22%,
-      rgba(30,60,160,.22) 38%,
-      transparent 60%
-    );
-
-  filter:blur(20px);
-
-  animation:horizonPulse 5s ease-in-out infinite;
-
-  opacity:1;
-
-  pointer-events:none;
+  filter: blur(6px);
+  opacity: 0.8;
 }
 
-/* 🌌 GALAXY DRIFT */
-@keyframes galaxyDrift{
+/* ⭐ MOVING STARS */
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 6px rgba(180, 200, 255, 0.9);
 
-  0%{
-    transform:translateX(0);
-  }
-
-  100%{
-    transform:translateX(-12%);
-  }
+  animation: drift linear infinite, twinkle 3s ease-in-out infinite;
 }
 
-/* ✨ STAR MOVEMENT */
-@keyframes starsMove{
+/* star positions + speeds */
+.star:nth-child(1) { top: 20%; animation-duration: 8s; }
+.star:nth-child(2) { top: 40%; animation-duration: 12s; }
+.star:nth-child(3) { top: 60%; animation-duration: 10s; }
+.star:nth-child(4) { top: 30%; animation-duration: 14s; }
+.star:nth-child(5) { top: 50%; animation-duration: 9s; }
 
-  0%{
-    transform:translateX(0);
-  }
-
-  100%{
-    transform:translateX(-140px);
-  }
+/* horizontal galaxy drift */
+@keyframes drift {
+  0% { transform: translateX(-20px); opacity: 0.4; }
+  50% { opacity: 1; }
+  100% { transform: translateX(120vw); opacity: 0.4; }
 }
 
-/* 💙 ATMOSPHERIC PULSE */
-@keyframes horizonPulse{
-
-  0%,100%{
-    opacity:.75;
-    transform:scaleX(1);
-  }
-
-  50%{
-    opacity:1;
-    transform:scaleX(1.03);
-  }
+/* twinkle */
+@keyframes twinkle {
+  0%,100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.4); }
 }
 
-/* TOP BAR */
-
-.topbar{
-  position:fixed;
-  top:42px;
-  left:40px;
-  right:40px;
-
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+/* nebula movement */
+@keyframes nebulaShift {
+  0% { transform: translateX(-10%); }
+  50% { transform: translateX(10%); }
+  100% { transform: translateX(-10%); }
 }
 
-.logo{
-  font-family:'Cinzel',serif;
-  font-size:1.2rem;
-  letter-spacing:10px;
+/* glow breathing */
+@keyframes glowPulse {
+  0%,100% { opacity: 0.4; }
+  50% { opacity: 0.9; }
 }
 
-.nav{
-  display:flex;
-  gap:30px;
-  font-size:.85rem;
-  letter-spacing:2px;
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.topbar {
+  position: fixed;
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* LOGO */
+.logo {
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  letter-spacing: 10px;
+}
+
+/* DESKTOP NAV */
+.nav {
+  display: flex;
+  gap: 30px;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+}
+
+/* HAMBURGER */
+.hamburger {
+  display: none;
+  width: 24px;
+  height: 18px;
+  position: relative;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.hamburger span {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: black;
+  transition: 0.3s ease;
+}
+
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { bottom: 0; }
+
+.hamburger.open span:nth-child(1) {
+  top: 8px;
+  transform: rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+  bottom: 8px;
+  transform: rotate(-45deg);
+}
+
+/* OVERLAY */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 20, 20, 0.92);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.03);
+  transition: 0.4s ease;
+}
+
+.overlay.open {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+.overlay a {
+  font-size: 1.6rem;
+  margin: 18px 0;
+  letter-spacing: 3px;
+  text-decoration: none;
+  color: white;
 }
 
 /* GRID */
-
-.grid{
-  margin-top:60px;
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:40px;
+.grid {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
 }
 
-.card{
-  text-decoration:none;
-  color:inherit;
-  transition:.3s ease;
+body.menu-open .grid {
+  opacity: 0.2;
 }
 
-.card:hover{
-  transform:translateY(-4px);
+.card {
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease;
 }
 
-.card h2{
-  margin:0;
-  font-size:1.1rem;
+.card:hover {
+  transform: translateY(-4px);
 }
 
-.card p{
-  opacity:.6;
-  margin-top:8px;
-  font-size:.9rem;
+.card h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.card p {
+  opacity: 0.6;
+  margin-top: 8px;
+  font-size: 0.9rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+
+  body {
+    padding: 100px 20px;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 </style>
@@ -249,13 +284,16 @@ body{
 
 <body>
 
-<!-- 🌌 GALAXY HEADER -->
-
+<!-- 🌌 ULTRA GALAXY BANNER -->
 <div class="top-banner">
-  <div class="top-banner-glow"></div>
-</div>
+  <div class="banner-glow"></div>
 
-<!-- NAV -->
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+</div>
 
 <div class="topbar">
 
@@ -268,9 +306,19 @@ body{
     <span>ABOUT</span>
   </div>
 
+  <div class="hamburger" onclick="toggleMenu()" id="hamburger">
+    <span></span>
+    <span></span>
+  </div>
+
 </div>
 
-<!-- CONTENT -->
+<div class="overlay" id="overlay">
+  <a href="#">FILMS</a>
+  <a href="#">CONCEPTS</a>
+  <a href="#">UNIVERSE</a>
+  <a href="#">ABOUT</a>
+</div>
 
 <div class="grid">
 
@@ -295,6 +343,20 @@ body{
   </a>
 
 </div>
+
+<script>
+function toggleMenu() {
+  const overlay = document.getElementById("overlay");
+  const hamburger = document.getElementById("hamburger");
+
+  overlay.classList.toggle("open");
+  hamburger.classList.toggle("open");
+  document.body.classList.toggle("menu-open");
+
+  document.body.style.overflow =
+    overlay.classList.contains("open") ? "hidden" : "auto";
+}
+</script>
 
 </body>
 </html>
