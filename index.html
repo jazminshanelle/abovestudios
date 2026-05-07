@@ -18,122 +18,164 @@ body {
 }
 
 /* =========================================================
-   🌌 ACTUALLY VISIBLE MOVING GALAXY BANNER
+   🌌 CINEMATIC EARTH-LIMB GALAXY HEADER
 ========================================================= */
 
-.top-banner {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 28px; /* thin but readable */
-  z-index: 2000;
-  overflow: hidden;
-  background: #000;
-  isolation: isolate;
-  position: fixed;
+.top-banner{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:24px;
+  overflow:hidden;
+  z-index:9999;
+  background:#000814;
+  isolation:isolate;
 }
 
-/* 🌌 MAIN MOVING GALAXY FIELD (STRONGER NOW) */
-.top-banner::before {
-  content: "";
-  position: absolute;
-  inset: 0;
+/* 🌌 MOVING GALAXY FIELD */
+.top-banner::before{
+  content:"";
+  position:absolute;
+
+  width:300%;
+  height:300%;
+
+  left:-100%;
+  top:-120%;
 
   background:
-    radial-gradient(circle at 20% 50%, rgba(120,170,255,0.9), transparent 45%),
-    radial-gradient(circle at 70% 40%, rgba(80,120,255,0.7), transparent 50%),
-    radial-gradient(circle at 40% 80%, rgba(180,220,255,0.5), transparent 55%),
-    linear-gradient(90deg,
-      #02030a,
-      #0b1030,
-      #1a1f4a,
-      #2f3f8f,
-      #1a1f4a,
-      #0b1030,
-      #02030a
+    radial-gradient(circle at 20% 50%,
+      rgba(120,170,255,.95) 0%,
+      transparent 18%),
+
+    radial-gradient(circle at 70% 40%,
+      rgba(70,120,255,.85) 0%,
+      transparent 22%),
+
+    radial-gradient(circle at 40% 75%,
+      rgba(180,220,255,.55) 0%,
+      transparent 26%),
+
+    linear-gradient(
+      90deg,
+      #02030a 0%,
+      #081229 15%,
+      #13204a 30%,
+      #2f4ea8 50%,
+      #13204a 70%,
+      #081229 85%,
+      #02030a 100%
     );
 
-  background-size: 400% 100%;
-  animation: nebulaMove 6s linear infinite;
-  filter: contrast(1.4) saturate(2);
+  background-size:cover;
+
+  animation: galaxyDrift 18s linear infinite;
+
+  filter:
+    saturate(1.8)
+    contrast(1.3)
+    blur(1px);
+
+  opacity:1;
 }
 
-/* 🌫 MOVING COSMIC DUST (NOW MORE OBVIOUS) */
-.top-banner::after {
-  content: "";
-  position: absolute;
-  inset: 0;
+/* ✨ MOVING STAR FIELD */
+.top-banner::after{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  background-image:
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(rgba(180,220,255,.9) 1px, transparent 1px),
+    radial-gradient(rgba(120,170,255,.8) 1px, transparent 1px);
+
+  background-size:
+    90px 90px,
+    140px 140px,
+    190px 190px;
+
+  background-position:
+    0 0,
+    40px 60px,
+    120px 20px;
+
+  animation: starsMove 14s linear infinite;
+
+  opacity:.9;
+}
+
+/* 🌍 EARTH HORIZON GLOW */
+.top-banner-glow{
+  position:absolute;
+
+  width:140%;
+  height:140px;
+
+  left:-20%;
+  bottom:-128px;
+
+  border-radius:50%;
 
   background:
-    radial-gradient(circle, rgba(255,255,255,0.35) 1px, transparent 2px),
-    radial-gradient(circle, rgba(120,170,255,0.25) 1px, transparent 3px);
+    radial-gradient(
+      ellipse at center,
+      rgba(120,190,255,1) 0%,
+      rgba(70,140,255,.9) 18%,
+      rgba(40,90,200,.45) 32%,
+      transparent 58%
+    );
 
-  background-size: 40px 40px;
-  animation: dustMove 4s linear infinite;
-  opacity: 0.6;
+  filter:blur(10px);
+
+  animation:horizonPulse 5s ease-in-out infinite;
+
+  opacity:.95;
+
+  pointer-events:none;
 }
 
-/* 💙 UNDER GLOW (STRONGER, VISIBLE LIKE LIGHT BAR) */
-.top-banner-glow {
-  position: absolute;
-  bottom: -12px;
-  left: 0;
-  width: 100%;
-  height: 30px;
+/* 🌌 GALAXY DRIFT */
+@keyframes galaxyDrift{
 
-  background: radial-gradient(
-    circle at 50% 0%,
-    rgba(120,170,255,1),
-    transparent 70%
-  );
+  0%{
+    transform:translateX(0) translateY(0);
+  }
 
-  filter: blur(10px);
-  animation: glowPulse 2.5s ease-in-out infinite;
+  50%{
+    transform:translateX(-8%) translateY(-2%);
+  }
+
+  100%{
+    transform:translateX(-16%) translateY(0);
+  }
 }
 
-/* ⭐ STAR FIELD (NOW ACTUALLY VISIBLE) */
-.star {
-  position: absolute;
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background: white;
-  box-shadow: 0 0 14px rgba(180,220,255,1);
-  opacity: 1;
+/* ✨ STAR MOVEMENT */
+@keyframes starsMove{
 
-  animation: starMove linear infinite;
+  0%{
+    transform:translateX(0);
+  }
+
+  100%{
+    transform:translateX(-120px);
+  }
 }
 
-.star:nth-child(1) { top: 20%; left: -10px; animation-duration: 4.5s; }
-.star:nth-child(2) { top: 50%; left: -60px; animation-duration: 5.5s; }
-.star:nth-child(3) { top: 35%; left: -110px; animation-duration: 6s; }
-.star:nth-child(4) { top: 70%; left: -160px; animation-duration: 4.8s; }
-.star:nth-child(5) { top: 40%; left: -220px; animation-duration: 5.2s; }
+/* 💙 HORIZON PULSE */
+@keyframes horizonPulse{
 
-/* 🌠 STAR MOVEMENT */
-@keyframes starMove {
-  0% { transform: translateX(0); opacity: 0.2; }
-  40% { opacity: 1; }
-  100% { transform: translateX(120vw); opacity: 0.1; }
-}
+  0%,100%{
+    opacity:.7;
+    transform:scaleX(1);
+  }
 
-/* 🌌 GALAXY FLOW */
-@keyframes nebulaMove {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 400% 50%; }
-}
-
-/* 🌫 DUST FLOW */
-@keyframes dustMove {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-80px); }
-}
-
-/* 💙 GLOW PULSE */
-@keyframes glowPulse {
-  0%,100% { opacity: 0.4; }
-  50% { opacity: 1; }
+  50%{
+    opacity:1;
+    transform:scaleX(1.03);
+  }
 }
 
 /* TOP BAR */
@@ -196,12 +238,6 @@ body {
 
 <div class="top-banner">
   <div class="top-banner-glow"></div>
-
-  <div class="star"></div>
-  <div class="star"></div>
-  <div class="star"></div>
-  <div class="star"></div>
-  <div class="star"></div>
 </div>
 
 <div class="topbar">
