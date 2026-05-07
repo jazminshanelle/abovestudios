@@ -20,51 +20,26 @@ body {
 .banner {
   position: relative;
   width: 100%;
-  height: 90px; /* thinner like Disney */
+  height: 90px;
   overflow: hidden;
-
   background: linear-gradient(90deg, #1b2a6b, #2b4aa0, #1a1f3a);
 }
 
-/* 🌠 MOVING GALAXY INSIDE BANNER */
-.banner::before {
-  content: "";
+/* 🌌 REAL GALAXY CANVAS */
+#galaxy {
   position: absolute;
   inset: 0;
-
-  background:
-    radial-gradient(circle at 20% 40%, rgba(255,255,255,0.18), transparent 40%),
-    radial-gradient(circle at 60% 60%, rgba(120,180,255,0.15), transparent 45%),
-    radial-gradient(circle at 80% 30%, rgba(180,120,255,0.12), transparent 50%);
-
-  animation: drift 18s linear infinite;
-  opacity: 0.7;
+  width: 100%;
+  height: 100%;
 }
 
-@keyframes drift {
-  0% { transform: translateX(0px); }
-  50% { transform: translateX(-40px); }
-  100% { transform: translateX(0px); }
-}
-
-/* 🌍 EARTH ATMOSPHERIC LIMB (BOTTOM CURVE GLOW) */
-.banner::after {
-  content: "";
+/* 🌍 EARTH ATMOSPHERIC LIMB CURVE */
+.banner svg {
   position: absolute;
-  bottom: -25px;
-  left: 0;
+  bottom: -18px;
   width: 100%;
   height: 60px;
-
-  background: radial-gradient(
-    ellipse at center,
-    rgba(120,200,255,0.35),
-    rgba(80,140,255,0.15),
-    transparent 70%
-  );
-
-  filter: blur(12px);
-  opacity: 0.9;
+  pointer-events: none;
 }
 
 /* 🌟 PIXAR-STYLE HEADER (BELOW BANNER) */
@@ -72,18 +47,17 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   padding: 25px 60px;
 }
 
-/* LOGO (OUTSIDE BANNER) */
+/* LOGO */
 .logo {
   font-family: 'Cinzel', serif;
   font-size: 1.2rem;
   letter-spacing: 10px;
 }
 
-/* NAV (OUTSIDE BANNER) */
+/* NAV */
 .nav {
   display: flex;
   gap: 30px;
@@ -116,12 +90,10 @@ body {
   inset: 0;
   background: rgba(20, 20, 20, 0.92);
   backdrop-filter: blur(8px);
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   opacity: 0;
   visibility: hidden;
   transform: scale(1.03);
@@ -187,10 +159,37 @@ body {
 
 <body>
 
-<!-- 🌌 DISNEY-STYLE SKY BANNER -->
-<div class="banner"></div>
+<!-- 🌌 BANNER -->
+<div class="banner">
 
-<!-- PIXAR-STYLE HEADER (BELOW BANNER) -->
+  <canvas id="galaxy"></canvas>
+
+  <!-- 🌍 ATMOSPHERIC LIMB -->
+  <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="glow" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0%" stop-color="#8fd7ff" stop-opacity="1"/>
+        <stop offset="60%" stop-color="#3aa6ff" stop-opacity="0.5"/>
+        <stop offset="100%" stop-color="transparent"/>
+      </linearGradient>
+
+      <filter id="blur">
+        <feGaussianBlur stdDeviation="5"/>
+      </filter>
+    </defs>
+
+    <path
+      d="M0,70 C360,20 1080,20 1440,70"
+      stroke="url(#glow)"
+      stroke-width="2"
+      fill="none"
+      filter="url(#blur)"
+    />
+  </svg>
+
+</div>
+
+<!-- HEADER -->
 <div class="header">
 
   <div class="logo">ABOVE</div>
@@ -243,6 +242,53 @@ body {
 </div>
 
 <script>
+
+/* 🌌 REAL GALAXY SYSTEM */
+const canvas = document.getElementById("galaxy");
+const ctx = canvas.getContext("2d");
+
+function resize() {
+  canvas.width = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
+}
+window.addEventListener("resize", resize);
+resize();
+
+let stars = [];
+
+for (let i = 0; i < 120; i++) {
+  stars.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 1.2,
+    speed: Math.random() * 0.25 + 0.05,
+    alpha: Math.random()
+  });
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  for (let s of stars) {
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(220,240,255,${s.alpha})`;
+    ctx.fill();
+
+    s.x += s.speed;
+
+    if (s.x > canvas.width) {
+      s.x = 0;
+      s.y = Math.random() * canvas.height;
+    }
+  }
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+/* MENU */
 function toggleMenu() {
   const overlay = document.getElementById("overlay");
   const hamburger = document.getElementById("hamburger");
@@ -250,6 +296,7 @@ function toggleMenu() {
   overlay.classList.toggle("open");
   hamburger.classList.toggle("open");
 }
+
 </script>
 
 </body>
