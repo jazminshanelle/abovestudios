@@ -15,7 +15,6 @@ body{
   color:black;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   padding:120px 60px 60px 60px;
-  overflow-x:hidden;
 }
 
 /* =========================================================
@@ -24,33 +23,27 @@ body{
 
 .top-banner{
   position:fixed;
-  top:-90px;
-  left:-10%;
-  width:120%;
-  height:180px;
+  top:0;
+  left:0;
+  width:100%;
+  height:42px;
 
-  overflow:hidden;
+  overflow:visible; /* IMPORTANT FIX */
+
   z-index:9999;
 
-  border-bottom-left-radius:50% 100%;
-  border-bottom-right-radius:50% 100%;
+  isolation:isolate;
 
   background:
-    radial-gradient(
-      ellipse at center bottom,
-      #09111f 0%,
-      #050814 40%,
-      #020308 100%
+    linear-gradient(
+      to bottom,
+      #02030a 0%,
+      #071226 45%,
+      rgba(7,18,38,0) 100%
     );
-
-  box-shadow:
-    0 0 40px rgba(120,170,255,.25),
-    0 0 120px rgba(120,170,255,.18);
-
-  isolation:isolate;
 }
 
-/* 🌌 MAIN GALAXY */
+/* 🌌 DREAMY MOVING GALAXY */
 .top-banner::before{
   content:"";
   position:absolute;
@@ -59,75 +52,80 @@ body{
 
   background:
 
-    radial-gradient(circle at 20% 45%,
-      rgba(150,120,255,.45),
-      transparent 18%),
+    radial-gradient(
+      circle at 20% 50%,
+      rgba(120,170,255,.95) 0%,
+      transparent 18%
+    ),
 
-    radial-gradient(circle at 65% 40%,
-      rgba(120,170,255,.40),
-      transparent 22%),
+    radial-gradient(
+      circle at 70% 40%,
+      rgba(80,120,255,.8) 0%,
+      transparent 22%
+    ),
 
-    radial-gradient(circle at 45% 70%,
-      rgba(255,255,255,.12),
-      transparent 15%),
+    radial-gradient(
+      circle at 45% 75%,
+      rgba(200,230,255,.35) 0%,
+      transparent 28%
+    ),
 
     linear-gradient(
       90deg,
       #02030a 0%,
-      #081229 15%,
-      #151f4b 30%,
-      #3d4bb8 50%,
-      #151f4b 70%,
-      #081229 85%,
+      #081229 20%,
+      #1b2f73 50%,
+      #081229 80%,
       #02030a 100%
     );
 
   background-size:300% 100%;
 
-  animation:galaxyFlow 22s linear infinite;
+  animation:galaxyDrift 18s linear infinite;
 
   filter:
-    saturate(1.8)
+    blur(10px)
+    saturate(1.6)
     contrast(1.2);
 
   opacity:1;
 }
 
-/* ✨ STAR FIELD */
+/* ✨ FLOATING STARS */
 .top-banner::after{
   content:"";
   position:absolute;
   inset:0;
 
   background-image:
-    radial-gradient(white 1.4px, transparent 1.4px),
-    radial-gradient(rgba(180,220,255,.9) 2px, transparent 2px),
-    radial-gradient(rgba(120,170,255,.6) 1px, transparent 1px);
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(rgba(180,220,255,.9) 1px, transparent 1px),
+    radial-gradient(rgba(120,170,255,.8) 1px, transparent 1px);
 
   background-size:
-    120px 120px,
-    180px 180px,
-    260px 260px;
+    80px 80px,
+    140px 140px,
+    220px 220px;
 
   background-position:
     0 0,
-    60px 40px,
-    140px 20px;
+    40px 60px,
+    120px 20px;
 
-  animation:starsMove 30s linear infinite;
+  animation:starsMove 14s linear infinite;
 
-  opacity:.95;
+  opacity:.9;
 }
 
-/* 🌍 EARTH ATMOSPHERE GLOW */
+/* 🌍 EARTH HORIZON GLOW */
 .top-banner-glow{
   position:absolute;
 
-  width:140%;
-  height:180px;
+  width:160%;
+  height:240px;
 
-  left:-20%;
-  bottom:-150px;
+  left:-30%;
+  bottom:-225px;
 
   border-radius:50%;
 
@@ -135,90 +133,35 @@ body{
     radial-gradient(
       ellipse at center,
 
-      rgba(180,230,255,1) 0%,
-
-      rgba(120,190,255,.95) 12%,
-
-      rgba(70,140,255,.75) 22%,
-
-      rgba(90,70,255,.35) 38%,
-
-      transparent 62%
+      rgba(140,210,255,1) 0%,
+      rgba(90,160,255,.95) 10%,
+      rgba(70,120,255,.55) 22%,
+      rgba(30,60,160,.22) 38%,
+      transparent 60%
     );
 
-  filter:blur(16px);
+  filter:blur(20px);
+
+  animation:horizonPulse 5s ease-in-out infinite;
 
   opacity:1;
 
-  animation:horizonPulse 7s ease-in-out infinite;
+  pointer-events:none;
 }
 
-/* =========================================================
-   ✨ FLOATING STARS
-========================================================= */
-
-.star{
-  position:absolute;
-
-  width:3px;
-  height:3px;
-
-  border-radius:50%;
-  background:white;
-
-  box-shadow:
-    0 0 10px rgba(255,255,255,1),
-    0 0 20px rgba(120,170,255,.9),
-    0 0 35px rgba(170,120,255,.7);
-
-  animation:floatStar linear infinite;
-}
-
-.star:nth-child(2){
-  top:35%;
-  left:10%;
-  animation-duration:14s;
-}
-
-.star:nth-child(3){
-  top:55%;
-  left:25%;
-  animation-duration:18s;
-}
-
-.star:nth-child(4){
-  top:42%;
-  left:50%;
-  animation-duration:15s;
-}
-
-.star:nth-child(5){
-  top:65%;
-  left:75%;
-  animation-duration:20s;
-}
-
-.star:nth-child(6){
-  top:30%;
-  left:90%;
-  animation-duration:16s;
-}
-
-/* =========================================================
-   🌌 ANIMATIONS
-========================================================= */
-
-@keyframes galaxyFlow{
+/* 🌌 GALAXY DRIFT */
+@keyframes galaxyDrift{
 
   0%{
     transform:translateX(0);
   }
 
   100%{
-    transform:translateX(-180px);
+    transform:translateX(-12%);
   }
 }
 
+/* ✨ STAR MOVEMENT */
 @keyframes starsMove{
 
   0%{
@@ -226,57 +169,39 @@ body{
   }
 
   100%{
-    transform:translateX(-240px);
+    transform:translateX(-140px);
   }
 }
 
-@keyframes floatStar{
-
-  0%{
-    transform:translate3d(0,0,0);
-    opacity:.3;
-  }
-
-  50%{
-    opacity:1;
-  }
-
-  100%{
-    transform:translate3d(120px,-10px,0);
-    opacity:.2;
-  }
-}
-
+/* 💙 ATMOSPHERIC PULSE */
 @keyframes horizonPulse{
 
   0%,100%{
     opacity:.75;
+    transform:scaleX(1);
   }
 
   50%{
     opacity:1;
+    transform:scaleX(1.03);
   }
 }
 
-/* =========================================================
-   TOP BAR
-========================================================= */
+/* TOP BAR */
 
 .topbar{
   position:fixed;
-  top:32px;
+  top:42px;
   left:40px;
   right:40px;
 
   display:flex;
   justify-content:space-between;
   align-items:center;
-
-  z-index:10000;
 }
 
 .logo{
-  font-family:'Cinzel', serif;
+  font-family:'Cinzel',serif;
   font-size:1.2rem;
   letter-spacing:10px;
 }
@@ -288,22 +213,19 @@ body{
   letter-spacing:2px;
 }
 
-/* =========================================================
-   GRID
-========================================================= */
+/* GRID */
 
 .grid{
   margin-top:60px;
-
   display:grid;
   grid-template-columns:repeat(2,1fr);
-
   gap:40px;
 }
 
 .card{
   text-decoration:none;
   color:inherit;
+  transition:.3s ease;
 }
 
 .card:hover{
@@ -327,17 +249,13 @@ body{
 
 <body>
 
+<!-- 🌌 GALAXY HEADER -->
+
 <div class="top-banner">
-
   <div class="top-banner-glow"></div>
-
-  <div class="star"></div>
-  <div class="star"></div>
-  <div class="star"></div>
-  <div class="star"></div>
-  <div class="star"></div>
-
 </div>
+
+<!-- NAV -->
 
 <div class="topbar">
 
@@ -351,6 +269,8 @@ body{
   </div>
 
 </div>
+
+<!-- CONTENT -->
 
 <div class="grid">
 
