@@ -18,7 +18,7 @@ body {
 }
 
 /* =========================================================
-   🌌 FIXED VISIBLE GALAXY (NOW STRONG + CLEAR MOTION)
+   🌌 ACTUALLY VISIBLE MOVING GALAXY BANNER
 ========================================================= */
 
 .top-banner {
@@ -26,90 +26,114 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 22px;
+  height: 28px; /* thin but readable */
   z-index: 2000;
   overflow: hidden;
   background: #000;
   isolation: isolate;
+  position: fixed;
 }
 
-/* 🌌 REAL MOVING NEBULA (STRONGER CONTRAST) */
+/* 🌌 MAIN MOVING GALAXY FIELD (STRONGER NOW) */
 .top-banner::before {
   content: "";
   position: absolute;
   inset: 0;
 
   background:
-    radial-gradient(circle at 15% 50%, rgba(160,200,255,0.65), transparent 45%),
-    radial-gradient(circle at 55% 30%, rgba(90,140,255,0.4), transparent 55%),
-    radial-gradient(circle at 85% 70%, rgba(200,230,255,0.35), transparent 50%),
+    radial-gradient(circle at 20% 50%, rgba(120,170,255,0.9), transparent 45%),
+    radial-gradient(circle at 70% 40%, rgba(80,120,255,0.7), transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(180,220,255,0.5), transparent 55%),
     linear-gradient(90deg,
-      #01020a,
+      #02030a,
       #0b1030,
       #1a1f4a,
       #2f3f8f,
       #1a1f4a,
       #0b1030,
-      #01020a
+      #02030a
     );
 
   background-size: 400% 100%;
   animation: nebulaMove 6s linear infinite;
+  filter: contrast(1.4) saturate(2);
 }
 
-/* 🌠 DENSE STAR FIELD (THIS WAS THE MISSING PIECE) */
+/* 🌫 MOVING COSMIC DUST (NOW MORE OBVIOUS) */
+.top-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(circle, rgba(255,255,255,0.35) 1px, transparent 2px),
+    radial-gradient(circle, rgba(120,170,255,0.25) 1px, transparent 3px);
+
+  background-size: 40px 40px;
+  animation: dustMove 4s linear infinite;
+  opacity: 0.6;
+}
+
+/* 💙 UNDER GLOW (STRONGER, VISIBLE LIKE LIGHT BAR) */
+.top-banner-glow {
+  position: absolute;
+  bottom: -12px;
+  left: 0;
+  width: 100%;
+  height: 30px;
+
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(120,170,255,1),
+    transparent 70%
+  );
+
+  filter: blur(10px);
+  animation: glowPulse 2.5s ease-in-out infinite;
+}
+
+/* ⭐ STAR FIELD (NOW ACTUALLY VISIBLE) */
 .star {
   position: absolute;
-  width: 1px;
-  height: 1px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
   background: white;
-  box-shadow: 0 0 6px rgba(255,255,255,1);
-  opacity: 0;
+  box-shadow: 0 0 14px rgba(180,220,255,1);
+  opacity: 1;
 
   animation: starMove linear infinite;
 }
 
-/* MANY MORE STARS = ACTUAL GALAXY FEEL */
-.star:nth-child(1) { top: 10%; left: -10px; animation-duration: 4s; }
-.star:nth-child(2) { top: 25%; left: -40px; animation-duration: 5s; }
-.star:nth-child(3) { top: 40%; left: -70px; animation-duration: 4.5s; }
-.star:nth-child(4) { top: 55%; left: -100px; animation-duration: 6s; }
-.star:nth-child(5) { top: 70%; left: -130px; animation-duration: 5.5s; }
-.star:nth-child(6) { top: 30%; left: -160px; animation-duration: 4.8s; }
-.star:nth-child(7) { top: 60%; left: -190px; animation-duration: 6.2s; }
-.star:nth-child(8) { top: 45%; left: -220px; animation-duration: 5.2s; }
-.star:nth-child(9) { top: 20%; left: -250px; animation-duration: 4.7s; }
-.star:nth-child(10){ top: 65%; left: -280px; animation-duration: 6.5s; }
+.star:nth-child(1) { top: 20%; left: -10px; animation-duration: 4.5s; }
+.star:nth-child(2) { top: 50%; left: -60px; animation-duration: 5.5s; }
+.star:nth-child(3) { top: 35%; left: -110px; animation-duration: 6s; }
+.star:nth-child(4) { top: 70%; left: -160px; animation-duration: 4.8s; }
+.star:nth-child(5) { top: 40%; left: -220px; animation-duration: 5.2s; }
 
-/* 🌠 STAR MOVEMENT (VISIBLE POP-IN + DRIFT) */
+/* 🌠 STAR MOVEMENT */
 @keyframes starMove {
-  0% { transform: translateX(0); opacity: 0; }
-  15% { opacity: 1; }
-  100% { transform: translateX(120vw); opacity: 0; }
+  0% { transform: translateX(0); opacity: 0.2; }
+  40% { opacity: 1; }
+  100% { transform: translateX(120vw); opacity: 0.1; }
 }
 
-/* 🌌 GALAXY FLOW (STRONGER SHIFT = NOTICEABLE MOTION) */
+/* 🌌 GALAXY FLOW */
 @keyframes nebulaMove {
   0% { background-position: 0% 50%; }
   100% { background-position: 400% 50%; }
 }
 
-/* 💙 GLOW UNDER BANNER (MORE VISIBLE EDGE LIGHT) */
-.top-banner-glow {
-  position: absolute;
-  bottom: -8px;
-  left: 0;
-  width: 100%;
-  height: 24px;
+/* 🌫 DUST FLOW */
+@keyframes dustMove {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-80px); }
+}
 
-  background: radial-gradient(
-    circle at 50% 0%,
-    rgba(150,200,255,1),
-    transparent 70%
-  );
-
-  filter: blur(10px);
-  opacity: 0.95;
+/* 💙 GLOW PULSE */
+@keyframes glowPulse {
+  0%,100% { opacity: 0.4; }
+  50% { opacity: 1; }
 }
 
 /* TOP BAR */
@@ -170,16 +194,9 @@ body {
 
 <body>
 
-<!-- 🌌 BANNER -->
 <div class="top-banner">
   <div class="top-banner-glow"></div>
 
-  <!-- REAL STAR DENSITY -->
-  <div class="star"></div>
-  <div class="star"></div>
-  <div class="star"></div>
-  <div class="star"></div>
-  <div class="star"></div>
   <div class="star"></div>
   <div class="star"></div>
   <div class="star"></div>
