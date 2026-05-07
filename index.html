@@ -18,7 +18,7 @@ body {
   transition: 0.4s ease;
 }
 
-/* 🌌 DREAMY MIDNIGHT SKY BANNER */
+/* 🌌 SKY BANNER */
 .top-banner {
   position: fixed;
   top: 0;
@@ -30,54 +30,6 @@ body {
   box-shadow:
     0 0 10px rgba(80, 110, 255, 0.25),
     0 0 25px rgba(40, 60, 180, 0.15);
-}
-
-.top-banner::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background: linear-gradient(
-    90deg,
-    #04050c 0%,
-    #070a1a 10%,
-    #0b1030 25%,
-    #1a1f4a 45%,
-    #2b3470 55%,
-    #1a1f4a 70%,
-    #0b1030 85%,
-    #04050c 100%
-  );
-
-  filter: saturate(1.2) contrast(1.1);
-}
-
-.top-banner::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background: linear-gradient(
-    120deg,
-    transparent 0%,
-    rgba(120, 140, 255, 0.25) 35%,
-    rgba(200, 210, 255, 0.15) 50%,
-    rgba(120, 140, 255, 0.25) 65%,
-    transparent 100%
-  );
-
-  animation: shimmer 6s infinite linear;
-  mix-blend-mode: screen;
-}
-
-@keyframes shimmer {
-  0% { transform: translateX(-30%); }
-  100% { transform: translateX(30%); }
-}
-
-/* DIM BACKGROUND WHEN MENU OPENS */
-body.menu-open {
-  background: #f5f5f5;
 }
 
 /* TOP BAR */
@@ -112,41 +64,47 @@ body.menu-open .logo {
   letter-spacing: 2px;
 }
 
-/* HAMBURGER (MOBILE ONLY) */
+/* ========================= */
+/* 🔥 FIXED HAMBURGER / X    */
+/* ========================= */
+
 .hamburger {
   display: none;
-  width: 34px;
-  height: 26px;
+  width: 42px;
+  height: 32px;
   position: relative;
   cursor: pointer;
   z-index: 3001;
+  padding: 10px;
 }
 
 .hamburger span {
   position: absolute;
   width: 100%;
-  height: 2px;
+  height: 3px; /* thicker = more visible */
   background: black;
+  border-radius: 2px;
   transition: 0.3s ease;
 }
 
-/* make X WHITE when menu open */
+/* WHITE + GLOW WHEN MENU OPEN (KEY FIX) */
 body.menu-open .hamburger span {
   background: white;
+  box-shadow: 0 0 6px rgba(255,255,255,0.7);
 }
 
-/* bars */
-.hamburger span:nth-child(1) { top: 6px; }
-.hamburger span:nth-child(2) { bottom: 6px; }
+/* bars positioning */
+.hamburger span:nth-child(1) { top: 8px; }
+.hamburger span:nth-child(2) { bottom: 8px; }
 
-/* PIXAR-STYLE X */
+/* PIXAR-STYLE X (clean center alignment) */
 .hamburger.open span:nth-child(1) {
-  top: 12px;
+  top: 15px;
   transform: rotate(45deg);
 }
 
 .hamburger.open span:nth-child(2) {
-  top: 12px;
+  top: 15px;
   transform: rotate(-45deg);
 }
 
@@ -213,28 +171,6 @@ body.menu-open .grid {
   opacity: 0.2;
 }
 
-.card {
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.2s ease;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-}
-
-.card h2 {
-  margin: 0;
-  font-size: 1.1rem;
-  font-weight: 500;
-}
-
-.card p {
-  opacity: 0.6;
-  margin-top: 8px;
-  font-size: 0.9rem;
-}
-
 /* RESPONSIVE */
 @media (max-width: 768px) {
 
@@ -289,27 +225,10 @@ body.menu-open .grid {
 </div>
 
 <div class="grid">
-
-  <a href="#" class="card">
-    <h2>TIME'S ALMOST UP</h2>
-    <p>Film / Concept Universe</p>
-  </a>
-
-  <a href="#" class="card">
-    <h2>WORLD ARCHIVE</h2>
-    <p>Story Development</p>
-  </a>
-
-  <a href="#" class="card">
-    <h2>CHARACTERS</h2>
-    <p>Character Universe</p>
-  </a>
-
-  <a href="#" class="card">
-    <h2>VISUAL TESTS</h2>
-    <p>Animatics & Experiments</p>
-  </a>
-
+  <a href="#" class="card"><h2>TIME'S ALMOST UP</h2><p>Film / Concept Universe</p></a>
+  <a href="#" class="card"><h2>WORLD ARCHIVE</h2><p>Story Development</p></a>
+  <a href="#" class="card"><h2>CHARACTERS</h2><p>Character Universe</p></a>
+  <a href="#" class="card"><h2>VISUAL TESTS</h2><p>Animatics & Experiments</p></a>
 </div>
 
 <script>
