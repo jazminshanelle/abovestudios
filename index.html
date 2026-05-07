@@ -18,7 +18,7 @@ body {
 }
 
 /* =========================================================
-   🌌 DISNEY-STYLE GALAXY BANNER (REAL DEPTH + MOTION)
+   🌌 FIXED VISIBLE MOVING GALAXY BANNER (FINAL VERSION)
 ========================================================= */
 
 .top-banner {
@@ -26,22 +26,23 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 18px; /* 👈 small elegant Disney-like height */
+  height: 22px; /* Disney-style thin bar */
   z-index: 2000;
   overflow: hidden;
   background: #000;
+  isolation: isolate;
 }
 
-/* 🌌 MOVING GALAXY CLOUDS (REAL DEPTH) */
+/* 🌌 STRONG MOVING NEBULA (THIS IS THE REAL GALAXY MOTION) */
 .top-banner::before {
   content: "";
   position: absolute;
   inset: 0;
 
   background:
-    radial-gradient(circle at 20% 50%, rgba(120,170,255,0.25), transparent 55%),
-    radial-gradient(circle at 80% 40%, rgba(90,140,255,0.18), transparent 60%),
-    radial-gradient(circle at 50% 80%, rgba(180,220,255,0.10), transparent 65%),
+    radial-gradient(circle at 20% 50%, rgba(120,170,255,0.45), transparent 55%),
+    radial-gradient(circle at 70% 40%, rgba(80,120,255,0.30), transparent 60%),
+    radial-gradient(circle at 40% 80%, rgba(180,220,255,0.18), transparent 65%),
     linear-gradient(90deg,
       #02030a,
       #0b1030,
@@ -52,12 +53,11 @@ body {
       #02030a
     );
 
-  background-size: 200% 100%;
-  animation: galaxyFlow 12s linear infinite;
-  filter: saturate(1.6) contrast(1.1);
+  background-size: 300% 100%;
+  animation: nebulaMove 8s linear infinite;
 }
 
-/* 🌠 STAR LAYER (PARALLAX MOVEMENT) */
+/* 🌠 CLEAR MOVING STAR FIELD (NOW VERY NOTICEABLE) */
 .star {
   position: absolute;
   width: 2px;
@@ -65,51 +65,52 @@ body {
   border-radius: 50%;
   background: white;
   box-shadow: 0 0 10px rgba(180,220,255,1);
-  opacity: 0.9;
-  animation: starDrift linear infinite;
+  opacity: 1;
+
+  animation: starMove linear infinite;
 }
 
-.star:nth-child(1) { top: 20%; left: -10px; animation-duration: 6s; }
-.star:nth-child(2) { top: 50%; left: -60px; animation-duration: 8s; }
-.star:nth-child(3) { top: 35%; left: -120px; animation-duration: 7s; }
-.star:nth-child(4) { top: 70%; left: -180px; animation-duration: 9s; }
-.star:nth-child(5) { top: 40%; left: -240px; animation-duration: 6.5s; }
+.star:nth-child(1) { top: 25%; left: -10px; animation-duration: 5s; }
+.star:nth-child(2) { top: 55%; left: -60px; animation-duration: 6.5s; }
+.star:nth-child(3) { top: 40%; left: -110px; animation-duration: 7s; }
+.star:nth-child(4) { top: 70%; left: -160px; animation-duration: 5.8s; }
+.star:nth-child(5) { top: 35%; left: -220px; animation-duration: 6.2s; }
 
-/* 🌠 STAR MOVEMENT (smooth continuous space drift) */
-@keyframes starDrift {
+/* 🌠 STAR MOTION (CLEAN LEFT → RIGHT DRIFT) */
+@keyframes starMove {
   0% { transform: translateX(0); opacity: 0.2; }
-  50% { opacity: 1; }
+  40% { opacity: 1; }
   100% { transform: translateX(120vw); opacity: 0.2; }
 }
 
-/* 🌌 GALAXY CLOUD FLOW */
-@keyframes galaxyFlow {
+/* 🌌 GALAXY FLOW (THIS IS THE “MOVING SPACE”) */
+@keyframes nebulaMove {
   0% { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
+  100% { background-position: 300% 50%; }
 }
 
-/* 💙 SOFT UNDER GLOW (DISNEY STYLE EDGE LIGHT) */
+/* 💙 STRONG UNDER GLOW (NOW VISIBLE LIKE DISNEY HEADER LIGHT) */
 .top-banner-glow {
   position: absolute;
   bottom: -10px;
   left: 0;
   width: 100%;
-  height: 24px;
+  height: 26px;
 
   background: radial-gradient(
     circle at 50% 0%,
-    rgba(120,170,255,0.7),
+    rgba(120,170,255,0.95),
     transparent 70%
   );
 
   filter: blur(10px);
-  animation: glowPulse 4s ease-in-out infinite;
+  animation: glowPulse 3s ease-in-out infinite;
 }
 
 /* 💙 GLOW PULSE */
 @keyframes glowPulse {
   0%,100% { opacity: 0.35; }
-  50% { opacity: 0.9; }
+  50% { opacity: 1; }
 }
 
 /* TOP BAR */
