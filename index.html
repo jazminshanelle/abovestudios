@@ -18,7 +18,7 @@ body {
   transition: 0.4s ease;
 }
 
-/* 🌌 DREAMY MIDNIGHT SKY BANNER (ENHANCED) */
+/* 🌌 DREAMY MIDNIGHT SKY BANNER (ENHANCED + GLOW STAR) */
 .top-banner {
   position: fixed;
   top: 0;
@@ -29,7 +29,7 @@ body {
   overflow: hidden;
 }
 
-/* layered gradient + glow */
+/* BASE SKY */
 .top-banner::before {
   content: "";
   position: absolute;
@@ -37,20 +37,20 @@ body {
 
   background: linear-gradient(
     90deg,
-    #04050c 0%,
-    #070a1a 10%,
+    #03040a 0%,
+    #060818 10%,
     #0b1030 25%,
     #1a1f4a 45%,
     #2b3470 55%,
     #1a1f4a 70%,
     #0b1030 85%,
-    #04050c 100%
+    #03040a 100%
   );
 
-  filter: saturate(1.2) contrast(1.1);
+  filter: saturate(1.25) contrast(1.15);
 }
 
-/* soft glowing “wish sky” shimmer */
+/* ✨ WISH-LIGHT SHIMMER */
 .top-banner::after {
   content: "";
   position: absolute;
@@ -59,9 +59,9 @@ body {
   background: linear-gradient(
     120deg,
     transparent 0%,
-    rgba(120, 140, 255, 0.25) 35%,
-    rgba(200, 210, 255, 0.15) 50%,
-    rgba(120, 140, 255, 0.25) 65%,
+    rgba(140, 160, 255, 0.25) 35%,
+    rgba(220, 230, 255, 0.18) 50%,
+    rgba(140, 160, 255, 0.25) 65%,
     transparent 100%
   );
 
@@ -69,17 +69,60 @@ body {
   mix-blend-mode: screen;
 }
 
-/* subtle movement = “alive sky” */
+/* 🌟 FLOATING WISH STAR (NEW MAGIC LAYER) */
+.top-banner::before,
+.top-banner::after {
+  pointer-events: none;
+}
+
+.top-banner {
+  box-shadow:
+    0 0 12px rgba(90, 120, 255, 0.25),
+    0 0 35px rgba(50, 70, 200, 0.15);
+}
+
+/* glowing star orb */
+.top-banner {
+  position: fixed;
+  overflow: hidden;
+}
+
+.top-banner::marker {
+  content: "";
+}
+
+/* real star layer */
+.top-banner .star {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle,
+    rgba(255,255,255,1) 0%,
+    rgba(180,200,255,0.8) 40%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  box-shadow:
+    0 0 8px rgba(180, 200, 255, 0.9),
+    0 0 16px rgba(120, 150, 255, 0.6);
+
+  animation: floatStar 5s ease-in-out infinite;
+  transform: translateX(-20px);
+}
+
+/* shimmer movement */
 @keyframes shimmer {
   0% { transform: translateX(-30%); }
   100% { transform: translateX(30%); }
 }
 
-/* glow bloom */
-.top-banner {
-  box-shadow:
-    0 0 10px rgba(80, 110, 255, 0.25),
-    0 0 25px rgba(40, 60, 180, 0.15);
+/* gentle floating glow */
+@keyframes floatStar {
+  0%   { transform: translate(0px, 0px); opacity: 0.6; }
+  50%  { transform: translate(10px, -2px); opacity: 1; }
+  100% { transform: translate(0px, 0px); opacity: 0.6; }
 }
 
 /* DIM BACKGROUND WHEN MENU OPENS */
@@ -96,7 +139,6 @@ body.menu-open {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: 0.3s ease;
 }
 
 /* LOGO */
@@ -104,12 +146,6 @@ body.menu-open {
   font-family: 'Cinzel', serif;
   font-size: 1.2rem;
   letter-spacing: 10px;
-  transition: 0.3s ease;
-}
-
-/* DIM LOGO WHEN MENU OPEN */
-body.menu-open .logo {
-  opacity: 0.3;
 }
 
 /* DESKTOP NAV */
@@ -118,7 +154,6 @@ body.menu-open .logo {
   gap: 30px;
   font-size: 0.85rem;
   letter-spacing: 2px;
-  transition: 0.3s ease;
 }
 
 /* HAMBURGER */
@@ -142,7 +177,6 @@ body.menu-open .logo {
 .hamburger span:nth-child(1) { top: 0; }
 .hamburger span:nth-child(2) { bottom: 0; }
 
-/* X ANIMATION */
 .hamburger.open span:nth-child(1) {
   top: 8px;
   transform: rotate(45deg);
@@ -169,7 +203,6 @@ body.menu-open .logo {
   opacity: 0;
   visibility: hidden;
   transform: scale(1.03);
-
   transition: 0.4s ease;
 }
 
@@ -179,28 +212,14 @@ body.menu-open .logo {
   transform: scale(1);
 }
 
-/* MENU ITEMS */
+/* MENU */
 .overlay a {
   font-size: 1.6rem;
   margin: 18px 0;
   letter-spacing: 3px;
   text-decoration: none;
   color: white;
-
-  opacity: 0;
-  transform: translateY(10px);
-  transition: 0.4s ease;
 }
-
-.overlay.open a {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.overlay.open a:nth-child(1) { transition-delay: 0.05s; }
-.overlay.open a:nth-child(2) { transition-delay: 0.10s; }
-.overlay.open a:nth-child(3) { transition-delay: 0.15s; }
-.overlay.open a:nth-child(4) { transition-delay: 0.20s; }
 
 /* GRID */
 .grid {
@@ -208,7 +227,6 @@ body.menu-open .logo {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 40px;
-  transition: 0.3s ease;
 }
 
 body.menu-open .grid {
@@ -263,7 +281,9 @@ body.menu-open .grid {
 
 <body>
 
-<div class="top-banner"></div>
+<div class="top-banner">
+  <div class="star"></div>
+</div>
 
 <div class="topbar">
 
