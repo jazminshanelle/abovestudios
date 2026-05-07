@@ -15,6 +15,12 @@ body {
   color: black;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   padding: 120px 60px 60px 60px;
+  transition: 0.4s ease;
+}
+
+/* DIM BACKGROUND WHEN MENU OPENS */
+body.menu-open {
+  background: #f5f5f5;
 }
 
 /* TOP BAR */
@@ -26,6 +32,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: 0.3s ease;
 }
 
 /* LOGO */
@@ -33,6 +40,12 @@ body {
   font-family: 'Cinzel', serif;
   font-size: 1.2rem;
   letter-spacing: 10px;
+  transition: 0.3s ease;
+}
+
+/* DIM LOGO WHEN MENU OPEN */
+body.menu-open .logo {
+  opacity: 0.3;
 }
 
 /* DESKTOP NAV */
@@ -41,6 +54,7 @@ body {
   gap: 30px;
   font-size: 0.85rem;
   letter-spacing: 2px;
+  transition: 0.3s ease;
 }
 
 /* HAMBURGER */
@@ -58,7 +72,7 @@ body {
   width: 100%;
   height: 2px;
   background: black;
-  transition: 0.25s ease;
+  transition: 0.3s ease;
 }
 
 .hamburger span:nth-child(1) { top: 0; }
@@ -75,24 +89,24 @@ body {
   transform: rotate(-45deg);
 }
 
-/* 🔥 FIXED PIXAR-STYLE OVERLAY (IMPORTANT UPGRADE) */
+/* 🔥 CINEMATIC OVERLAY (PIXAR-STYLE DEPTH) */
 .overlay {
   position: fixed;
   inset: 0;
 
-  background: rgba(235, 235, 235, 0.98);
+  background: rgba(20, 20, 20, 0.92);
+  backdrop-filter: blur(8px);
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  /* ANIMATION STATE */
   opacity: 0;
   visibility: hidden;
-  transform: scale(1.02);
+  transform: scale(1.03);
 
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  transition: 0.4s ease;
 }
 
 /* OPEN STATE */
@@ -102,13 +116,29 @@ body {
   transform: scale(1);
 }
 
+/* MENU ITEMS (STAGGER EFFECT) */
 .overlay a {
-  font-size: 1.5rem;
-  margin: 15px 0;
+  font-size: 1.6rem;
+  margin: 18px 0;
   letter-spacing: 3px;
   text-decoration: none;
-  color: black;
+  color: white;
+
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 0.4s ease;
 }
+
+/* stagger animation when open */
+.overlay.open a {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.overlay.open a:nth-child(1) { transition-delay: 0.05s; }
+.overlay.open a:nth-child(2) { transition-delay: 0.10s; }
+.overlay.open a:nth-child(3) { transition-delay: 0.15s; }
+.overlay.open a:nth-child(4) { transition-delay: 0.20s; }
 
 /* GRID */
 .grid {
@@ -116,6 +146,12 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 40px;
+  transition: 0.3s ease;
+}
+
+/* DIM GRID WHEN MENU OPEN */
+body.menu-open .grid {
+  opacity: 0.2;
 }
 
 .card {
@@ -220,14 +256,15 @@ body {
 
 <script>
 function toggleMenu() {
-  document.getElementById("overlay").classList.toggle("open");
-  document.getElementById("hamburger").classList.toggle("open");
+  const overlay = document.getElementById("overlay");
+  const hamburger = document.getElementById("hamburger");
 
-  // optional: lock scroll when menu is open
+  overlay.classList.toggle("open");
+  hamburger.classList.toggle("open");
+  document.body.classList.toggle("menu-open");
+
   document.body.style.overflow =
-    document.getElementById("overlay").classList.contains("open")
-      ? "hidden"
-      : "auto";
+    overlay.classList.contains("open") ? "hidden" : "auto";
 }
 </script>
 
