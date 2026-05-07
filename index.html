@@ -19,7 +19,7 @@ body {
 }
 
 /* =========================================================
-   🌌 ULTRA DREAMY MOVING GALAXY BANNER (FIXED VISIBILITY)
+   🌌 FULL DREAMY MOVING GALAXY BANNER (NOW VISIBLY MOVING)
 ========================================================= */
 
 .top-banner {
@@ -27,13 +27,13 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 24px; /* 🔥 FIX: bigger so motion is visible */
+  height: 26px; /* 🔥 IMPORTANT: increased so motion is visible */
   z-index: 2000;
   overflow: hidden;
   background: black;
 }
 
-/* MOVING NEBULA */
+/* 🌌 LAYER 1: MAIN NEBULA */
 .top-banner::before {
   content: "";
   position: absolute;
@@ -41,20 +41,20 @@ body {
 
   background: linear-gradient(
     90deg,
-    #02030a 0%,
-    #0b1030 20%,
-    #1a1f4a 40%,
-    #2f3f8f 50%,
-    #1a1f4a 70%,
-    #0b1030 90%,
-    #02030a 100%
+    #02030a,
+    #0b1030,
+    #1a1f4a,
+    #2f3f8f,
+    #1a1f4a,
+    #0b1030,
+    #02030a
   );
 
-  filter: saturate(1.8) contrast(1.2);
-  animation: nebulaShift 6s linear infinite;
+  filter: saturate(2) contrast(1.2);
+  animation: nebulaShift 7s linear infinite;
 }
 
-/* STRONG GLOW BLOOM */
+/* 🌌 LAYER 2: DEPTH MIST */
 .top-banner::after {
   content: "";
   position: absolute;
@@ -62,8 +62,8 @@ body {
 
   background: radial-gradient(
     circle at 50% 50%,
-    rgba(120, 170, 255, 0.6),
-    rgba(40, 80, 200, 0.3),
+    rgba(120, 170, 255, 0.65),
+    rgba(40, 80, 200, 0.25),
     transparent 70%
   );
 
@@ -71,7 +71,7 @@ body {
   animation: glowPulse 3.5s ease-in-out infinite;
 }
 
-/* UNDER GLOW (STRONGER) */
+/* 💙 UNDER GLOW */
 .top-banner-glow {
   position: absolute;
   bottom: -10px;
@@ -81,54 +81,55 @@ body {
 
   background: linear-gradient(
     to bottom,
-    rgba(90, 140, 255, 0.7),
+    rgba(90, 140, 255, 0.8),
     transparent
   );
 
-  filter: blur(10px);
+  filter: blur(12px);
 }
 
-/* ⭐ STARS (FIXED VISIBILITY) */
+/* ⭐ REAL MOVING STARS (VISIBLE NOW) */
 .star {
   position: absolute;
-  width: 5px; /* 🔥 bigger */
+  width: 5px;
   height: 5px;
   border-radius: 50%;
   background: white;
-  box-shadow: 0 0 16px rgba(180, 220, 255, 1);
+  box-shadow: 0 0 18px rgba(180, 220, 255, 1);
 
   opacity: 1;
+
   animation: drift 6s linear infinite, twinkle 2.2s ease-in-out infinite;
 }
 
-/* spread OUTSIDE left so motion is visible */
+/* spread across LEFT so movement is obvious */
 .star:nth-child(1) { top: 30%; left: -20px; animation-duration: 6s; }
 .star:nth-child(2) { top: 50%; left: -60px; animation-duration: 7s; }
 .star:nth-child(3) { top: 20%; left: -100px; animation-duration: 8s; }
 .star:nth-child(4) { top: 70%; left: -140px; animation-duration: 5.5s; }
 .star:nth-child(5) { top: 40%; left: -180px; animation-duration: 6.5s; }
 
-/* MOVEMENT */
+/* 🌠 STAR MOVEMENT */
 @keyframes drift {
   0% { transform: translateX(0); opacity: 0.3; }
   50% { opacity: 1; }
   100% { transform: translateX(120vw); opacity: 0.3; }
 }
 
-/* TWINKLE */
+/* ✨ TWINKLE */
 @keyframes twinkle {
-  0%,100% { transform: scale(1); opacity: 0.5; }
+  0%,100% { transform: scale(1); opacity: 0.4; }
   50% { transform: scale(1.7); opacity: 1; }
 }
 
-/* NEBULA SHIFT */
+/* 🌌 NEBULA MOVEMENT */
 @keyframes nebulaShift {
   0% { transform: translateX(-15%); }
   50% { transform: translateX(15%); }
   100% { transform: translateX(-15%); }
 }
 
-/* GLOW PULSE */
+/* 💙 GLOW BREATH */
 @keyframes glowPulse {
   0%,100% { opacity: 0.5; }
   50% { opacity: 1; }
