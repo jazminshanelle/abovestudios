@@ -18,7 +18,7 @@ body {
 }
 
 /* =========================================================
-   🌌 REAL MOVING GALAXY (FIXED + LAYERED DEPTH)
+   🌌 FIXED VISIBLE GALAXY (NOW STRONG + CLEAR MOTION)
 ========================================================= */
 
 .top-banner {
@@ -26,121 +26,90 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 22px; /* Disney thin bar */
+  height: 22px;
   z-index: 2000;
   overflow: hidden;
   background: #000;
+  isolation: isolate;
 }
 
-/* 🌌 BASE GALAXY FIELD (DEPTH + NEBULA) */
+/* 🌌 REAL MOVING NEBULA (STRONGER CONTRAST) */
 .top-banner::before {
   content: "";
   position: absolute;
   inset: 0;
 
   background:
-    radial-gradient(circle at 10% 50%, rgba(120,170,255,0.35), transparent 55%),
-    radial-gradient(circle at 50% 20%, rgba(80,120,255,0.25), transparent 60%),
-    radial-gradient(circle at 80% 70%, rgba(180,220,255,0.18), transparent 65%),
+    radial-gradient(circle at 15% 50%, rgba(160,200,255,0.65), transparent 45%),
+    radial-gradient(circle at 55% 30%, rgba(90,140,255,0.4), transparent 55%),
+    radial-gradient(circle at 85% 70%, rgba(200,230,255,0.35), transparent 50%),
     linear-gradient(90deg,
-      #02030a,
+      #01020a,
       #0b1030,
       #1a1f4a,
       #2f3f8f,
       #1a1f4a,
       #0b1030,
-      #02030a
+      #01020a
     );
 
-  background-size: 300% 100%;
-  animation: nebulaMove 10s linear infinite;
+  background-size: 400% 100%;
+  animation: nebulaMove 6s linear infinite;
 }
 
-/* 🌫 GALAXY DUST (THIS IS WHAT WAS MISSING) */
-.top-banner::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background-image: radial-gradient(rgba(255,255,255,0.8) 1px, transparent 1px);
-  background-size: 40px 40px;
-
-  opacity: 0.25;
-  animation: dustDrift 12s linear infinite;
-}
-
-/* 💙 UNDER GLOW (DISNEY STYLE EDGE LIGHT) */
-.top-banner-glow {
-  position: absolute;
-  bottom: -12px;
-  left: 0;
-  width: 100%;
-  height: 28px;
-
-  background: radial-gradient(
-    circle at 50% 0%,
-    rgba(120,170,255,0.9),
-    transparent 70%
-  );
-
-  filter: blur(12px);
-  animation: glowPulse 3.5s ease-in-out infinite;
-}
-
-/* ⭐ STAR SYSTEM (MULTI-LAYERED, NOT FLAT DOTS) */
+/* 🌠 DENSE STAR FIELD (THIS WAS THE MISSING PIECE) */
 .star {
   position: absolute;
-  width: 2px;
-  height: 2px;
-  border-radius: 50%;
+  width: 1px;
+  height: 1px;
   background: white;
-  box-shadow:
-    0 0 6px rgba(255,255,255,0.9),
-    0 0 12px rgba(180,220,255,0.8);
-  opacity: 0.8;
+  box-shadow: 0 0 6px rgba(255,255,255,1);
+  opacity: 0;
 
-  animation: starDrift linear infinite, twinkle 2s ease-in-out infinite;
+  animation: starMove linear infinite;
 }
 
-/* more stars = actual galaxy feel */
-.star:nth-child(1) { top: 20%; left: -10px; animation-duration: 6s; }
-.star:nth-child(2) { top: 40%; left: -40px; animation-duration: 7s; }
-.star:nth-child(3) { top: 60%; left: -80px; animation-duration: 5.5s; }
-.star:nth-child(4) { top: 30%; left: -120px; animation-duration: 8s; }
-.star:nth-child(5) { top: 70%; left: -160px; animation-duration: 6.8s; }
-.star:nth-child(6) { top: 50%; left: -200px; animation-duration: 7.5s; }
-.star:nth-child(7) { top: 25%; left: -240px; animation-duration: 6.2s; }
-.star:nth-child(8) { top: 65%; left: -280px; animation-duration: 8.2s; }
+/* MANY MORE STARS = ACTUAL GALAXY FEEL */
+.star:nth-child(1) { top: 10%; left: -10px; animation-duration: 4s; }
+.star:nth-child(2) { top: 25%; left: -40px; animation-duration: 5s; }
+.star:nth-child(3) { top: 40%; left: -70px; animation-duration: 4.5s; }
+.star:nth-child(4) { top: 55%; left: -100px; animation-duration: 6s; }
+.star:nth-child(5) { top: 70%; left: -130px; animation-duration: 5.5s; }
+.star:nth-child(6) { top: 30%; left: -160px; animation-duration: 4.8s; }
+.star:nth-child(7) { top: 60%; left: -190px; animation-duration: 6.2s; }
+.star:nth-child(8) { top: 45%; left: -220px; animation-duration: 5.2s; }
+.star:nth-child(9) { top: 20%; left: -250px; animation-duration: 4.7s; }
+.star:nth-child(10){ top: 65%; left: -280px; animation-duration: 6.5s; }
 
-/* 🌠 STAR MOVEMENT (SMOOTHER FLOAT, NOT LINEAR SLIDE) */
-@keyframes starDrift {
+/* 🌠 STAR MOVEMENT (VISIBLE POP-IN + DRIFT) */
+@keyframes starMove {
   0% { transform: translateX(0); opacity: 0; }
-  20% { opacity: 1; }
+  15% { opacity: 1; }
   100% { transform: translateX(120vw); opacity: 0; }
 }
 
-/* ✨ TWINKLE DEPTH */
-@keyframes twinkle {
-  0%,100% { transform: scale(1); opacity: 0.4; }
-  50% { transform: scale(1.8); opacity: 1; }
-}
-
-/* 🌌 NEBULA FLOW */
+/* 🌌 GALAXY FLOW (STRONGER SHIFT = NOTICEABLE MOTION) */
 @keyframes nebulaMove {
   0% { background-position: 0% 50%; }
-  100% { background-position: 300% 50%; }
+  100% { background-position: 400% 50%; }
 }
 
-/* 🌫 FLOATING DUST DRIFT */
-@keyframes dustDrift {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-120px); }
-}
+/* 💙 GLOW UNDER BANNER (MORE VISIBLE EDGE LIGHT) */
+.top-banner-glow {
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 24px;
 
-/* 💙 GLOW PULSE */
-@keyframes glowPulse {
-  0%,100% { opacity: 0.3; }
-  50% { opacity: 1; }
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(150,200,255,1),
+    transparent 70%
+  );
+
+  filter: blur(10px);
+  opacity: 0.95;
 }
 
 /* TOP BAR */
@@ -201,10 +170,13 @@ body {
 
 <body>
 
+<!-- 🌌 BANNER -->
 <div class="top-banner">
   <div class="top-banner-glow"></div>
 
-  <!-- more stars = actual galaxy -->
+  <!-- REAL STAR DENSITY -->
+  <div class="star"></div>
+  <div class="star"></div>
   <div class="star"></div>
   <div class="star"></div>
   <div class="star"></div>
