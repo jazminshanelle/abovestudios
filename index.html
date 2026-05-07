@@ -18,25 +18,28 @@ body {
   transition: 0.4s ease;
 }
 
-/* 🌌 TOP CINEMATIC BANNER (DISNEY-STYLE SKY) */
+/* 🌌 DISNEY-STYLE TOP GRADIENT BANNER (UPDATED) */
 .top-banner {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 4px;
+  height: 10px;
+
   z-index: 2000;
 
   background: linear-gradient(
     90deg,
-    #070a1a,
-    #0b1030,
-    #1a1f4a,
-    #2a2f66,
-    #1a1f4a,
-    #0b1030,
-    #070a1a
+    #050713 0%,
+    #0b1030 15%,
+    #1a1f4a 35%,
+    #2f3570 50%,
+    #1a1f4a 70%,
+    #0b1030 85%,
+    #050713 100%
   );
+
+  box-shadow: 0 0 12px rgba(60, 80, 200, 0.25);
 }
 
 /* DIM BACKGROUND WHEN MENU OPENS */
@@ -110,7 +113,7 @@ body.menu-open .logo {
   transform: rotate(-45deg);
 }
 
-/* CINEMATIC OVERLAY */
+/* OVERLAY */
 .overlay {
   position: fixed;
   inset: 0;
@@ -220,7 +223,7 @@ body.menu-open .grid {
 
 <body>
 
-<!-- 🌌 TOP BANNER -->
+<!-- 🌌 TOP BANNER (NEW ADDITION) -->
 <div class="top-banner"></div>
 
 <!-- TOP BAR -->
