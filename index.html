@@ -117,7 +117,7 @@ body {
 .hamburger span:nth-child(1) { top: 0; }
 .hamburger span:nth-child(2) { bottom: 0; }
 
-/* GRID (PIXAR STYLE UPGRADE) */
+/* GRID */
 .grid {
   margin-top: 80px;
   display: grid;
@@ -125,7 +125,7 @@ body {
   gap: 35px;
 }
 
-/* 🎬 PROJECT CARD */
+/* CARD */
 .card {
   position: relative;
   display: block;
@@ -142,7 +142,7 @@ body {
   transform: scale(1.02);
 }
 
-/* MEDIA (IMAGE OR VIDEO) */
+/* MEDIA */
 .card img,
 .card video {
   width: 100%;
@@ -234,16 +234,19 @@ body {
 <!-- PIXAR-STYLE GRID -->
 <div class="grid">
 
-  <!-- IMAGE CARD -->
+  <!-- ✅ UPDATED FIRST CARD (YOUR VIDEO INSERTED HERE) -->
   <a href="#" class="card">
-    <img src="your-image-1.jpg" alt="">
+    <video autoplay muted loop playsinline>
+      <source src="0f135c8d11e04ebd84a4e88b0ef4111e.mp4" type="video/mp4">
+    </video>
+
     <div class="card-info">
       <h2>TIME'S ALMOST UP</h2>
       <p>Animatic / Film Concept</p>
     </div>
   </a>
 
-  <!-- VIDEO CARD (LOCAL FILE WORKS) -->
+  <!-- VIDEO CARD -->
   <a href="#" class="card">
     <video autoplay muted loop playsinline>
       <source src="your-animatic.mp4" type="video/mp4">
