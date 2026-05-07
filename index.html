@@ -9,150 +9,216 @@
 
 <style>
 
-body {
-  margin: 0;
-  background: white;
-  color: black;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  padding: 120px 60px 60px 60px;
+body{
+  margin:0;
+  background:white;
+  color:black;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding:120px 60px 60px 60px;
+  overflow-x:hidden;
 }
 
 /* =========================================================
-   🌌 CINEMATIC EARTH-LIMB GALAXY HEADER
+   🌌 DREAMY EARTH-LIMB GALAXY HEADER
 ========================================================= */
 
 .top-banner{
   position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:24px;
+  top:-90px;
+  left:-10%;
+  width:120%;
+  height:180px;
+
   overflow:hidden;
   z-index:9999;
-  background:#000814;
+
+  border-bottom-left-radius:50% 100%;
+  border-bottom-right-radius:50% 100%;
+
+  background:
+    radial-gradient(
+      ellipse at center bottom,
+      #09111f 0%,
+      #050814 40%,
+      #020308 100%
+    );
+
+  box-shadow:
+    0 0 40px rgba(120,170,255,.25),
+    0 0 120px rgba(120,170,255,.18);
+
   isolation:isolate;
 }
 
-/* 🌌 MOVING GALAXY FIELD */
+/* 🌌 MAIN GALAXY */
 .top-banner::before{
   content:"";
   position:absolute;
 
-  width:300%;
-  height:300%;
-
-  left:-100%;
-  top:-120%;
+  inset:-120px;
 
   background:
-    radial-gradient(circle at 20% 50%,
-      rgba(120,170,255,.95) 0%,
+
+    radial-gradient(circle at 20% 45%,
+      rgba(150,120,255,.45),
       transparent 18%),
 
-    radial-gradient(circle at 70% 40%,
-      rgba(70,120,255,.85) 0%,
+    radial-gradient(circle at 65% 40%,
+      rgba(120,170,255,.40),
       transparent 22%),
 
-    radial-gradient(circle at 40% 75%,
-      rgba(180,220,255,.55) 0%,
-      transparent 26%),
+    radial-gradient(circle at 45% 70%,
+      rgba(255,255,255,.12),
+      transparent 15%),
 
     linear-gradient(
       90deg,
       #02030a 0%,
       #081229 15%,
-      #13204a 30%,
-      #2f4ea8 50%,
-      #13204a 70%,
+      #151f4b 30%,
+      #3d4bb8 50%,
+      #151f4b 70%,
       #081229 85%,
       #02030a 100%
     );
 
-  background-size:cover;
+  background-size:300% 100%;
 
-  animation: galaxyDrift 18s linear infinite;
+  animation:galaxyFlow 22s linear infinite;
 
   filter:
     saturate(1.8)
-    contrast(1.3)
-    blur(1px);
+    contrast(1.2);
 
   opacity:1;
 }
 
-/* ✨ MOVING STAR FIELD */
+/* ✨ STAR FIELD */
 .top-banner::after{
   content:"";
   position:absolute;
   inset:0;
 
   background-image:
-    radial-gradient(white 1px, transparent 1px),
-    radial-gradient(rgba(180,220,255,.9) 1px, transparent 1px),
-    radial-gradient(rgba(120,170,255,.8) 1px, transparent 1px);
+    radial-gradient(white 1.4px, transparent 1.4px),
+    radial-gradient(rgba(180,220,255,.9) 2px, transparent 2px),
+    radial-gradient(rgba(120,170,255,.6) 1px, transparent 1px);
 
   background-size:
-    90px 90px,
-    140px 140px,
-    190px 190px;
+    120px 120px,
+    180px 180px,
+    260px 260px;
 
   background-position:
     0 0,
-    40px 60px,
-    120px 20px;
+    60px 40px,
+    140px 20px;
 
-  animation: starsMove 14s linear infinite;
+  animation:starsMove 30s linear infinite;
 
-  opacity:.9;
+  opacity:.95;
 }
 
-/* 🌍 EARTH HORIZON GLOW */
+/* 🌍 EARTH ATMOSPHERE GLOW */
 .top-banner-glow{
   position:absolute;
 
   width:140%;
-  height:140px;
+  height:180px;
 
   left:-20%;
-  bottom:-128px;
+  bottom:-150px;
 
   border-radius:50%;
 
   background:
     radial-gradient(
       ellipse at center,
-      rgba(120,190,255,1) 0%,
-      rgba(70,140,255,.9) 18%,
-      rgba(40,90,200,.45) 32%,
-      transparent 58%
+
+      rgba(180,230,255,1) 0%,
+
+      rgba(120,190,255,.95) 12%,
+
+      rgba(70,140,255,.75) 22%,
+
+      rgba(90,70,255,.35) 38%,
+
+      transparent 62%
     );
 
-  filter:blur(10px);
+  filter:blur(16px);
 
-  animation:horizonPulse 5s ease-in-out infinite;
+  opacity:1;
 
-  opacity:.95;
-
-  pointer-events:none;
+  animation:horizonPulse 7s ease-in-out infinite;
 }
 
-/* 🌌 GALAXY DRIFT */
-@keyframes galaxyDrift{
+/* =========================================================
+   ✨ FLOATING STARS
+========================================================= */
+
+.star{
+  position:absolute;
+
+  width:3px;
+  height:3px;
+
+  border-radius:50%;
+  background:white;
+
+  box-shadow:
+    0 0 10px rgba(255,255,255,1),
+    0 0 20px rgba(120,170,255,.9),
+    0 0 35px rgba(170,120,255,.7);
+
+  animation:floatStar linear infinite;
+}
+
+.star:nth-child(2){
+  top:35%;
+  left:10%;
+  animation-duration:14s;
+}
+
+.star:nth-child(3){
+  top:55%;
+  left:25%;
+  animation-duration:18s;
+}
+
+.star:nth-child(4){
+  top:42%;
+  left:50%;
+  animation-duration:15s;
+}
+
+.star:nth-child(5){
+  top:65%;
+  left:75%;
+  animation-duration:20s;
+}
+
+.star:nth-child(6){
+  top:30%;
+  left:90%;
+  animation-duration:16s;
+}
+
+/* =========================================================
+   🌌 ANIMATIONS
+========================================================= */
+
+@keyframes galaxyFlow{
 
   0%{
-    transform:translateX(0) translateY(0);
-  }
-
-  50%{
-    transform:translateX(-8%) translateY(-2%);
+    transform:translateX(0);
   }
 
   100%{
-    transform:translateX(-16%) translateY(0);
+    transform:translateX(-180px);
   }
 }
 
-/* ✨ STAR MOVEMENT */
 @keyframes starsMove{
 
   0%{
@@ -160,74 +226,99 @@ body {
   }
 
   100%{
-    transform:translateX(-120px);
+    transform:translateX(-240px);
   }
 }
 
-/* 💙 HORIZON PULSE */
-@keyframes horizonPulse{
+@keyframes floatStar{
 
-  0%,100%{
-    opacity:.7;
-    transform:scaleX(1);
+  0%{
+    transform:translate3d(0,0,0);
+    opacity:.3;
   }
 
   50%{
     opacity:1;
-    transform:scaleX(1.03);
+  }
+
+  100%{
+    transform:translate3d(120px,-10px,0);
+    opacity:.2;
   }
 }
 
-/* TOP BAR */
-.topbar {
-  position: fixed;
-  top: 32px;
-  left: 40px;
-  right: 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+@keyframes horizonPulse{
+
+  0%,100%{
+    opacity:.75;
+  }
+
+  50%{
+    opacity:1;
+  }
 }
 
-.logo {
-  font-family: 'Cinzel', serif;
-  font-size: 1.2rem;
-  letter-spacing: 10px;
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.topbar{
+  position:fixed;
+  top:32px;
+  left:40px;
+  right:40px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  z-index:10000;
 }
 
-.nav {
-  display: flex;
-  gap: 30px;
-  font-size: 0.85rem;
-  letter-spacing: 2px;
+.logo{
+  font-family:'Cinzel', serif;
+  font-size:1.2rem;
+  letter-spacing:10px;
 }
 
-/* GRID */
-.grid {
-  margin-top: 60px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
+.nav{
+  display:flex;
+  gap:30px;
+  font-size:.85rem;
+  letter-spacing:2px;
 }
 
-.card {
-  text-decoration: none;
-  color: inherit;
+/* =========================================================
+   GRID
+========================================================= */
+
+.grid{
+  margin-top:60px;
+
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+
+  gap:40px;
 }
 
-.card:hover {
-  transform: translateY(-4px);
+.card{
+  text-decoration:none;
+  color:inherit;
 }
 
-.card h2 {
-  margin: 0;
-  font-size: 1.1rem;
+.card:hover{
+  transform:translateY(-4px);
 }
 
-.card p {
-  opacity: 0.6;
-  margin-top: 8px;
-  font-size: 0.9rem;
+.card h2{
+  margin:0;
+  font-size:1.1rem;
+}
+
+.card p{
+  opacity:.6;
+  margin-top:8px;
+  font-size:.9rem;
 }
 
 </style>
@@ -237,10 +328,19 @@ body {
 <body>
 
 <div class="top-banner">
+
   <div class="top-banner-glow"></div>
+
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+  <div class="star"></div>
+
 </div>
 
 <div class="topbar">
+
   <div class="logo">ABOVE</div>
 
   <div class="nav">
@@ -249,6 +349,7 @@ body {
     <span>UNIVERSE</span>
     <span>ABOUT</span>
   </div>
+
 </div>
 
 <div class="grid">
