@@ -18,7 +18,10 @@ body {
   transition: 0.4s ease;
 }
 
-/* 🌌 DREAMY MIDNIGHT SKY BANNER (CINEMATIC VERSION) */
+/* =========================================================
+   🌌 ULTRA DREAMY MOVING GALAXY BANNER (REPLACED VERSION)
+========================================================= */
+
 .top-banner {
   position: fixed;
   top: 0;
@@ -27,9 +30,10 @@ body {
   height: 14px;
   z-index: 2000;
   overflow: hidden;
+  background: black;
 }
 
-/* deep sky base */
+/* moving nebula layer */
 .top-banner::before {
   content: "";
   position: absolute;
@@ -38,19 +42,20 @@ body {
   background: linear-gradient(
     90deg,
     #02030a 0%,
-    #05061a 12%,
-    #0b1030 28%,
+    #05061a 10%,
+    #0b1030 25%,
     #1a1f4a 45%,
     #2a3575 55%,
-    #1a1f4a 72%,
-    #0b1030 88%,
+    #1a1f4a 75%,
+    #0b1030 90%,
     #02030a 100%
   );
 
-  filter: saturate(1.3) contrast(1.1);
+  filter: saturate(1.4) contrast(1.15);
+  animation: nebulaShift 12s ease-in-out infinite;
 }
 
-/* soft moving “galaxy mist” */
+/* glowing light bloom under banner */
 .top-banner::after {
   content: "";
   position: absolute;
@@ -58,61 +63,81 @@ body {
 
   background: radial-gradient(
     circle at 50% 50%,
-    rgba(180, 200, 255, 0.25),
+    rgba(120, 160, 255, 0.35),
     transparent 60%
   );
 
-  animation: mistMove 8s ease-in-out infinite;
   mix-blend-mode: screen;
+  animation: glowPulse 6s ease-in-out infinite;
+}
+
+/* neon underside glow */
+.banner-glow {
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(80, 120, 255, 0.35),
+    transparent
+  );
+
+  filter: blur(6px);
   opacity: 0.8;
 }
 
-/* glow bloom layer */
-.top-banner-glow {
-  position: absolute;
-  inset: 0;
-  box-shadow:
-    0 0 12px rgba(120, 150, 255, 0.25),
-    0 0 35px rgba(60, 80, 200, 0.18),
-    0 0 80px rgba(40, 60, 180, 0.12);
-  pointer-events: none;
-}
-
-/* 🌟 STAR FIELD */
+/* ⭐ MOVING STARS */
 .star {
   position: absolute;
-  width: 3px;
-  height: 3px;
-  background: radial-gradient(circle, white 0%, rgba(180,200,255,0.8) 40%, transparent 70%);
+  width: 2px;
+  height: 2px;
   border-radius: 50%;
-  opacity: 0.8;
-  animation: floatStar 6s infinite ease-in-out;
+  background: white;
+  box-shadow: 0 0 6px rgba(180, 200, 255, 0.9);
+
+  animation: drift linear infinite, twinkle 3s ease-in-out infinite;
 }
 
-.star:nth-child(1) { left: 10%; top: 30%; animation-delay: 0s; }
-.star:nth-child(2) { left: 25%; top: 60%; animation-delay: 1s; }
-.star:nth-child(3) { left: 45%; top: 40%; animation-delay: 2s; }
-.star:nth-child(4) { left: 70%; top: 55%; animation-delay: 0.5s; }
-.star:nth-child(5) { left: 85%; top: 35%; animation-delay: 1.5s; }
+/* star positions + speeds */
+.star:nth-child(1) { top: 20%; animation-duration: 8s; }
+.star:nth-child(2) { top: 40%; animation-duration: 12s; }
+.star:nth-child(3) { top: 60%; animation-duration: 10s; }
+.star:nth-child(4) { top: 30%; animation-duration: 14s; }
+.star:nth-child(5) { top: 50%; animation-duration: 9s; }
 
-@keyframes floatStar {
-  0%,100% { transform: translateY(0px); opacity: 0.6; }
-  50% { transform: translateY(-3px); opacity: 1; }
+/* horizontal galaxy drift */
+@keyframes drift {
+  0% { transform: translateX(-20px); opacity: 0.4; }
+  50% { opacity: 1; }
+  100% { transform: translateX(120vw); opacity: 0.4; }
 }
 
-/* mist movement */
-@keyframes mistMove {
-  0% { transform: translateX(-20%); }
-  50% { transform: translateX(20%); }
-  100% { transform: translateX(-20%); }
+/* twinkle */
+@keyframes twinkle {
+  0%,100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.4); }
 }
 
-/* DIM BACKGROUND WHEN MENU OPENS */
-body.menu-open {
-  background: #f5f5f5;
+/* nebula movement */
+@keyframes nebulaShift {
+  0% { transform: translateX(-10%); }
+  50% { transform: translateX(10%); }
+  100% { transform: translateX(-10%); }
 }
 
-/* TOP BAR */
+/* glow breathing */
+@keyframes glowPulse {
+  0%,100% { opacity: 0.4; }
+  50% { opacity: 0.9; }
+}
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
 .topbar {
   position: fixed;
   top: 40px;
@@ -191,7 +216,6 @@ body.menu-open {
   transform: scale(1);
 }
 
-/* MENU */
 .overlay a {
   font-size: 1.6rem;
   margin: 18px 0;
@@ -260,9 +284,9 @@ body.menu-open .grid {
 
 <body>
 
-<!-- 🌌 TOP BANNER -->
+<!-- 🌌 ULTRA GALAXY BANNER -->
 <div class="top-banner">
-  <div class="top-banner-glow"></div>
+  <div class="banner-glow"></div>
 
   <div class="star"></div>
   <div class="star"></div>
