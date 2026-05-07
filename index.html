@@ -9,60 +9,6 @@
 
 <style>
 
-html {
-  height: 100%;
-  background: white;
-  overscroll-behavior: none;
-}
-
-/* 🌌 GALAXY REVEAL CONTROL (NEW CORE FIX) */
-:root {
-  --galaxy-opacity: 0;
-  --galaxy-shift: 0px;
-}
-
-/* 🌌 HIDDEN GALAXY REVEAL LAYER (NOW LIVE CONTROLLED) */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-
-  transform: translateY(calc(-10px + var(--galaxy-shift)));
-  opacity: var(--galaxy-opacity);
-
-  background:
-    radial-gradient(circle at 15% 20%, rgba(120,160,255,0.25), transparent 40%),
-    radial-gradient(circle at 70% 40%, rgba(180,120,255,0.18), transparent 45%),
-    radial-gradient(circle at 40% 80%, rgba(80,200,255,0.15), transparent 50%),
-    radial-gradient(circle at 60% 60%, rgba(255,255,255,0.06), transparent 55%),
-
-    linear-gradient(
-      180deg,
-      #02030a 0%,
-      #050817 40%,
-      #070b1a 100%
-    );
-
-  background-size: 200% 200%;
-  animation: galaxyDrift 35s ease-in-out infinite;
-}
-
-/* galaxy movement */
-@keyframes galaxyDrift {
-  0% { background-position: 0% 0%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 0%; }
-}
-
-/* allow natural pull-down feel */
-body {
-  overscroll-behavior-y: contain;
-}
-
-/* existing styles below (UNCHANGED) */
-
 body {
   margin: 0;
   background: white;
@@ -72,7 +18,7 @@ body {
   transition: 0.4s ease;
 }
 
-/* 🌌 DREAMY MIDNIGHT SKY BANNER (UNCHANGED) */
+/* TOP BAR + BANNER (UNCHANGED) */
 .top-banner {
   position: fixed;
   top: 0;
@@ -126,18 +72,7 @@ body {
   100% { transform: translateX(30%); }
 }
 
-.top-banner {
-  box-shadow:
-    0 0 10px rgba(80, 110, 255, 0.25),
-    0 0 25px rgba(40, 60, 180, 0.15);
-}
-
-/* EVERYTHING ELSE UNCHANGED BELOW */
-
-body.menu-open {
-  background: #f5f5f5;
-}
-
+/* TOP BAR */
 .topbar {
   position: fixed;
   top: 40px;
@@ -146,7 +81,7 @@ body.menu-open {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: 0.3s ease;
+  z-index: 1000;
 }
 
 .logo {
@@ -155,6 +90,7 @@ body.menu-open {
   letter-spacing: 10px;
 }
 
+/* NAV */
 .nav {
   display: flex;
   gap: 30px;
@@ -162,13 +98,13 @@ body.menu-open {
   letter-spacing: 2px;
 }
 
+/* HAMBURGER */
 .hamburger {
   display: none;
   width: 24px;
   height: 18px;
   position: relative;
   cursor: pointer;
-  z-index: 1001;
 }
 
 .hamburger span {
@@ -181,29 +117,67 @@ body.menu-open {
 .hamburger span:nth-child(1) { top: 0; }
 .hamburger span:nth-child(2) { bottom: 0; }
 
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(20, 20, 20, 0.92);
-  backdrop-filter: blur(8px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  opacity: 0;
-  visibility: hidden;
-}
-
-.overlay.open {
-  opacity: 1;
-  visibility: visible;
-}
-
+/* GRID (PIXAR STYLE UPGRADE) */
 .grid {
-  margin-top: 60px;
+  margin-top: 80px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
+  gap: 35px;
+}
+
+/* 🎬 PROJECT CARD */
+.card {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #000;
+  transform: scale(1);
+  transition: transform 0.4s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+/* MEDIA (IMAGE OR VIDEO) */
+.card img,
+.card video {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.card:hover img,
+.card:hover video {
+  transform: scale(1.05);
+}
+
+/* TEXT OVERLAY */
+.card-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+  color: white;
+}
+
+.card-info h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.card-info p {
+  margin: 5px 0 0;
+  font-size: 0.85rem;
+  opacity: 0.8;
 }
 
 /* RESPONSIVE */
@@ -223,6 +197,11 @@ body.menu-open {
 
   .grid {
     grid-template-columns: 1fr;
+  }
+
+  .card img,
+  .card video {
+    height: 240px;
   }
 }
 
@@ -245,73 +224,53 @@ body.menu-open {
     <span>ABOUT</span>
   </div>
 
-  <div class="hamburger" onclick="toggleMenu()" id="hamburger">
+  <div class="hamburger">
     <span></span>
     <span></span>
   </div>
 
 </div>
 
-<div class="overlay" id="overlay">
-  <a href="#">FILMS</a>
-  <a href="#">CONCEPTS</a>
-  <a href="#">UNIVERSE</a>
-  <a href="#">ABOUT</a>
-</div>
-
+<!-- PIXAR-STYLE GRID -->
 <div class="grid">
-  <a href="#" class="card"><h2>TIME'S ALMOST UP</h2><p>Film / Concept Universe</p></a>
-  <a href="#" class="card"><h2>WORLD ARCHIVE</h2><p>Story Development</p></a>
-  <a href="#" class="card"><h2>CHARACTERS</h2><p>Character Universe</p></a>
-  <a href="#" class="card"><h2>VISUAL TESTS</h2><p>Animatics & Experiments</p></a>
+
+  <!-- IMAGE CARD -->
+  <a href="#" class="card">
+    <img src="your-image-1.jpg" alt="">
+    <div class="card-info">
+      <h2>TIME'S ALMOST UP</h2>
+      <p>Animatic / Film Concept</p>
+    </div>
+  </a>
+
+  <!-- VIDEO CARD (LOCAL FILE WORKS) -->
+  <a href="#" class="card">
+    <video autoplay muted loop playsinline>
+      <source src="your-animatic.mp4" type="video/mp4">
+    </video>
+    <div class="card-info">
+      <h2>WORLD ARCHIVE</h2>
+      <p>Animatic Sequence</p>
+    </div>
+  </a>
+
+  <a href="#" class="card">
+    <img src="your-image-2.jpg" alt="">
+    <div class="card-info">
+      <h2>CHARACTERS</h2>
+      <p>Character Designs</p>
+    </div>
+  </a>
+
+  <a href="#" class="card">
+    <img src="your-image-3.jpg" alt="">
+    <div class="card-info">
+      <h2>VISUAL TESTS</h2>
+      <p>Lighting / Experiments</p>
+    </div>
+  </a>
+
 </div>
-
-<script>
-function toggleMenu() {
-  const overlay = document.getElementById("overlay");
-  const hamburger = document.getElementById("hamburger");
-
-  overlay.classList.toggle("open");
-  hamburger.classList.toggle("open");
-  document.body.classList.toggle("menu-open");
-  document.body.style.overflow =
-    overlay.classList.contains("open") ? "hidden" : "auto";
-}
-
-/* 🌌 THIS IS THE FIX THAT MAKES THE GALAXY REVEAL WORK */
-let startY = 0;
-let pulling = false;
-
-window.addEventListener("touchstart", (e) => {
-  if (window.scrollY === 0) {
-    startY = e.touches[0].clientY;
-    pulling = true;
-  }
-});
-
-window.addEventListener("touchmove", (e) => {
-  if (!pulling) return;
-
-  const currentY = e.touches[0].clientY;
-  let pull = currentY - startY;
-
-  if (pull < 0) pull = 0;
-  if (pull > 200) pull = 200;
-
-  const opacity = pull / 200;
-  const shift = pull / 5;
-
-  document.documentElement.style.setProperty("--galaxy-opacity", opacity);
-  document.documentElement.style.setProperty("--galaxy-shift", shift + "px");
-});
-
-window.addEventListener("touchend", () => {
-  pulling = false;
-
-  document.documentElement.style.setProperty("--galaxy-opacity", 0);
-  document.documentElement.style.setProperty("--galaxy-shift", "0px");
-});
-</script>
 
 </body>
 </html>
