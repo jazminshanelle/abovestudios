@@ -171,27 +171,39 @@ body {
   opacity: 0.8;
 }
 
-/* SOCIALS — PIXAR STYLE (FIXED) */
+/* SOCIALS — PIXAR CLEAN MONOLINE STYLE */
 .socials {
   position: fixed;
   bottom: 30px;
   left: 40px;
   display: flex;
-  gap: 22px;
+  gap: 20px;
   align-items: center;
 }
 
-.socials a svg {
-  width: 18px;
-  height: 18px;
-  fill: #000; /* TRUE BLACK */
+.socials a {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   opacity: 0.55;
   transition: 0.25s ease;
 }
 
-.socials a:hover svg {
+.socials a:hover {
   opacity: 1;
   transform: translateY(-2px);
+}
+
+.socials svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: #000;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 /* RESPONSIVE */
@@ -296,32 +308,52 @@ body {
 
   <!-- Instagram -->
   <a href="https://instagram.com/YOURUSERNAME" target="_blank">
-    <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3z"/></svg>
+    <svg viewBox="0 0 24 24">
+      <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+      <circle cx="12" cy="12" r="4"></circle>
+      <circle cx="17.5" cy="6.5" r="1"></circle>
+    </svg>
   </a>
 
   <!-- TikTok -->
   <a href="https://tiktok.com/@YOURUSERNAME" target="_blank">
-    <svg viewBox="0 0 24 24"><path d="M14 2h3a5 5 0 0 0 5 5v3a8 8 0 0 1-5-1.5V16a6 6 0 1 1-6-6z"/></svg>
+    <svg viewBox="0 0 24 24">
+      <path d="M14 3v10.5a3.5 3.5 0 1 1-3.5-3.5"></path>
+      <path d="M14 3c1 2 3 4 6 4"></path>
+    </svg>
   </a>
 
   <!-- Facebook -->
   <a href="https://facebook.com/YOURUSERNAME" target="_blank">
-    <svg viewBox="0 0 24 24"><path d="M13 22v-8h3l1-4h-4V7c0-1.1.4-2 2-2h2V1h-3c-3 0-5 2-5 5v4H6v4h3v8z"/></svg>
+    <svg viewBox="0 0 24 24">
+      <path d="M14 9h3"></path>
+      <path d="M17 3h-2a4 4 0 0 0-4 4v3H8v4h3v7h4v-7h3l1-4h-4V7a1 1 0 0 1 1-1h2z"></path>
+    </svg>
   </a>
 
   <!-- X -->
   <a href="https://x.com/YOURUSERNAME" target="_blank">
-    <svg viewBox="0 0 24 24"><path d="M18 2h3l-7 8 8 12h-6l-5-7-6 7H2l7-8L1 2h6l4 6z"/></svg>
+    <svg viewBox="0 0 24 24">
+      <path d="M4 4l16 16M20 4L4 20"></path>
+    </svg>
   </a>
 
   <!-- YouTube -->
   <a href="https://youtube.com/@YOURUSERNAME" target="_blank">
-    <svg viewBox="0 0 24 24"><path d="M23 12s0-3-1-4-4-1-10-1-9 0-10 1-1 4-1 4 0 3 1 4 4 1 10 1 9 0 10-1 1-4 1-4z"/></svg>
+    <svg viewBox="0 0 24 24">
+      <rect x="3" y="5" width="18" height="14" rx="4"></rect>
+      <path d="M10 9l6 3-6 3z"></path>
+    </svg>
   </a>
 
   <!-- LinkedIn -->
   <a href="https://linkedin.com/in/YOURUSERNAME" target="_blank">
-    <svg viewBox="0 0 24 24"><path d="M6 9H2v13h4V9zm-2-7a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></svg>
+    <svg viewBox="0 0 24 24">
+      <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+      <path d="M7 10v7"></path>
+      <circle cx="7" cy="7" r="1"></circle>
+      <path d="M11 17v-4a2 2 0 0 1 4 0v4"></path>
+    </svg>
   </a>
 
 </div>
