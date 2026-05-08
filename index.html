@@ -20,12 +20,11 @@ body {
 }
 
 /* =========================
-   PIXAR LIFT SYSTEM (FIXED + CONSISTENT)
+   FIXED LIFT SYSTEM (NO CONFLICTS)
 ========================= */
 
-a,
-.nav span,
 .logo,
+.nav span,
 .socials a,
 .card {
   display: inline-block;
@@ -33,38 +32,18 @@ a,
   will-change: transform;
 }
 
-/* unified hover lift */
-a:hover,
-.nav span:hover,
+/* ONLY hover-safe elements */
 .logo:hover,
+.nav span:hover,
 .socials a:hover,
 .card:hover {
   transform: translateY(-6px);
 }
 
 /* =========================
-   TOP BLUE PIXAR BANNER
-========================= */
-.top-banner {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 12px;
-  z-index: 5000;
-  background: linear-gradient(
-    90deg,
-    #04050c,
-    #0b1030,
-    #2b3470,
-    #0b1030,
-    #04050c
-  );
-}
-
-/* =========================
    TOP BAR
 ========================= */
+
 .topbar {
   position: relative;
   margin-top: 15px;
@@ -75,7 +54,6 @@ a:hover,
   align-items: center;
 }
 
-/* LOGO */
 .logo {
   font-family: 'Cinzel', serif;
   font-size: 1.4rem;
@@ -85,7 +63,6 @@ a:hover,
   transform-origin: left center;
 }
 
-/* NAV */
 .nav {
   display: flex;
   gap: 30px;
@@ -94,8 +71,9 @@ a:hover,
 }
 
 /* =========================
-   HAMBURGER
+   HAMBURGER (UNCHANGED)
 ========================= */
+
 .hamburger {
   display: none;
   width: 28px;
@@ -131,58 +109,9 @@ a:hover,
 }
 
 /* =========================
-   MOBILE MENU OVERLAY
-========================= */
-.menu-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.92);
-  opacity: 0;
-  pointer-events: none;
-  transition: 0.4s ease;
-  z-index: 3000;
-}
-
-.menu-backdrop.open {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.mobile-menu {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 28px;
-  z-index: 4000;
-}
-
-.mobile-menu a {
-  color: white;
-  text-decoration: none;
-  font-size: 1.3rem;
-  letter-spacing: 3px;
-
-  opacity: 0;
-  transform: translateY(20px);
-  transition: 0.5s ease;
-}
-
-.mobile-menu.open a {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.mobile-menu.open a:nth-child(1) { transition-delay: 0.05s; }
-.mobile-menu.open a:nth-child(2) { transition-delay: 0.10s; }
-.mobile-menu.open a:nth-child(3) { transition-delay: 0.15s; }
-.mobile-menu.open a:nth-child(4) { transition-delay: 0.20s; }
-
-/* =========================
    GRID
 ========================= */
+
 .grid {
   margin-top: 50px;
   display: grid;
@@ -190,14 +119,13 @@ a:hover,
   gap: 30px;
 }
 
-/* CARD */
 .card {
   position: relative;
   overflow: hidden;
   border-radius: 10px;
   background: #000;
   transform: translateY(0);
-  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .card:hover {
@@ -224,8 +152,9 @@ a:hover,
 }
 
 /* =========================
-   SOCIALS (FIXED COLOR)
+   SOCIALS (FIXED CLICK + COLOR)
 ========================= */
+
 .socials {
   margin-top: 60px;
   margin-left: 40px;
@@ -235,15 +164,21 @@ a:hover,
 
 .socials a {
   color: #000 !important;
-  font-size: 18px;
   text-decoration: none;
+  font-size: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .socials a i {
   color: #000 !important;
 }
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
+
 @media (max-width: 768px) {
 
   body {
@@ -274,8 +209,6 @@ a:hover,
 
 <body>
 
-<div class="top-banner"></div>
-
 <div class="topbar">
 
   <div class="logo">ABOVE</div>
@@ -292,15 +225,6 @@ a:hover,
     <span></span>
   </div>
 
-</div>
-
-<div class="menu-backdrop" id="backdrop"></div>
-
-<div class="mobile-menu" id="menu">
-  <a href="#">FILMS</a>
-  <a href="#">CONCEPTS</a>
-  <a href="#">UNIVERSE</a>
-  <a href="#">ABOUT</a>
 </div>
 
 <div class="grid">
@@ -349,23 +273,6 @@ a:hover,
   <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
   <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
 </div>
-
-<script>
-
-const hamburger = document.getElementById("hamburger");
-const menu = document.getElementById("menu");
-const backdrop = document.getElementById("backdrop");
-
-function toggleMenu() {
-  hamburger.classList.toggle("active");
-  menu.classList.toggle("open");
-  backdrop.classList.toggle("open");
-}
-
-hamburger.addEventListener("click", toggleMenu);
-backdrop.addEventListener("click", toggleMenu);
-
-</script>
 
 </body>
 </html>
