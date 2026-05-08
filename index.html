@@ -7,6 +7,9 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
 
+<!-- ICON FONT SYSTEM -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
 
 body {
@@ -14,7 +17,10 @@ body {
   background: white;
   color: black;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  padding: 120px 60px 80px 60px;
+
+  /* 🔥 TIGHTER TOP SPACING */
+  padding: 60px 60px 80px 60px;
+
   transition: 0.4s ease;
 }
 
@@ -73,19 +79,23 @@ body {
 /* TOP BAR */
 .topbar {
   position: relative;
-  margin-top: 40px;
+
+  /* 🔥 LESS PUSH DOWN */
+  margin-top: 15px;
+
   margin-left: 40px;
   margin-right: 40px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 1000;
 }
 
-/* 🔥 PIXAR-STYLE SAFE LOGO SCALE (NO LAYOUT BREAK) */
+/* PIXAR-STYLE LOGO (SAFE SCALE) */
 .logo {
   font-family: 'Cinzel', serif;
-  font-size: 1.4rem;   /* slightly larger base */
+  font-size: 1.4rem;
   font-weight: 700;
   letter-spacing: 10px;
 
@@ -124,10 +134,10 @@ body {
 
 /* GRID */
 .grid {
-  margin-top: 80px;
+  margin-top: 50px; /* 🔥 tighter flow */
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 35px;
+  gap: 30px; /* slightly tighter */
 }
 
 /* CARD */
@@ -179,10 +189,10 @@ body {
   opacity: 0.8;
 }
 
-/* SOCIALS — PIXAR CLEAN ICON FONT SYSTEM */
+/* SOCIALS */
 .socials {
   position: relative;
-  margin-top: 80px;
+  margin-top: 60px; /* tighter */
   margin-left: 40px;
   display: flex;
   gap: 20px;
@@ -191,7 +201,7 @@ body {
 
 .socials a {
   font-size: 18px;
-  color: #000000; /* PITCH BLACK */
+  color: #000000; /* pitch black */
   opacity: 1;
   transition: 0.25s ease;
   text-decoration: none;
@@ -201,7 +211,7 @@ body {
   transform: translateY(-2px);
 }
 
-/* FORCE ICON FONT LOOK */
+/* ICONS */
 .socials a i {
   display: block;
 }
@@ -210,7 +220,7 @@ body {
 @media (max-width: 768px) {
 
   body {
-    padding: 100px 20px;
+    padding: 80px 20px;
   }
 
   .nav {
@@ -236,9 +246,6 @@ body {
 }
 
 </style>
-
-<!-- ICON FONT SYSTEM -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 </head>
 
@@ -316,9 +323,6 @@ body {
   <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
 
 </div>
-
-</body>
-</html>
 
 </body>
 </html>
