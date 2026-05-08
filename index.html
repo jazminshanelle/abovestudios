@@ -70,12 +70,12 @@ body {
   100% { transform: translateX(30%); }
 }
 
-/* TOP BAR */
+/* TOP BAR — FIXED (CHANGED) */
 .topbar {
-  position: fixed;
-  top: 40px;
-  left: 40px;
-  right: 40px;
+  position: relative;   /* 👈 CHANGED FROM FIXED */
+  margin-top: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -171,13 +171,13 @@ body {
   opacity: 0.8;
 }
 
-/* SOCIALS — CLEAN PIXAR-LIKE MONOLINE SYSTEM (FIXED) */
+/* SOCIALS — NOW SCROLLS WITH PAGE (CHANGED) */
 .socials {
-  position: fixed;
-  bottom: 30px;
-  left: 40px;
+  position: relative;   /* 👈 CHANGED FROM FIXED */
+  margin-top: 80px;
+  margin-left: 40px;
   display: flex;
-  gap: 22px;
+  gap: 20px;
   align-items: center;
 }
 
@@ -196,16 +196,14 @@ body {
   transform: translateY(-2px);
 }
 
-/* IMPORTANT FIX: TRUE UNIFORM VECTOR LOOK */
 .socials svg {
   width: 20px;
   height: 20px;
   fill: none;
   stroke: #000;
-  stroke-width: 1.6;
+  stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
-  shape-rendering: geometricPrecision;
 }
 
 /* RESPONSIVE */
@@ -233,8 +231,7 @@ body {
   }
 
   .socials {
-    left: 20px;
-    bottom: 20px;
+    margin-left: 20px;
   }
 }
 
