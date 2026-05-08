@@ -171,13 +171,13 @@ body {
   opacity: 0.8;
 }
 
-/* SOCIALS — PIXAR CLEAN MONOLINE STYLE */
+/* SOCIALS — CLEAN PIXAR-LIKE MONOLINE SYSTEM (FIXED) */
 .socials {
   position: fixed;
   bottom: 30px;
   left: 40px;
   display: flex;
-  gap: 20px;
+  gap: 22px;
   align-items: center;
 }
 
@@ -196,14 +196,16 @@ body {
   transform: translateY(-2px);
 }
 
+/* IMPORTANT FIX: TRUE UNIFORM VECTOR LOOK */
 .socials svg {
   width: 20px;
   height: 20px;
   fill: none;
   stroke: #000;
-  stroke-width: 1.8;
+  stroke-width: 1.6;
   stroke-linecap: round;
   stroke-linejoin: round;
+  shape-rendering: geometricPrecision;
 }
 
 /* RESPONSIVE */
