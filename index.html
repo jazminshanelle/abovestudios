@@ -152,11 +152,6 @@ body {
   background: black;
 }
 
-/* VIDEO FIX */
-.card video {
-  opacity: 1;
-}
-
 /* TEXT OVERLAY */
 .card-info {
   position: absolute;
@@ -178,6 +173,26 @@ body {
   margin: 5px 0 0;
   font-size: 0.85rem;
   opacity: 0.8;
+}
+
+/* SOCIALS */
+.socials {
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.socials a img {
+  width: 28px;
+  height: 28px;
+  opacity: 0.7;
+  transition: 0.3s ease;
+}
+
+.socials a img:hover {
+  opacity: 1;
+  transform: scale(1.1);
 }
 
 /* RESPONSIVE */
@@ -234,12 +249,10 @@ body {
 <!-- GRID -->
 <div class="grid">
 
-  <!-- VIDEO -->
   <a href="#" class="card">
     <video autoplay muted loop playsinline preload="auto">
       <source src=".train-animatic.mp4" type="video/mp4">
     </video>
-
     <div class="card-info">
       <h2>TIME'S ALMOST UP</h2>
       <p>Animatic / Film Concept</p>
@@ -256,7 +269,6 @@ body {
     </div>
   </a>
 
-  <!-- ✅ FIXED CHARACTER IMAGE -->
   <a href="#" class="card">
     <img src="./characters.png" alt="Characters Artwork">
     <div class="card-info">
@@ -274,6 +286,7 @@ body {
   </a>
 
 </div>
+
 <!-- SOCIALS -->
 <div class="socials">
 
@@ -286,5 +299,6 @@ body {
   </a>
 
 </div>
+
 </body>
 </html>
