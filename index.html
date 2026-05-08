@@ -7,7 +7,6 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
 
-<!-- ICON FONT SYSTEM -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
@@ -24,23 +23,28 @@ body {
   overflow-x: hidden;
 }
 
-/* 🌫️ CLOUD LAYER (NEW CINEMATIC EFFECT) */
+/* 🌫️ IMPROVED CINEMATIC CLOUD SYSTEM */
 .clouds {
   position: fixed;
-  bottom: 0;
+  bottom: -40px;
   left: 0;
   width: 100%;
-  height: 240px;
+  height: 320px;
   pointer-events: none;
-  z-index: 5;
+  z-index: 1;
 
-  background: radial-gradient(circle at 20% 80%, rgba(255,255,255,0.35), transparent 60%),
-              radial-gradient(circle at 60% 90%, rgba(255,255,255,0.25), transparent 55%),
-              radial-gradient(circle at 90% 85%, rgba(255,255,255,0.2), transparent 60%);
+  /* darker atmospheric fog (VISIBLE now) */
+  background:
+    radial-gradient(circle at 15% 85%, rgba(0,0,0,0.08), transparent 55%),
+    radial-gradient(circle at 45% 95%, rgba(0,0,0,0.06), transparent 60%),
+    radial-gradient(circle at 75% 90%, rgba(0,0,0,0.05), transparent 65%),
+    radial-gradient(circle at 90% 80%, rgba(0,0,0,0.04), transparent 60%);
 
-  filter: blur(30px);
+  filter: blur(45px);
   opacity: 0.9;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+
+  transform: translateY(0);
+  transition: opacity 0.2s linear, transform 0.2s linear;
 }
 
 /* TOP BAR + BANNER */
@@ -107,7 +111,6 @@ body {
   z-index: 1000;
 }
 
-/* PIXAR-STYLE LOGO */
 .logo {
   font-family: 'Cinzel', serif;
   font-size: 1.4rem;
@@ -127,34 +130,16 @@ body {
   letter-spacing: 2px;
 }
 
-/* HAMBURGER */
-.hamburger {
-  display: none;
-  width: 24px;
-  height: 18px;
-  position: relative;
-  cursor: pointer;
-}
-
-.hamburger span {
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  background: black;
-}
-
-.hamburger span:nth-child(1) { top: 0; }
-.hamburger span:nth-child(2) { bottom: 0; }
-
 /* GRID */
 .grid {
   margin-top: 50px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
+  position: relative;
+  z-index: 10;
 }
 
-/* CARD */
 .card {
   position: relative;
   display: block;
@@ -163,13 +148,6 @@ body {
   overflow: hidden;
   border-radius: 10px;
   background: #000;
-  transform: scale(1);
-  transition: transform 0.4s ease;
-  z-index: 10;
-}
-
-.card:hover {
-  transform: scale(1.02);
 }
 
 .card img,
@@ -178,7 +156,6 @@ body {
   height: 320px;
   object-fit: cover;
   display: block;
-  background: black;
 }
 
 /* TEXT */
@@ -205,14 +182,8 @@ body {
 
 .socials a {
   font-size: 18px;
-  color: #000000;
-  opacity: 1;
-  transition: 0.25s ease;
+  color: #000;
   text-decoration: none;
-}
-
-.socials a:hover {
-  transform: translateY(-2px);
 }
 
 /* RESPONSIVE */
@@ -220,14 +191,6 @@ body {
 
   body {
     padding: 80px 20px;
-  }
-
-  .nav {
-    display: none;
-  }
-
-  .hamburger {
-    display: block;
   }
 
   .grid {
@@ -238,10 +201,6 @@ body {
   .card video {
     height: 240px;
   }
-
-  .socials {
-    margin-left: 20px;
-  }
 }
 
 </style>
@@ -250,13 +209,12 @@ body {
 
 <body>
 
-<!-- CLOUD LAYER -->
+<!-- CLOUDS -->
 <div class="clouds" id="clouds"></div>
 
 <div class="top-banner"></div>
 
 <div class="topbar">
-
   <div class="logo">ABOVE</div>
 
   <div class="nav">
@@ -265,19 +223,12 @@ body {
     <span>UNIVERSE</span>
     <span>ABOUT</span>
   </div>
-
-  <div class="hamburger">
-    <span></span>
-    <span></span>
-  </div>
-
 </div>
 
-<!-- GRID -->
 <div class="grid">
 
   <a href="#" class="card">
-    <video autoplay muted loop playsinline preload="auto">
+    <video autoplay muted loop playsinline>
       <source src="./train-animatic.mp4" type="video/mp4">
     </video>
     <div class="card-info">
@@ -296,47 +247,26 @@ body {
     </div>
   </a>
 
-  <a href="#" class="card">
-    <img src="./characters.png">
-    <div class="card-info">
-      <h2>CHARACTERS</h2>
-      <p>Character Designs</p>
-    </div>
-  </a>
-
-  <a href="#" class="card">
-    <img src="./characters.png">
-    <div class="card-info">
-      <h2>VISUAL TESTS</h2>
-      <p>Lighting / Experiments</p>
-    </div>
-  </a>
-
 </div>
 
-<!-- SOCIALS -->
 <div class="socials">
-
   <a href="#"><i class="fa-brands fa-instagram"></i></a>
   <a href="#"><i class="fa-brands fa-tiktok"></i></a>
   <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
   <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-  <a href="#"><i class="fa-brands fa-youtube"></i></a>
-  <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-
 </div>
 
-<!-- CLOUD SCRIPT -->
 <script>
 const clouds = document.getElementById("clouds");
 
 window.addEventListener("scroll", () => {
   const y = window.scrollY;
 
-  const fade = Math.max(0, 1 - y / 600);
+  const fade = Math.max(0, 1 - y / 1200);
   clouds.style.opacity = fade;
 
-  clouds.style.transform = `translateY(${y * 0.05}px)`;
+  const drift = y * 0.12;
+  clouds.style.transform = `translateY(${drift}px) scale(${1 + y * 0.0002})`;
 });
 </script>
 
