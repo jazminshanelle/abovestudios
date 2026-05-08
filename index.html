@@ -152,6 +152,11 @@ body {
   background: black;
 }
 
+/* VIDEO FIX */
+.card video {
+  opacity: 1;
+}
+
 /* TEXT OVERLAY */
 .card-info {
   position: absolute;
@@ -229,10 +234,10 @@ body {
 <!-- GRID -->
 <div class="grid">
 
-  <!-- VIDEO (ONLY WORKS IF FILE PATH IS CORRECT) -->
+  <!-- VIDEO -->
   <a href="#" class="card">
-    <video autoplay muted loop playsinline>
-      <source src="./times-almost-up-animatic/0f135c8d11e04ebd84a4e88b0ef4111e.mp4" type="video/mp4">
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="./0f135c8d11e04ebd84a4e88b0ef4111e.mp4" type="video/mp4">
     </video>
 
     <div class="card-info">
@@ -241,23 +246,30 @@ body {
     </div>
   </a>
 
-  <!-- IMAGE FIXED ANIMATIC -->
   <a href="#" class="card">
-    <img src="./times-almost-up-animatic/train-animatic.png" alt="Animatic Frame">
-
+    <video autoplay muted loop playsinline>
+      <source src="your-animatic.mp4" type="video/mp4">
+    </video>
     <div class="card-info">
       <h2>WORLD ARCHIVE</h2>
       <p>Animatic Sequence</p>
     </div>
   </a>
 
-  <!-- CHARACTERS IMAGE -->
+  <!-- ✅ FIXED CHARACTER IMAGE -->
   <a href="#" class="card">
-    <img src="./times-almost-up-animatic/characters.png" alt="Characters Artwork">
-
+    <img src="./characters.png" alt="Characters Artwork">
     <div class="card-info">
       <h2>CHARACTERS</h2>
       <p>Character Designs</p>
+    </div>
+  </a>
+
+  <a href="#" class="card">
+    <img src="your-image-3.jpg" alt="">
+    <div class="card-info">
+      <h2>VISUAL TESTS</h2>
+      <p>Lighting / Experiments</p>
     </div>
   </a>
 
