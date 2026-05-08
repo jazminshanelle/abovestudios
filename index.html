@@ -20,6 +20,22 @@ body {
 }
 
 /* =========================
+   GLOBAL PIXAR LIFT SYSTEM ✨
+========================= */
+a, .nav span, .logo, .socials a {
+  display: inline-block;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+
+a:hover,
+.nav span:hover,
+.logo:hover,
+.socials a:hover {
+  transform: translateY(-4px);
+}
+
+/* =========================
    TOP BLUE PIXAR BANNER
 ========================= */
 .top-banner {
@@ -93,7 +109,6 @@ body {
 .hamburger span:nth-child(1) { top: 0; }
 .hamburger span:nth-child(2) { bottom: 0; }
 
-/* TURN INTO X */
 .hamburger.active span {
   background: white;
 }
@@ -159,7 +174,7 @@ body {
 .mobile-menu.open a:nth-child(4) { transition-delay: 0.20s; }
 
 /* =========================
-   GRID (RESTORED 4 CARDS)
+   GRID
 ========================= */
 .grid {
   margin-top: 50px;
@@ -168,16 +183,19 @@ body {
   gap: 30px;
 }
 
+/* CARD */
 .card {
   position: relative;
   overflow: hidden;
   border-radius: 10px;
   background: #000;
-  transition: 0.4s ease;
+
+  transform: translateY(0);
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .card:hover {
-  transform: scale(1.02);
+  transform: translateY(-6px) scale(1.02);
 }
 
 .card img,
@@ -188,7 +206,7 @@ body {
   display: block;
 }
 
-/* TITLE RESTORED */
+/* TEXT */
 .card-info {
   position: absolute;
   bottom: 0;
@@ -199,29 +217,12 @@ body {
   color: white;
 }
 
-.card-info h2 {
-  margin: 0;
-  font-size: 1.1rem;
-}
-
-.card-info p {
-  margin: 5px 0 0;
-  font-size: 0.85rem;
-  opacity: 0.8;
-}
-
 /* SOCIALS */
 .socials {
   margin-top: 60px;
   margin-left: 40px;
   display: flex;
   gap: 20px;
-}
-
-.socials a {
-  color: black;
-  font-size: 18px;
-  text-decoration: none;
 }
 
 /* MOBILE */
@@ -275,10 +276,8 @@ body {
 
 </div>
 
-<!-- MENU BACKDROP -->
 <div class="menu-backdrop" id="backdrop"></div>
 
-<!-- MOBILE MENU -->
 <div class="mobile-menu" id="menu">
   <a href="#">FILMS</a>
   <a href="#">CONCEPTS</a>
@@ -286,7 +285,6 @@ body {
   <a href="#">ABOUT</a>
 </div>
 
-<!-- GRID (RESTORED 4 CARDS) -->
 <div class="grid">
 
   <div class="card">
@@ -327,7 +325,6 @@ body {
 
 </div>
 
-<!-- SOCIALS -->
 <div class="socials">
   <a href="#"><i class="fa-brands fa-instagram"></i></a>
   <a href="#"><i class="fa-brands fa-tiktok"></i></a>
