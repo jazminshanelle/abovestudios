@@ -20,19 +20,26 @@ body {
 }
 
 /* =========================
-   GLOBAL PIXAR LIFT SYSTEM ✨
+   PIXAR LIFT SYSTEM (FIXED + CONSISTENT)
 ========================= */
-a, .nav span, .logo, .socials a {
+
+a,
+.nav span,
+.logo,
+.socials a,
+.card {
   display: inline-block;
   transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
   will-change: transform;
 }
 
+/* unified hover lift */
 a:hover,
 .nav span:hover,
 .logo:hover,
-.socials a:hover {
-  transform: translateY(-4px);
+.socials a:hover,
+.card:hover {
+  transform: translateY(-6px);
 }
 
 /* =========================
@@ -189,7 +196,6 @@ a:hover,
   overflow: hidden;
   border-radius: 10px;
   background: #000;
-
   transform: translateY(0);
   transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
@@ -217,12 +223,24 @@ a:hover,
   color: white;
 }
 
-/* SOCIALS */
+/* =========================
+   SOCIALS (FIXED COLOR)
+========================= */
 .socials {
   margin-top: 60px;
   margin-left: 40px;
   display: flex;
   gap: 20px;
+}
+
+.socials a {
+  color: #000 !important;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.socials a i {
+  color: #000 !important;
 }
 
 /* MOBILE */
