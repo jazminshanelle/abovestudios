@@ -10,6 +10,58 @@
 
 <style>
 
+body {
+  margin: 0;
+  background: #f7f7f4;
+  color: #111;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* BIRDS */
+.bird-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.bird {
+  position: absolute;
+  width: 80px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.65);
+  clip-path: polygon(
+    0% 60%,
+    10% 50%,
+    20% 55%,
+    30% 45%,
+    40% 55%,
+    50% 50%,
+    60% 55%,
+    70% 45%,
+    80% 55%,
+    90% 50%,
+    100% 60%,
+    90% 65%,
+    80% 60%,
+    70% 70%,
+    60% 60%,
+    50% 65%,
+    40% 60%,
+    30% 70%,
+    20% 60%,
+    10% 65%
+  );
+  opacity: 0.55;
+  filter: blur(0.6px);
+  animation: fly linear infinite;
+}
+
+.bird:nth-child(1) { top: 20%; animation-duration: 55s; transform: scale(1); opacity: 0.6; }
+.bird:nth-child(2) { top: 45%; animation-duration: 80s; opacity: 0.4; transform: scale(0.8); }
+.bird:nth-child(3) { top: 70%; animation-duration: 110s; opacity: 0.25; transform: scale(0.6); }
 
 @keyframes fly {
   0% { transform: translateX(-20vw) translateY(0); }
@@ -35,11 +87,20 @@
   transform: scale(1.25);
 }
 
+/* NAV DESKTOP */
 .nav {
   display: flex;
   gap: 30px;
   font-size: 0.85rem;
   letter-spacing: 2px;
+}
+
+/* HAMBURGER */
+.hamburger {
+  display: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  z-index: 10;
 }
 
 /* GRID */
@@ -65,7 +126,7 @@
   transform: translateY(-6px);
 }
 
-/* MEDIA BASE */
+/* MEDIA */
 .card-media {
   width: 100%;
   height: 320px;
@@ -74,26 +135,26 @@
   display: block;
 }
 
-/* 🎯 WORLD ARCHIVE */
+/* WORLD */
 .world-image {
   object-position: right bottom;
   transform: scale(2.88) translateX(10.6%);
   transform-origin: bottom right;
 }
 
-/* 🎯 CHARACTERS — HARD LEFT EDGE LOCK (FIXED) */
+/* CHARACTERS — LOCKED LEFT (YOUR ORIGINAL FIX) */
 .characters-image {
   object-position: 0% 0%;
   transform: scale(1.85);
   transform-origin: left top;
 }
 
-/* 🎯 VISUAL TESTS */
+/* VISUAL */
 .visual-image {
   object-position: 50% 58%;
 }
 
-/* TEXT OVERLAY */
+/* CARD TEXT */
 .card-info {
   position: absolute;
   bottom: 0;
@@ -115,6 +176,7 @@
 
 /* MOBILE */
 @media (max-width: 768px) {
+
   .grid {
     grid-template-columns: 1fr;
     padding: 0 20px;
@@ -122,6 +184,33 @@
 
   .card-media {
     height: 240px;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav {
+    position: absolute;
+    top: 60px;
+    right: 40px;
+    flex-direction: column;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    padding: 16px 20px;
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+
+    opacity: 0;
+    transform: translateY(-12px) scale(0.98);
+    pointer-events: none;
+    transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .nav.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
   }
 }
 
@@ -139,7 +228,12 @@
 
 <div class="topbar">
   <div class="logo">ABOVE</div>
-  <div class="nav">
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <i class="fa-solid fa-bars"></i>
+  </div>
+
+  <div class="nav" id="navMenu">
     <span>FILMS</span>
     <span>CONCEPTS</span>
     <span>UNIVERSE</span>
@@ -160,7 +254,7 @@
   </div>
 
   <div class="card">
-    <img class="card-media world-image" src="./world.png" alt="World Archive">
+    <img class="card-media world-image" src="./world.png">
     <div class="card-info">
       <h2>WORLD ARCHIVE</h2>
       <p>Animatic Sequence</p>
@@ -188,6 +282,12 @@
 <div class="footer-legal">
   © 2026 Drawn Above, Inc. · Privacy Policy · Interest Based Ads · Terms of Use
 </div>
+
+<script>
+function toggleMenu() {
+  document.getElementById("navMenu").classList.toggle("active");
+}
+</script>
 
 </body>
 </html>
