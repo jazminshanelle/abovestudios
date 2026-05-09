@@ -19,8 +19,57 @@ body {
   background: #f7f7f4;
   color: #111;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  padding: 60px;
   overflow-x: hidden;
+}
+
+/* =========================
+   GALAXY / SKY BANNER
+========================= */
+
+.space-banner {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background: radial-gradient(circle at 30% 30%, #1b1f3a, #05060a 70%);
+  
+  /* curved earth-like horizon */
+  border-bottom-left-radius: 80% 40px;
+  border-bottom-right-radius: 80% 40px;
+
+  box-shadow: 0 10px 40px rgba(0, 140, 255, 0.15);
+}
+
+/* blue atmospheric glow */
+.space-banner::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(to bottom, rgba(0,140,255,0.25), transparent);
+  filter: blur(10px);
+}
+
+/* moving stars */
+.stars {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: transparent;
+  background-image:
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(white 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: 0 0, 25px 25px;
+  animation: drift 40s linear infinite;
+  opacity: 0.25;
+}
+
+@keyframes drift {
+  from { transform: translateY(0); }
+  to { transform: translateY(-200px); }
 }
 
 /* =========================
@@ -49,6 +98,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  z-index: 2;
 }
 
 .logo {
@@ -75,6 +126,7 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
+  padding: 0 60px;
 }
 
 .card {
@@ -102,11 +154,7 @@ body {
 }
 
 /* =========================
-   SOCIALS (REMOVED FROM OUTSIDE)
-========================= */
-
-/* =========================
-   FULL WIDTH FOOTER BAR
+   FOOTER
 ========================= */
 
 .footer-wrap {
@@ -118,7 +166,6 @@ body {
   box-sizing: border-box;
 }
 
-/* footer grid */
 .footer-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -148,7 +195,6 @@ body {
   opacity: 1;
 }
 
-/* SOCIAL ICONS INSIDE FOOTER */
 .footer-socials {
   margin-top: 40px;
   display: flex;
@@ -166,7 +212,7 @@ body {
 }
 
 /* =========================
-   COPYRIGHT (BELOW GREY BAR - PIXAR STYLE)
+   COPYRIGHT
 ========================= */
 
 .footer-legal {
@@ -183,20 +229,13 @@ body {
 
 @media (max-width: 768px) {
 
-  body {
-    padding: 80px 20px;
-  }
-
   .grid {
     grid-template-columns: 1fr;
+    padding: 0 20px;
   }
 
   .card-media {
     height: 240px;
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -205,6 +244,11 @@ body {
 </head>
 
 <body>
+
+<!-- 🌌 SPACE BANNER -->
+<div class="space-banner">
+  <div class="stars"></div>
+</div>
 
 <div class="topbar">
   <div class="logo">ABOVE</div>
@@ -256,11 +300,8 @@ body {
 
 </div>
 
-<!-- FOOTER -->
 <div class="footer-wrap">
-
   <div class="footer-grid">
-
     <div>
       <h4>FILMS</h4>
       <a href="#">Features</a>
@@ -298,12 +339,9 @@ body {
         <a href="#"><i class="fa-brands fa-youtube"></i></a>
       </div>
     </div>
-
   </div>
-
 </div>
 
-<!-- COPYRIGHT BELOW FOOTER (PIXAR STYLE) -->
 <div class="footer-legal">
   © 2026 Drawn Above, Inc. · Privacy Policy · Interest Based Ads · Terms of Use
 </div>
