@@ -11,7 +11,7 @@
 <style>
 
 /* =========================
-   BODY (CINEMATIC OFF-WHITE)
+   BODY
 ========================= */
 
 body {
@@ -61,7 +61,6 @@ body {
   transform: scale(1.25);
 }
 
-/* NAV */
 .nav {
   display: flex;
   gap: 30px;
@@ -80,7 +79,6 @@ body {
   gap: 30px;
 }
 
-/* CARD */
 .card {
   position: relative;
   overflow: hidden;
@@ -88,7 +86,6 @@ body {
   background: #000;
 }
 
-/* IMAGE / VIDEO SLOT */
 .card-media {
   width: 100%;
   height: 320px;
@@ -96,7 +93,6 @@ body {
   display: block;
 }
 
-/* TEXT */
 .card-info {
   position: absolute;
   bottom: 0;
@@ -125,28 +121,30 @@ body {
 }
 
 /* =========================
-   PIXAR-STYLE FOOTER
+   FULL WIDTH STUDIO FOOTER BAR (PIXAR STYLE)
 ========================= */
 
-.footer {
+.footer-wrap {
   margin-top: 120px;
-  width: 100%;
-  background: #e6e6e3;
-  padding: 70px 60px 30px 60px;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  background: #dcdcd8;
+  padding: 80px 60px 30px 60px;
   box-sizing: border-box;
-  color: #111;
 }
 
+/* footer grid */
 .footer-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 50px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 60px;
   font-size: 12px;
   letter-spacing: 1px;
   line-height: 1.8;
+  color: #111;
 }
 
-.footer h4 {
+.footer-grid h4 {
   font-size: 11px;
   letter-spacing: 3px;
   margin-bottom: 12px;
@@ -154,21 +152,41 @@ body {
   opacity: 0.7;
 }
 
-.footer a {
+.footer-grid a {
   display: block;
   color: #111;
   text-decoration: none;
   opacity: 0.75;
+  margin-bottom: 4px;
 }
 
-.footer a:hover {
+.footer-grid a:hover {
   opacity: 1;
 }
 
+/* social icons INSIDE footer (like Pixar style) */
+.footer-socials {
+  display: flex;
+  gap: 18px;
+  margin-top: 40px;
+  font-size: 16px;
+}
+
+.footer-socials a {
+  color: #111;
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.footer-socials a:hover {
+  opacity: 1;
+}
+
+/* bottom copyright strip */
 .footer-bottom {
   margin-top: 40px;
   padding-top: 20px;
-  border-top: 1px solid rgba(0,0,0,0.15);
+  border-top: 1px solid rgba(0,0,0,0.2);
   font-size: 11px;
   display: flex;
   justify-content: space-between;
@@ -207,16 +225,13 @@ body {
 <body>
 
 <div class="topbar">
-
   <div class="logo">ABOVE</div>
-
   <div class="nav">
     <span>FILMS</span>
     <span>CONCEPTS</span>
     <span>UNIVERSE</span>
     <span>ABOUT</span>
   </div>
-
 </div>
 
 <div class="grid">
@@ -242,7 +257,7 @@ body {
   </div>
 
   <div class="card">
-    <img class="card-media" src="./characters.png" alt="Characters">
+    <img class="card-media" src="./characters.png">
     <div class="card-info">
       <h2>CHARACTERS</h2>
       <p>Character Designs</p>
@@ -250,7 +265,7 @@ body {
   </div>
 
   <div class="card">
-    <img class="card-media" src="./Holyfire.png" alt="Holy Fire">
+    <img class="card-media" src="./Holyfire.png">
     <div class="card-info">
       <h2>VISUAL TESTS</h2>
       <p>Lighting / Experiments</p>
@@ -259,6 +274,7 @@ body {
 
 </div>
 
+<!-- SOCIALS (TOP LEVEL) -->
 <div class="socials">
   <a href="#"><i class="fa-brands fa-instagram"></i></a>
   <a href="#"><i class="fa-brands fa-tiktok"></i></a>
@@ -266,8 +282,8 @@ body {
   <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
 </div>
 
-<!-- FOOTER -->
-<div class="footer">
+<!-- FULL PIXAR-STYLE FOOTER -->
+<div class="footer-wrap">
 
   <div class="footer-grid">
 
@@ -276,19 +292,19 @@ body {
       <a href="#">Features</a>
       <a href="#">Shorts</a>
       <a href="#">Series</a>
-      <a href="#">Animatics</a>
+      <a href="#">SparkShorts</a>
     </div>
 
     <div>
-      <h4>STUDIO</h4>
-      <a href="#">Our Story</a>
-      <a href="#">Leaders</a>
-      <a href="#">Events</a>
+      <h4>TECH</h4>
+      <a href="#">RenderMan</a>
+      <a href="#">OpenUSD</a>
+      <a href="#">Software</a>
     </div>
 
     <div>
       <h4>CAREERS</h4>
-      <a href="#">Careers</a>
+      <a href="#">Jobs</a>
       <a href="#">Internships</a>
       <a href="#">Life at Studio</a>
     </div>
@@ -296,22 +312,29 @@ body {
     <div>
       <h4>MORE</h4>
       <a href="#">FAQ</a>
+      <a href="#">Events</a>
       <a href="#">Contact</a>
-      <a href="#">Press</a>
+    </div>
+
+    <div>
+      <h4>SOCIAL</h4>
+      <div class="footer-socials">
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+      </div>
     </div>
 
   </div>
 
   <div class="footer-bottom">
-
     <div>
-      Do Not Sell or Share My Personal Information · Privacy Policy · Your US State Privacy Rights · Interest Based Ads
+      Do Not Sell or Share My Personal Information · Privacy Policy · Interest Based Ads
     </div>
 
     <div>
       © 2026 Drawn Above, Inc.
     </div>
-
   </div>
 
 </div>
