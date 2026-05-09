@@ -18,6 +18,19 @@ body {
   overflow-x: hidden;
 }
 
+/* 🔥 FIX: GLOBAL LAYER SYSTEM (THIS WAS THE PROBLEM) */
+.topbar {
+  z-index: 9999;
+}
+
+.hamburger {
+  z-index: 10001;
+}
+
+.nav {
+  z-index: 10000;
+}
+
 /* BIRDS */
 .bird-layer {
   position: fixed;
@@ -76,9 +89,9 @@ body {
   justify-content: space-between;
   align-items: center;
   position: relative;
-  z-index: 2;
 }
 
+/* LOGO */
 .logo {
   font-family: 'Cinzel', serif;
   font-size: 1.4rem;
@@ -100,7 +113,6 @@ body {
   display: none;
   font-size: 1.6rem;
   cursor: pointer;
-  z-index: 10;
 }
 
 /* GRID */
@@ -142,7 +154,7 @@ body {
   transform-origin: bottom right;
 }
 
-/* CHARACTERS — LOCKED LEFT (YOUR ORIGINAL FIX) */
+/* CHARACTERS */
 .characters-image {
   object-position: 0% 0%;
   transform: scale(1.85);
@@ -190,21 +202,29 @@ body {
     display: block;
   }
 
+  /* 🔥 FIXED PIXAR-STYLE MENU */
   .nav {
-    position: absolute;
-    top: 60px;
-    right: 40px;
+    position: fixed;
+    top: 70px;
+    right: 20px;
+
     flex-direction: column;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(12px);
-    padding: 16px 20px;
-    border-radius: 12px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(16px);
+
+    padding: 18px 22px;
+    border-radius: 14px;
+
+    box-shadow: 0 25px 70px rgba(0,0,0,0.20);
 
     opacity: 0;
-    transform: translateY(-12px) scale(0.98);
+    transform: translateY(-18px) scale(0.97);
     pointer-events: none;
-    transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+
+    transition: all 0.45s cubic-bezier(0.2, 0.9, 0.2, 1);
+
+    z-index: 10000; /* 🔥 THIS FIXES “BEHIND PHOTOS” BUG */
   }
 
   .nav.active {
