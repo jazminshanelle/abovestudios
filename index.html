@@ -125,41 +125,54 @@ body {
 }
 
 /* =========================
-   FOOTER (STUDIO STYLE)
+   PIXAR-STYLE FOOTER
 ========================= */
 
 .footer {
-  margin-top: 120px;
-  padding: 40px 40px;
-  border-top: 1px solid rgba(0,0,0,0.15);
-  font-size: 0.75rem;
-  letter-spacing: 1px;
-  color: rgba(0,0,0,0.7);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  margin-top: 100px;
+  background: #e6e6e3;
+  padding: 60px 40px 30px 40px;
+  color: #111;
 }
 
-.footer-top {
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  line-height: 1.8;
+}
+
+.footer h4 {
+  font-size: 11px;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+  font-weight: 700;
+  opacity: 0.7;
+}
+
+.footer a {
+  display: block;
+  color: #111;
+  text-decoration: none;
+  opacity: 0.75;
+}
+
+.footer a:hover {
+  opacity: 1;
+}
+
+.footer-bottom {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0,0,0,0.15);
+  font-size: 11px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 20px;
-}
-
-.footer-links {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.footer-links a {
-  color: rgba(0,0,0,0.7);
-  text-decoration: none;
-}
-
-.footer-links a:hover {
-  color: black;
+  gap: 10px;
+  opacity: 0.8;
 }
 
 /* =========================
@@ -180,8 +193,8 @@ body {
     height: 240px;
   }
 
-  .footer-top {
-    flex-direction: column;
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -252,29 +265,57 @@ body {
 </div>
 
 <!-- =========================
-     FOOTER ADDED HERE
+     FOOTER (PIXAR STYLE)
 ========================= -->
 
-<footer class="footer">
+<div class="footer">
 
-  <div class="footer-top">
+  <div class="footer-grid">
+
     <div>
-      © 2026 Drawn Above, Inc. All rights reserved.
+      <h4>FILMS</h4>
+      <a href="#">Features</a>
+      <a href="#">Shorts</a>
+      <a href="#">Series</a>
+      <a href="#">Animatics</a>
     </div>
 
-    <div class="footer-links">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Use</a>
-      <a href="#">Legal</a>
+    <div>
+      <h4>STUDIO</h4>
+      <a href="#">Our Story</a>
+      <a href="#">Leaders</a>
+      <a href="#">Events</a>
+    </div>
+
+    <div>
+      <h4>CAREERS</h4>
+      <a href="#">Careers</a>
+      <a href="#">Internships</a>
+      <a href="#">Life at Studio</a>
+    </div>
+
+    <div>
+      <h4>MORE</h4>
+      <a href="#">FAQ</a>
       <a href="#">Contact</a>
+      <a href="#">Press</a>
     </div>
+
   </div>
 
-  <div>
-    Designed & developed by Drawn Above Studios
+  <div class="footer-bottom">
+
+    <div>
+      Do Not Sell or Share My Personal Information · Privacy Policy · Your US State Privacy Rights · Interest Based Ads
+    </div>
+
+    <div>
+      © 2026 Drawn Above, Inc.
+    </div>
+
   </div>
 
-</footer>
+</div>
 
 </body>
 </html>
