@@ -6,7 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 
@@ -18,64 +17,21 @@ body {
   overflow-x: hidden;
 }
 
-/* ===================== LAYERS ===================== */
-.topbar { position: relative; z-index: 10002; }
-.hamburger { z-index: 10003; }
-
-/* FULL SCREEN MENU BACKDROP (PIXAR STYLE) */
+/* ===================== OVERLAY ===================== */
 .menu-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(240,240,240,0.96);
-  backdrop-filter: blur(18px);
-  z-index: 10000;
-
+  background: rgba(0,0,0,0.35); /* Pixar-style soft gray */
+  backdrop-filter: blur(10px);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.35s ease;
+  z-index: 9998;
 }
 
 .menu-overlay.active {
   opacity: 1;
   pointer-events: auto;
-}
-
-/* MENU ITEMS */
-.menu-links {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  text-align: center;
-  font-size: 1.6rem;
-  letter-spacing: 3px;
-}
-
-.menu-links span {
-  display: block;
-  margin: 18px 0;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.5s ease;
-}
-
-.menu-overlay.active .menu-links span {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.menu-overlay.active .menu-links span:nth-child(1) { transition-delay: 0.05s; }
-.menu-overlay.active .menu-links span:nth-child(2) { transition-delay: 0.1s; }
-.menu-overlay.active .menu-links span:nth-child(3) { transition-delay: 0.15s; }
-.menu-overlay.active .menu-links span:nth-child(4) { transition-delay: 0.2s; }
-
-/* CLOSE ICON */
-.close-btn {
-  position: absolute;
-  top: 25px;
-  right: 25px;
-  font-size: 1.6rem;
-  cursor: pointer;
 }
 
 /* ===================== TOP BAR ===================== */
@@ -84,6 +40,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  z-index: 10000;
 }
 
 .logo {
@@ -91,22 +49,88 @@ body {
   font-size: 1.4rem;
   font-weight: 700;
   letter-spacing: 10px;
-  transform: scale(1.25);
 }
 
-/* DESKTOP NAV (hidden on mobile like Pixar) */
-.nav {
-  display: flex;
-  gap: 30px;
-  font-size: 0.85rem;
-  letter-spacing: 2px;
-}
-
+/* ===================== HAMBURGER (PIXAR STYLE) ===================== */
 .hamburger {
-  display: none;
-  font-size: 1.6rem;
+  width: 28px;
+  height: 20px;
+  position: relative;
   cursor: pointer;
+  z-index: 10001;
 }
+
+.hamburger span {
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: #111;
+  left: 0;
+  transition: 0.35s ease;
+  border-radius: 2px;
+}
+
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { top: 9px; }
+.hamburger span:nth-child(3) { top: 18px; }
+
+/* OPEN → X ANIMATION */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 9px;
+  background: white;
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 9px;
+  background: white;
+}
+
+/* ===================== MENU ===================== */
+.menu {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.35s ease;
+}
+
+.menu.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.menu a {
+  display: block;
+  margin: 18px 0;
+  font-size: 1.5rem;
+  letter-spacing: 3px;
+  color: white;
+  text-decoration: none;
+
+  transform: translateY(20px);
+  opacity: 0;
+  transition: 0.4s ease;
+}
+
+.menu.active a {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.menu.active a:nth-child(1){transition-delay:0.05s;}
+.menu.active a:nth-child(2){transition-delay:0.1s;}
+.menu.active a:nth-child(3){transition-delay:0.15s;}
+.menu.active a:nth-child(4){transition-delay:0.2s;}
 
 /* ===================== GRID ===================== */
 .grid {
@@ -133,19 +157,21 @@ body {
   display: block;
 }
 
-/* FIXED IMAGE POSITIONING */
+/* WORLD */
 .world-image {
   object-position: right bottom;
   transform: scale(2.88) translateX(10.6%);
   transform-origin: bottom right;
 }
 
+/* CHARACTERS */
 .characters-image {
   object-position: 0% 0%;
   transform: scale(1.85);
   transform-origin: left top;
 }
 
+/* VISUAL */
 .visual-image {
   object-position: 50% 58%;
 }
@@ -170,7 +196,7 @@ body {
   opacity: 0.75;
 }
 
-/* ===================== MOBILE ===================== */
+/* MOBILE */
 @media (max-width: 768px) {
 
   .grid {
@@ -181,14 +207,6 @@ body {
   .card-media {
     height: 240px;
   }
-
-  .hamburger {
-    display: block;
-  }
-
-  .nav {
-    display: none; /* hide desktop nav */
-  }
 }
 
 </style>
@@ -197,35 +215,29 @@ body {
 
 <body>
 
-<!-- MENU OVERLAY -->
-<div class="menu-overlay" id="menu">
-  <div class="close-btn" onclick="toggleMenu()">
-    <i class="fa-solid fa-xmark"></i>
-  </div>
+<!-- OVERLAY -->
+<div class="menu-overlay" id="overlay" onclick="toggleMenu()"></div>
 
-  <div class="menu-links">
-    <span>FILMS</span>
-    <span>CONCEPTS</span>
-    <span>UNIVERSE</span>
-    <span>ABOUT</span>
-  </div>
+<!-- MENU -->
+<div class="menu" id="menu">
+  <a href="#">FILMS</a>
+  <a href="#">CONCEPTS</a>
+  <a href="#">UNIVERSE</a>
+  <a href="#">ABOUT</a>
 </div>
 
+<!-- TOPBAR -->
 <div class="topbar">
   <div class="logo">ABOVE</div>
 
-  <div class="hamburger" onclick="toggleMenu()">
-    <i class="fa-solid fa-bars"></i>
-  </div>
-
-  <div class="nav">
-    <span>FILMS</span>
-    <span>CONCEPTS</span>
-    <span>UNIVERSE</span>
-    <span>ABOUT</span>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
 </div>
 
+<!-- GRID -->
 <div class="grid">
 
   <div class="card">
@@ -255,6 +267,8 @@ body {
 <script>
 function toggleMenu() {
   document.getElementById("menu").classList.toggle("active");
+  document.getElementById("overlay").classList.toggle("active");
+  document.getElementById("hamburger").classList.toggle("active");
 }
 </script>
 
