@@ -29,7 +29,6 @@ body {
 
 .logo,
 .nav span,
-.socials a,
 .card {
   display: inline-block;
   transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -37,7 +36,6 @@ body {
 
 .logo:hover,
 .nav span:hover,
-.socials a:hover,
 .card:hover {
   transform: translateY(-6px);
 }
@@ -104,24 +102,11 @@ body {
 }
 
 /* =========================
-   SOCIALS (ONLY ONCE)
+   SOCIALS (REMOVED FROM OUTSIDE)
 ========================= */
 
-.socials {
-  margin-top: 60px;
-  margin-left: 40px;
-  display: flex;
-  gap: 20px;
-}
-
-.socials a {
-  color: #000;
-  font-size: 18px;
-  text-decoration: none;
-}
-
 /* =========================
-   FULL WIDTH PIXAR-STYLE FOOTER
+   FULL WIDTH FOOTER BAR
 ========================= */
 
 .footer-wrap {
@@ -129,18 +114,18 @@ body {
   width: 100vw;
   margin-left: calc(-50vw + 50%);
   background: #dcdcd8;
-  padding: 80px 60px 30px 60px;
+  padding: 80px 60px 40px 60px;
   box-sizing: border-box;
 }
 
-/* GRID */
+/* footer grid */
 .footer-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 60px;
   font-size: 12px;
-  letter-spacing: 1px;
   line-height: 1.8;
+  color: #111;
 }
 
 .footer-grid h4 {
@@ -163,17 +148,16 @@ body {
   opacity: 1;
 }
 
-/* SOCIALS INSIDE FOOTER */
+/* SOCIAL ICONS INSIDE FOOTER */
 .footer-socials {
+  margin-top: 40px;
   display: flex;
   gap: 18px;
-  margin-top: 40px;
   font-size: 16px;
 }
 
 .footer-socials a {
   color: #111;
-  text-decoration: none;
   opacity: 0.8;
 }
 
@@ -182,30 +166,14 @@ body {
 }
 
 /* =========================
-   PIXAR-STYLE BOTTOM STRIP FIXED
+   COPYRIGHT (BELOW GREY BAR - PIXAR STYLE)
 ========================= */
 
-.footer-bottom {
-  margin-top: 40px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(0,0,0,0.2);
-  font-size: 11px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* IMPORTANT: Pixar style alignment */
-  gap: 8px;
-
-  opacity: 0.8;
-}
-
-.footer-copy {
-  font-size: 11px;
-  opacity: 0.8;
-}
-
 .footer-legal {
+  text-align: center;
   font-size: 11px;
+  padding: 18px 10px 40px 10px;
+  color: #111;
   opacity: 0.75;
 }
 
@@ -288,14 +256,6 @@ body {
 
 </div>
 
-<!-- SOCIALS -->
-<div class="socials">
-  <a href="#"><i class="fa-brands fa-instagram"></i></a>
-  <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-  <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-  <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-</div>
-
 <!-- FOOTER -->
 <div class="footer-wrap">
 
@@ -341,16 +301,11 @@ body {
 
   </div>
 
-  <div class="footer-bottom">
-    <div class="footer-legal">
-      Do Not Sell or Share My Personal Information · Privacy Policy · Interest Based Ads
-    </div>
+</div>
 
-    <div class="footer-copy">
-      © 2026 Drawn Above, Inc.
-    </div>
-  </div>
-
+<!-- COPYRIGHT BELOW FOOTER (PIXAR STYLE) -->
+<div class="footer-legal">
+  © 2026 Drawn Above, Inc. · Privacy Policy · Interest Based Ads · Terms of Use
 </div>
 
 </body>
