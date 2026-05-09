@@ -104,7 +104,7 @@ body {
 }
 
 /* =========================
-   SOCIALS
+   SOCIALS (ONLY ONCE)
 ========================= */
 
 .socials {
@@ -121,7 +121,7 @@ body {
 }
 
 /* =========================
-   FULL WIDTH STUDIO FOOTER BAR (PIXAR STYLE)
+   FULL WIDTH PIXAR-STYLE FOOTER
 ========================= */
 
 .footer-wrap {
@@ -133,7 +133,7 @@ body {
   box-sizing: border-box;
 }
 
-/* footer grid */
+/* GRID */
 .footer-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -141,7 +141,6 @@ body {
   font-size: 12px;
   letter-spacing: 1px;
   line-height: 1.8;
-  color: #111;
 }
 
 .footer-grid h4 {
@@ -164,7 +163,7 @@ body {
   opacity: 1;
 }
 
-/* social icons INSIDE footer (like Pixar style) */
+/* SOCIALS INSIDE FOOTER */
 .footer-socials {
   display: flex;
   gap: 18px;
@@ -182,17 +181,32 @@ body {
   opacity: 1;
 }
 
-/* bottom copyright strip */
+/* =========================
+   PIXAR-STYLE BOTTOM STRIP FIXED
+========================= */
+
 .footer-bottom {
   margin-top: 40px;
   padding-top: 20px;
   border-top: 1px solid rgba(0,0,0,0.2);
   font-size: 11px;
+
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px;
+  flex-direction: column;
+  align-items: flex-start; /* IMPORTANT: Pixar style alignment */
+  gap: 8px;
+
   opacity: 0.8;
+}
+
+.footer-copy {
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+.footer-legal {
+  font-size: 11px;
+  opacity: 0.75;
 }
 
 /* =========================
@@ -274,7 +288,7 @@ body {
 
 </div>
 
-<!-- SOCIALS (TOP LEVEL) -->
+<!-- SOCIALS -->
 <div class="socials">
   <a href="#"><i class="fa-brands fa-instagram"></i></a>
   <a href="#"><i class="fa-brands fa-tiktok"></i></a>
@@ -282,7 +296,7 @@ body {
   <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
 </div>
 
-<!-- FULL PIXAR-STYLE FOOTER -->
+<!-- FOOTER -->
 <div class="footer-wrap">
 
   <div class="footer-grid">
@@ -328,11 +342,11 @@ body {
   </div>
 
   <div class="footer-bottom">
-    <div>
+    <div class="footer-legal">
       Do Not Sell or Share My Personal Information · Privacy Policy · Interest Based Ads
     </div>
 
-    <div>
+    <div class="footer-copy">
       © 2026 Drawn Above, Inc.
     </div>
   </div>
