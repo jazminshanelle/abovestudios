@@ -18,80 +18,74 @@ body {
   overflow-x: hidden;
 }
 
-/* 🔥 FIX: GLOBAL LAYER SYSTEM (THIS WAS THE PROBLEM) */
-.topbar {
-  z-index: 9999;
-}
+/* ===================== LAYERS ===================== */
+.topbar { position: relative; z-index: 10002; }
+.hamburger { z-index: 10003; }
 
-.hamburger {
-  z-index: 10001;
-}
-
-.nav {
-  z-index: 10000;
-}
-
-/* BIRDS */
-.bird-layer {
+/* FULL SCREEN MENU BACKDROP (PIXAR STYLE) */
+.menu-overlay {
   position: fixed;
   inset: 0;
+  background: rgba(240,240,240,0.96);
+  backdrop-filter: blur(18px);
+  z-index: 10000;
+
+  opacity: 0;
   pointer-events: none;
-  z-index: 1;
-  overflow: hidden;
+  transition: opacity 0.4s ease;
 }
 
-.bird {
+.menu-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* MENU ITEMS */
+.menu-links {
   position: absolute;
-  width: 80px;
-  height: 40px;
-  background: rgba(255, 255, 255, 0.65);
-  clip-path: polygon(
-    0% 60%,
-    10% 50%,
-    20% 55%,
-    30% 45%,
-    40% 55%,
-    50% 50%,
-    60% 55%,
-    70% 45%,
-    80% 55%,
-    90% 50%,
-    100% 60%,
-    90% 65%,
-    80% 60%,
-    70% 70%,
-    60% 60%,
-    50% 65%,
-    40% 60%,
-    30% 70%,
-    20% 60%,
-    10% 65%
-  );
-  opacity: 0.55;
-  filter: blur(0.6px);
-  animation: fly linear infinite;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  font-size: 1.6rem;
+  letter-spacing: 3px;
 }
 
-.bird:nth-child(1) { top: 20%; animation-duration: 55s; transform: scale(1); opacity: 0.6; }
-.bird:nth-child(2) { top: 45%; animation-duration: 80s; opacity: 0.4; transform: scale(0.8); }
-.bird:nth-child(3) { top: 70%; animation-duration: 110s; opacity: 0.25; transform: scale(0.6); }
-
-@keyframes fly {
-  0% { transform: translateX(-20vw) translateY(0); }
-  50% { transform: translateX(50vw) translateY(-10px); }
-  100% { transform: translateX(120vw) translateY(5px); }
+.menu-links span {
+  display: block;
+  margin: 18px 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
 }
 
-/* TOP BAR */
+.menu-overlay.active .menu-links span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.menu-overlay.active .menu-links span:nth-child(1) { transition-delay: 0.05s; }
+.menu-overlay.active .menu-links span:nth-child(2) { transition-delay: 0.1s; }
+.menu-overlay.active .menu-links span:nth-child(3) { transition-delay: 0.15s; }
+.menu-overlay.active .menu-links span:nth-child(4) { transition-delay: 0.2s; }
+
+/* CLOSE ICON */
+.close-btn {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+/* ===================== TOP BAR ===================== */
 .topbar {
   margin: 15px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
 }
 
-/* LOGO */
 .logo {
   font-family: 'Cinzel', serif;
   font-size: 1.4rem;
@@ -100,7 +94,7 @@ body {
   transform: scale(1.25);
 }
 
-/* NAV DESKTOP */
+/* DESKTOP NAV (hidden on mobile like Pixar) */
 .nav {
   display: flex;
   gap: 30px;
@@ -108,14 +102,13 @@ body {
   letter-spacing: 2px;
 }
 
-/* HAMBURGER */
 .hamburger {
   display: none;
   font-size: 1.6rem;
   cursor: pointer;
 }
 
-/* GRID */
+/* ===================== GRID ===================== */
 .grid {
   margin-top: 50px;
   display: grid;
@@ -131,42 +124,33 @@ body {
   overflow: hidden;
   border-radius: 10px;
   background: #000;
-  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.card:hover {
-  transform: translateY(-6px);
-}
-
-/* MEDIA */
 .card-media {
   width: 100%;
   height: 320px;
   object-fit: cover;
-  object-position: center;
   display: block;
 }
 
-/* WORLD */
+/* FIXED IMAGE POSITIONING */
 .world-image {
   object-position: right bottom;
   transform: scale(2.88) translateX(10.6%);
   transform-origin: bottom right;
 }
 
-/* CHARACTERS */
 .characters-image {
   object-position: 0% 0%;
   transform: scale(1.85);
   transform-origin: left top;
 }
 
-/* VISUAL */
 .visual-image {
   object-position: 50% 58%;
 }
 
-/* CARD TEXT */
+/* TEXT */
 .card-info {
   position: absolute;
   bottom: 0;
@@ -186,7 +170,7 @@ body {
   opacity: 0.75;
 }
 
-/* MOBILE */
+/* ===================== MOBILE ===================== */
 @media (max-width: 768px) {
 
   .grid {
@@ -202,35 +186,8 @@ body {
     display: block;
   }
 
-  /* 🔥 FIXED PIXAR-STYLE MENU */
   .nav {
-    position: fixed;
-    top: 70px;
-    right: 20px;
-
-    flex-direction: column;
-
-    background: rgba(255,255,255,0.96);
-    backdrop-filter: blur(16px);
-
-    padding: 18px 22px;
-    border-radius: 14px;
-
-    box-shadow: 0 25px 70px rgba(0,0,0,0.20);
-
-    opacity: 0;
-    transform: translateY(-18px) scale(0.97);
-    pointer-events: none;
-
-    transition: all 0.45s cubic-bezier(0.2, 0.9, 0.2, 1);
-
-    z-index: 10000; /* 🔥 THIS FIXES “BEHIND PHOTOS” BUG */
-  }
-
-  .nav.active {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    pointer-events: auto;
+    display: none; /* hide desktop nav */
   }
 }
 
@@ -240,10 +197,18 @@ body {
 
 <body>
 
-<div class="bird-layer">
-  <div class="bird"></div>
-  <div class="bird"></div>
-  <div class="bird"></div>
+<!-- MENU OVERLAY -->
+<div class="menu-overlay" id="menu">
+  <div class="close-btn" onclick="toggleMenu()">
+    <i class="fa-solid fa-xmark"></i>
+  </div>
+
+  <div class="menu-links">
+    <span>FILMS</span>
+    <span>CONCEPTS</span>
+    <span>UNIVERSE</span>
+    <span>ABOUT</span>
+  </div>
 </div>
 
 <div class="topbar">
@@ -253,7 +218,7 @@ body {
     <i class="fa-solid fa-bars"></i>
   </div>
 
-  <div class="nav" id="navMenu">
+  <div class="nav">
     <span>FILMS</span>
     <span>CONCEPTS</span>
     <span>UNIVERSE</span>
@@ -267,34 +232,18 @@ body {
     <video class="card-media" autoplay muted loop playsinline>
       <source src="./train-animatic.mp4" type="video/mp4">
     </video>
-    <div class="card-info">
-      <h2>TIME'S ALMOST UP</h2>
-      <p>Animatic / Film Concept</p>
-    </div>
   </div>
 
   <div class="card">
     <img class="card-media world-image" src="./world.png">
-    <div class="card-info">
-      <h2>WORLD ARCHIVE</h2>
-      <p>Animatic Sequence</p>
-    </div>
   </div>
 
   <div class="card">
     <img class="card-media characters-image" src="./characters.png">
-    <div class="card-info">
-      <h2>CHARACTERS</h2>
-      <p>Character Designs</p>
-    </div>
   </div>
 
   <div class="card">
     <img class="card-media visual-image" src="./holyfire.png">
-    <div class="card-info">
-      <h2>VISUAL TESTS</h2>
-      <p>Lighting / Experiments</p>
-    </div>
   </div>
 
 </div>
@@ -305,7 +254,7 @@ body {
 
 <script>
 function toggleMenu() {
-  document.getElementById("navMenu").classList.toggle("active");
+  document.getElementById("menu").classList.toggle("active");
 }
 </script>
 
