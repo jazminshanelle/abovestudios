@@ -49,8 +49,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
-  z-index: 1002;
 }
 
 .logo {
@@ -61,6 +59,7 @@ body {
   transform: scale(1.25);
 }
 
+/* DESKTOP NAV */
 .nav {
   display: flex;
   gap: 30px;
@@ -77,7 +76,7 @@ body {
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
-  z-index: 1003;
+  z-index: 1002;
 }
 
 .hamburger span {
@@ -87,6 +86,7 @@ body {
   transition: 0.4s ease;
 }
 
+/* X ANIMATION */
 .hamburger.active span:nth-child(1) {
   transform: rotate(45deg) translateY(7px);
   background: white;
@@ -102,65 +102,36 @@ body {
 }
 
 /* =========================
-   CLOUD MENU OVERLAY
+   MOBILE MENU OVERLAY
 ========================= */
 
 .mobile-menu {
   position: fixed;
   inset: 0;
-  background: #cfcfcf;
+  background: rgba(220, 220, 216, 0.97);
+  backdrop-filter: blur(10px);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+
   transform: translateY(-100%);
-  transition: 0.7s ease;
+  transition: transform 0.6s ease;
   z-index: 1001;
-  overflow: hidden;
 }
 
 .mobile-menu.active {
   transform: translateY(0);
 }
 
-/* CLOUD LAYERS */
-.cloud {
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.35), transparent 60%),
-              radial-gradient(circle at 70% 60%, rgba(255,255,255,0.25), transparent 65%);
-  filter: blur(60px);
-  animation: drift 50s linear infinite;
-  opacity: 0.6;
-}
-
-.cloud.layer2 {
-  animation-duration: 80s;
-  opacity: 0.4;
-}
-
-.cloud.layer3 {
-  animation-duration: 110s;
-  opacity: 0.25;
-}
-
-@keyframes drift {
-  0% { transform: translate(-10%, -5%); }
-  50% { transform: translate(10%, 5%); }
-  100% { transform: translate(-10%, -5%); }
-}
-
-/* MENU TEXT */
 .mobile-menu span {
+  display: block;
   font-size: 22px;
   letter-spacing: 3px;
   margin: 12px 0;
   opacity: 0;
   transform: translateY(20px);
   transition: 0.5s ease;
-  color: white;
-  z-index: 2;
 }
 
 .mobile-menu.active span {
@@ -226,7 +197,7 @@ body {
 }
 
 /* =========================
-   FOOTER
+   FULL WIDTH FOOTER BAR
 ========================= */
 
 .footer-wrap {
@@ -267,8 +238,24 @@ body {
   opacity: 1;
 }
 
+.footer-socials {
+  margin-top: 40px;
+  display: flex;
+  gap: 18px;
+  font-size: 16px;
+}
+
+.footer-socials a {
+  color: #111;
+  opacity: 0.8;
+}
+
+.footer-socials a:hover {
+  opacity: 1;
+}
+
 /* =========================
-   COPYRIGHT
+   COPYRIGHT (OUTSIDE BAR LIKE PIXAR)
 ========================= */
 
 .footer-legal {
@@ -325,6 +312,7 @@ body {
     <span>ABOUT</span>
   </div>
 
+  <!-- HAMBURGER -->
   <div class="hamburger" onclick="toggleMenu()">
     <span></span>
     <span></span>
@@ -332,13 +320,8 @@ body {
   </div>
 </div>
 
-<!-- CLOUD MENU -->
+<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-
-  <div class="cloud layer1"></div>
-  <div class="cloud layer2"></div>
-  <div class="cloud layer3"></div>
-
   <span>FILMS</span>
   <span>CONCEPTS</span>
   <span>UNIVERSE</span>
@@ -357,6 +340,32 @@ body {
     </div>
   </div>
 
+  <div class="card">
+    <video class="card-media" autoplay muted loop playsinline>
+      <source src="./train-animatic.mp4" type="video/mp4">
+    </video>
+    <div class="card-info">
+      <h2>WORLD ARCHIVE</h2>
+      <p>Animatic Sequence</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <img class="card-media" src="./characters.png">
+    <div class="card-info">
+      <h2>CHARACTERS</h2>
+      <p>Character Designs</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <img class="card-media" src="./Holyfire.png">
+    <div class="card-info">
+      <h2>VISUAL TESTS</h2>
+      <p>Lighting / Experiments</p>
+    </div>
+  </div>
+
 </div>
 
 <div class="socials">
@@ -367,23 +376,54 @@ body {
 </div>
 
 <div class="footer-wrap">
+
   <div class="footer-grid">
     <div>
       <h4>FILMS</h4>
       <a href="#">Features</a>
       <a href="#">Shorts</a>
     </div>
+
+    <div>
+      <h4>TECH</h4>
+      <a href="#">RenderMan</a>
+      <a href="#">OpenUSD</a>
+    </div>
+
+    <div>
+      <h4>CAREERS</h4>
+      <a href="#">Jobs</a>
+      <a href="#">Internships</a>
+    </div>
+
+    <div>
+      <h4>MORE</h4>
+      <a href="#">FAQ</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <div>
+      <h4>SOCIAL</h4>
+      <div class="footer-socials">
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+    </div>
   </div>
+
 </div>
 
 <div class="footer-legal">
-  © 2026 Drawn Above, Inc.
+  © 2026 Drawn Above, Inc. · Privacy Policy · Interest Based Ads
 </div>
 
 <script>
 function toggleMenu() {
-  document.getElementById("mobileMenu").classList.toggle("active");
-  document.querySelector(".hamburger").classList.toggle("active");
+  const menu = document.getElementById("mobileMenu");
+  const burger = document.querySelector(".hamburger");
+
+  menu.classList.toggle("active");
+  burger.classList.toggle("active");
 }
 </script>
 
