@@ -1,10 +1,312 @@
-<!-- ===================== PIXAR STYLE FOOTER ===================== -->
-<div class="site-footer">
+<!DOCTYPE html>
+<html>
 
-  <div class="footer-columns">
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+body {
+  margin: 0;
+  background: #f7f7f4;
+  color: #111;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ===================== OVERLAY ===================== */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  z-index: 9998;
+}
+
+.menu-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ===================== TOP BAR ===================== */
+.topbar {
+  margin: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 10000;
+}
+
+.logo {
+  font-family: 'Cinzel', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 10px;
+}
+
+/* ===================== HAMBURGER ===================== */
+.hamburger {
+  width: 28px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+  z-index: 10001;
+}
+
+.hamburger span {
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: #111;
+  left: 0;
+  transition: 0.35s ease;
+  border-radius: 2px;
+}
+
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { top: 9px; }
+.hamburger span:nth-child(3) { top: 18px; }
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 9px;
+  background: white;
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 9px;
+  background: white;
+}
+
+/* ===================== MENU ===================== */
+.menu {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.35s ease;
+}
+
+.menu.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.menu a {
+  display: block;
+  margin: 18px 0;
+  font-size: 1.5rem;
+  letter-spacing: 3px;
+  color: white;
+  text-decoration: none;
+
+  transform: translateY(20px);
+  opacity: 0;
+  transition: 0.4s ease;
+}
+
+.menu.active a {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.menu.active a:nth-child(1){transition-delay:0.05s;}
+.menu.active a:nth-child(2){transition-delay:0.1s;}
+.menu.active a:nth-child(3){transition-delay:0.15s;}
+.menu.active a:nth-child(4){transition-delay:0.2s;}
+
+/* ===================== GRID ===================== */
+.grid {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  padding: 0 60px;
+  position: relative;
+  z-index: 2;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #000;
+}
+
+.card-media {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+}
+
+/* WORLD */
+.world-image {
+  object-position: right bottom;
+  transform: scale(2.88) translateX(10.6%);
+  transform-origin: bottom right;
+}
+
+/* CHARACTERS */
+.characters-image {
+  object-position: 0% 0%;
+  transform: scale(1.85);
+  transform-origin: left top;
+}
+
+/* VISUAL */
+.visual-image {
+  object-position: 50% 58%;
+}
+
+/* TEXT */
+.card-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+  color: white;
+}
+
+/* ===================== PIXAR-STYLE FOOTER (FIXED) ===================== */
+.footer-wrap {
+  margin-top: 80px;
+  background: #e6e6e6;
+  padding: 60px 60px 25px;
+}
+
+.footer-grid {
+  display: flex;
+  justify-content: space-between;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-title {
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.footer-col a {
+  font-size: 12px;
+  color: #111;
+  opacity: 0.65;
+  text-decoration: none;
+}
+
+.footer-col a:hover {
+  opacity: 1;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 11px;
+  opacity: 0.6;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+  .grid {
+    grid-template-columns: 1fr;
+    padding: 0 20px;
+  }
+
+  .card-media {
+    height: 240px;
+  }
+
+  .footer-grid {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- OVERLAY -->
+<div class="menu-overlay" id="overlay" onclick="toggleMenu()"></div>
+
+<!-- MENU -->
+<div class="menu" id="menu">
+  <a href="#">FILMS</a>
+  <a href="#">CONCEPTS</a>
+  <a href="#">UNIVERSE</a>
+  <a href="#">ABOUT</a>
+</div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="logo">ABOVE</div>
+
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<!-- GRID -->
+<div class="grid">
+
+  <div class="card">
+    <video class="card-media" autoplay muted loop playsinline>
+      <source src="./train-animatic.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="card">
+    <img class="card-media world-image" src="./world.png">
+  </div>
+
+  <div class="card">
+    <img class="card-media characters-image" src="./characters.png">
+  </div>
+
+  <div class="card">
+    <img class="card-media visual-image" src="./holyfire.png">
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer-wrap">
+
+  <div class="footer-grid">
 
     <div class="footer-col">
-      <h4>EXPLORE</h4>
+      <div class="footer-title">STUDIO</div>
       <a href="#">Films</a>
       <a href="#">Concepts</a>
       <a href="#">Universe</a>
@@ -12,18 +314,10 @@
     </div>
 
     <div class="footer-col">
-      <h4>STUDIO</h4>
-      <a href="#">Behind the Scenes</a>
-      <a href="#">Production</a>
-      <a href="#">Careers</a>
-      <a href="#">Contact</a>
-    </div>
-
-    <div class="footer-col">
-      <h4>LEGAL</h4>
+      <div class="footer-title">LEGAL</div>
       <a href="#">Privacy Policy</a>
       <a href="#">Terms of Use</a>
-      <a href="#">Cookie Policy</a>
+      <a href="#">Interest Based Ads</a>
     </div>
 
   </div>
@@ -33,3 +327,14 @@
   </div>
 
 </div>
+
+<script>
+function toggleMenu() {
+  document.getElementById("menu").classList.toggle("active");
+  document.getElementById("overlay").classList.toggle("active");
+  document.getElementById("hamburger").classList.toggle("active");
+}
+</script>
+
+</body>
+</html>
