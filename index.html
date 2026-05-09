@@ -10,10 +10,6 @@
 
 <style>
 
-/* =========================
-   BODY
-========================= */
-
 body {
   margin: 0;
   background: #f7f7f4;
@@ -21,10 +17,6 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   overflow-x: hidden;
 }
-
-/* =========================
-   DISTANT BIRD SYSTEM (FIXED + CINEMATIC VISIBILITY)
-========================= */
 
 .bird-layer {
   position: fixed;
@@ -34,15 +26,11 @@ body {
   overflow: hidden;
 }
 
-/* actual bird shape */
 .bird {
   position: absolute;
   width: 80px;
   height: 40px;
-
-  /* FIX: stronger contrast so you can actually SEE them */
   background: rgba(255, 255, 255, 0.65);
-
   clip-path: polygon(
     0% 60%,
     10% 50%,
@@ -65,71 +53,29 @@ body {
     20% 60%,
     10% 65%
   );
-
-  /* FIX: slightly more visible but still “far away” */
   opacity: 0.55;
-
-  /* FIX: softer but not invisible */
   filter: blur(0.6px);
-
   animation: fly linear infinite;
 }
 
-/* layers (depth) */
-.bird:nth-child(1) {
-  top: 20%;
-  animation-duration: 55s;
-  transform: scale(1);
-  opacity: 0.6;
-}
+.bird:nth-child(1) { top: 20%; animation-duration: 55s; transform: scale(1); opacity: 0.6; }
+.bird:nth-child(2) { top: 45%; animation-duration: 80s; opacity: 0.4; transform: scale(0.8); }
+.bird:nth-child(3) { top: 70%; animation-duration: 110s; opacity: 0.25; transform: scale(0.6); }
 
-.bird:nth-child(2) {
-  top: 45%;
-  animation-duration: 80s;
-  opacity: 0.4;
-  transform: scale(0.8);
-}
-
-.bird:nth-child(3) {
-  top: 70%;
-  animation-duration: 110s;
-  opacity: 0.25;
-  transform: scale(0.6);
-}
-
-/* flight movement */
 @keyframes fly {
-  0% {
-    transform: translateX(-20vw) translateY(0);
-  }
-  50% {
-    transform: translateX(50vw) translateY(-10px);
-  }
-  100% {
-    transform: translateX(120vw) translateY(5px);
-  }
+  0% { transform: translateX(-20vw) translateY(0); }
+  50% { transform: translateX(50vw) translateY(-10px); }
+  100% { transform: translateX(120vw) translateY(5px); }
 }
 
-/* =========================
-   LIFT SYSTEM
-========================= */
-
-.logo,
-.nav span,
-.card {
+.logo, .nav span, .card {
   display: inline-block;
   transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.logo:hover,
-.nav span:hover,
-.card:hover {
+.logo:hover, .nav span:hover, .card:hover {
   transform: translateY(-6px);
 }
-
-/* =========================
-   TOP BAR
-========================= */
 
 .topbar {
   margin: 15px 40px;
@@ -154,10 +100,6 @@ body {
   font-size: 0.85rem;
   letter-spacing: 2px;
 }
-
-/* =========================
-   GRID
-========================= */
 
 .grid {
   margin-top: 50px;
@@ -192,10 +134,6 @@ body {
   background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
   color: white;
 }
-
-/* =========================
-   FOOTER
-========================= */
 
 .footer-wrap {
   margin-top: 120px;
@@ -253,10 +191,6 @@ body {
   opacity: 1;
 }
 
-/* =========================
-   COPYRIGHT
-========================= */
-
 .footer-legal {
   text-align: center;
   font-size: 11px;
@@ -265,12 +199,7 @@ body {
   opacity: 0.75;
 }
 
-/* =========================
-   MOBILE
-========================= */
-
 @media (max-width: 768px) {
-
   .grid {
     grid-template-columns: 1fr;
     padding: 0 20px;
@@ -287,7 +216,6 @@ body {
 
 <body>
 
-<!-- 🌤️ BIRDS -->
 <div class="bird-layer">
   <div class="bird"></div>
   <div class="bird"></div>
@@ -335,7 +263,7 @@ body {
   </div>
 
   <div class="card">
-    <img class="card-media" src="./Holyfire.png">
+    <img class="card-media" src="./HolyFire.png">
     <div class="card-info">
       <h2>VISUAL TESTS</h2>
       <p>Lighting / Experiments</p>
@@ -346,7 +274,6 @@ body {
 
 <div class="footer-wrap">
   <div class="footer-grid">
-
     <div>
       <h4>FILMS</h4>
       <a href="#">Features</a>
@@ -384,7 +311,6 @@ body {
         <a href="#"><i class="fa-brands fa-youtube"></i></a>
       </div>
     </div>
-
   </div>
 </div>
 
