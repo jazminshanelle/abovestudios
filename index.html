@@ -23,7 +23,7 @@ body {
 }
 
 /* =========================
-   DISTANT BIRD SYSTEM (FIXED + MORE CINEMATIC)
+   DISTANT BIRD SYSTEM (FIXED + CINEMATIC VISIBILITY)
 ========================= */
 
 .bird-layer {
@@ -40,7 +40,9 @@ body {
   width: 80px;
   height: 40px;
 
-  background: rgba(255,255,255,0.9);
+  /* FIX: stronger contrast so you can actually SEE them */
+  background: rgba(255, 255, 255, 0.65);
+
   clip-path: polygon(
     0% 60%,
     10% 50%,
@@ -64,8 +66,12 @@ body {
     10% 65%
   );
 
-  opacity: 0.35;
-  filter: blur(0.3px);
+  /* FIX: slightly more visible but still “far away” */
+  opacity: 0.55;
+
+  /* FIX: softer but not invisible */
+  filter: blur(0.6px);
+
   animation: fly linear infinite;
 }
 
@@ -74,19 +80,20 @@ body {
   top: 20%;
   animation-duration: 55s;
   transform: scale(1);
+  opacity: 0.6;
 }
 
 .bird:nth-child(2) {
   top: 45%;
   animation-duration: 80s;
-  opacity: 0.25;
+  opacity: 0.4;
   transform: scale(0.8);
 }
 
 .bird:nth-child(3) {
   top: 70%;
   animation-duration: 110s;
-  opacity: 0.15;
+  opacity: 0.25;
   transform: scale(0.6);
 }
 
@@ -339,6 +346,7 @@ body {
 
 <div class="footer-wrap">
   <div class="footer-grid">
+
     <div>
       <h4>FILMS</h4>
       <a href="#">Features</a>
@@ -376,6 +384,7 @@ body {
         <a href="#"><i class="fa-brands fa-youtube"></i></a>
       </div>
     </div>
+
   </div>
 </div>
 
