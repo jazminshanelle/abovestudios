@@ -110,11 +110,6 @@ body {
   overflow: hidden;
   border-radius: 10px;
   background: #000;
-  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.card:hover {
-  transform: translateY(-6px);
 }
 
 /* MEDIA BASE */
@@ -122,18 +117,12 @@ body {
   width: 100%;
   height: 320px;
   object-fit: cover;
-  object-position: center;
   display: block;
 }
 
-/* 🎯 WORLD ARCHIVE — corrected (bottom-mid, not too low) */
-.world-image {
-  object-position: 85% 55%;
-}
-
-/* 🎯 VISUAL TESTS — corrected (mid-bottom sweet spot) */
+/* VISUAL TESTS */
 .visual-image {
-  object-position: 50% 58%;
+  object-position: 50% 80%;
 }
 
 /* TEXT OVERLAY */
@@ -145,6 +134,23 @@ body {
   padding: 20px;
   background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
   color: white;
+}
+
+/* 🔥 WORLD ARCHIVE FIX (ZOOM + BOTTOM-RIGHT FOCUS) */
+.world-wrapper {
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+  position: relative;
+}
+
+.world-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 90% 85%;
+  transform: scale(1.3); /* zoom in */
+  transform-origin: center;
 }
 
 /* FOOTER */
@@ -203,9 +209,11 @@ body {
     </div>
   </div>
 
-  <!-- WORLD ARCHIVE -->
+  <!-- WORLD ARCHIVE (FIXED ZOOM) -->
   <div class="card">
-    <img class="card-media world-image" src="./world.png" alt="World Archive">
+    <div class="world-wrapper">
+      <img src="./world.png" alt="World Archive">
+    </div>
     <div class="card-info">
       <h2>WORLD ARCHIVE</h2>
       <p>Animatic Sequence</p>
