@@ -21,7 +21,7 @@ body {
 .menu-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.35); /* Pixar-style soft gray */
+  background: rgba(0,0,0,0.35);
   backdrop-filter: blur(10px);
   opacity: 0;
   pointer-events: none;
@@ -51,7 +51,7 @@ body {
   letter-spacing: 10px;
 }
 
-/* ===================== HAMBURGER (PIXAR STYLE) ===================== */
+/* ===================== HAMBURGER ===================== */
 .hamburger {
   width: 28px;
   height: 20px;
@@ -74,7 +74,6 @@ body {
 .hamburger span:nth-child(2) { top: 9px; }
 .hamburger span:nth-child(3) { top: 18px; }
 
-/* OPEN → X ANIMATION */
 .hamburger.active span:nth-child(1) {
   transform: rotate(45deg);
   top: 9px;
@@ -116,7 +115,6 @@ body {
   letter-spacing: 3px;
   color: white;
   text-decoration: none;
-
   transform: translateY(20px);
   opacity: 0;
   transition: 0.4s ease;
@@ -126,11 +124,6 @@ body {
   transform: translateY(0);
   opacity: 1;
 }
-
-.menu.active a:nth-child(1){transition-delay:0.05s;}
-.menu.active a:nth-child(2){transition-delay:0.1s;}
-.menu.active a:nth-child(3){transition-delay:0.15s;}
-.menu.active a:nth-child(4){transition-delay:0.2s;}
 
 /* ===================== GRID ===================== */
 .grid {
@@ -187,13 +180,18 @@ body {
   color: white;
 }
 
-/* FOOTER */
-.footer-legal {
+/* ===================== PIXAR-STYLE FOOTER (FIXED) ===================== */
+.footer {
+  margin-top: 60px;
+  background: #e9e9e9;
+  padding: 25px 0;
   text-align: center;
+}
+
+.footer-legal {
   font-size: 11px;
-  padding: 18px 10px 40px 10px;
-  color: #111;
-  opacity: 0.75;
+  color: #333;
+  opacity: 0.8;
 }
 
 /* MOBILE */
@@ -260,8 +258,11 @@ body {
 
 </div>
 
-<div class="footer-legal">
-  © 2026 Drawn Above, Inc. · Privacy Policy · Interest Based Ads · Terms of Use
+<!-- FOOTER (RESTORED PIXAR STYLE) -->
+<div class="footer">
+  <div class="footer-legal">
+    © 2026 Drawn Above, Inc. · Privacy Policy · Interest Based Ads · Terms of Use
+  </div>
 </div>
 
 <script>
