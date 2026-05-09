@@ -147,6 +147,9 @@ body {
   overflow: hidden;
   border-radius: 10px;
   background: #000;
+
+  /* 🔥 FIX: ensures clean layering */
+  isolation: isolate;
 }
 
 .card-media {
@@ -175,18 +178,27 @@ body {
   object-position: 50% 58%;
 }
 
-/* TEXT */
+/* ===================== FIXED PIXAR-STYLE TEXT OVERLAY ===================== */
 .card-info {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   padding: 20px;
-  background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+
+  z-index: 5; /* 🔥 ensures text is always on top */
+
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.85),
+    rgba(0,0,0,0.35),
+    transparent
+  );
+
   color: white;
 }
 
-/* ===================== PIXAR-STYLE FOOTER (FIXED) ===================== */
+/* ===================== PIXAR-STYLE FOOTER ===================== */
 .footer-wrap {
   margin-top: 80px;
   background: #e6e6e6;
@@ -284,18 +296,34 @@ body {
     <video class="card-media" autoplay muted loop playsinline>
       <source src="./train-animatic.mp4" type="video/mp4">
     </video>
+    <div class="card-info">
+      <h2>TIME'S ALMOST UP</h2>
+      <p>Animatic / Film Concept</p>
+    </div>
   </div>
 
   <div class="card">
     <img class="card-media world-image" src="./world.png">
+    <div class="card-info">
+      <h2>WORLD ARCHIVE</h2>
+      <p>Animatic Sequence</p>
+    </div>
   </div>
 
   <div class="card">
     <img class="card-media characters-image" src="./characters.png">
+    <div class="card-info">
+      <h2>CHARACTERS</h2>
+      <p>Character Designs</p>
+    </div>
   </div>
 
   <div class="card">
     <img class="card-media visual-image" src="./holyfire.png">
+    <div class="card-info">
+      <h2>VISUAL TESTS</h2>
+      <p>Lighting / Experiments</p>
+    </div>
   </div>
 
 </div>
