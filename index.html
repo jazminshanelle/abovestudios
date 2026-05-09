@@ -110,6 +110,11 @@ body {
   overflow: hidden;
   border-radius: 10px;
   background: #000;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.card:hover {
+  transform: translateY(-6px);
 }
 
 /* MEDIA BASE */
@@ -117,12 +122,18 @@ body {
   width: 100%;
   height: 320px;
   object-fit: cover;
+  object-position: center;
   display: block;
 }
 
-/* VISUAL TESTS */
+/* 🎯 WORLD ARCHIVE — corrected (bottom-right zoom) */
+.world-image {
+  object-position: 95% 75%;
+}
+
+/* 🎯 VISUAL TESTS — corrected (mid-bottom sweet spot) */
 .visual-image {
-  object-position: 50% 80%;
+  object-position: 50% 58%;
 }
 
 /* TEXT OVERLAY */
@@ -134,23 +145,6 @@ body {
   padding: 20px;
   background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
   color: white;
-}
-
-/* 🔥 WORLD ARCHIVE FIX (ZOOM + BOTTOM-RIGHT FOCUS) */
-.world-wrapper {
-  width: 100%;
-  height: 320px;
-  overflow: hidden;
-  position: relative;
-}
-
-.world-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 90% 85%;
-  transform: scale(1.3); /* zoom in */
-  transform-origin: center;
 }
 
 /* FOOTER */
@@ -198,7 +192,6 @@ body {
 
 <div class="grid">
 
-  <!-- TRAIN -->
   <div class="card">
     <video class="card-media" autoplay muted loop playsinline>
       <source src="./train-animatic.mp4" type="video/mp4">
@@ -209,18 +202,14 @@ body {
     </div>
   </div>
 
-  <!-- WORLD ARCHIVE (FIXED ZOOM) -->
   <div class="card">
-    <div class="world-wrapper">
-      <img src="./world.png" alt="World Archive">
-    </div>
+    <img class="card-media world-image" src="./world.png" alt="World Archive">
     <div class="card-info">
       <h2>WORLD ARCHIVE</h2>
       <p>Animatic Sequence</p>
     </div>
   </div>
 
-  <!-- CHARACTERS -->
   <div class="card">
     <img class="card-media" src="./characters.png">
     <div class="card-info">
@@ -229,7 +218,6 @@ body {
     </div>
   </div>
 
-  <!-- VISUAL TESTS -->
   <div class="card">
     <img class="card-media visual-image" src="./holyfire.png">
     <div class="card-info">
