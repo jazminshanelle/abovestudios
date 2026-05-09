@@ -125,6 +125,44 @@ body {
 }
 
 /* =========================
+   FOOTER (STUDIO STYLE)
+========================= */
+
+.footer {
+  margin-top: 120px;
+  padding: 40px 40px;
+  border-top: 1px solid rgba(0,0,0,0.15);
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  color: rgba(0,0,0,0.7);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: rgba(0,0,0,0.7);
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: black;
+}
+
+/* =========================
    MOBILE
 ========================= */
 
@@ -140,6 +178,10 @@ body {
 
   .card-media {
     height: 240px;
+  }
+
+  .footer-top {
+    flex-direction: column;
   }
 }
 
@@ -164,7 +206,6 @@ body {
 
 <div class="grid">
 
-  <!-- CARD 1 -->
   <div class="card">
     <video class="card-media" autoplay muted loop playsinline>
       <source src="./train-animatic.mp4" type="video/mp4">
@@ -175,7 +216,6 @@ body {
     </div>
   </div>
 
-  <!-- CARD 2 -->
   <div class="card">
     <video class="card-media" autoplay muted loop playsinline>
       <source src="./train-animatic.mp4" type="video/mp4">
@@ -186,7 +226,6 @@ body {
     </div>
   </div>
 
-  <!-- CARD 3 -->
   <div class="card">
     <img class="card-media" src="./characters.png" alt="Characters">
     <div class="card-info">
@@ -195,7 +234,6 @@ body {
     </div>
   </div>
 
-  <!-- CARD 4 (FIXED: HOLYFIRE IMAGE) -->
   <div class="card">
     <img class="card-media" src="./Holyfire.png" alt="Holy Fire">
     <div class="card-info">
@@ -212,6 +250,31 @@ body {
   <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
   <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
 </div>
+
+<!-- =========================
+     FOOTER ADDED HERE
+========================= -->
+
+<footer class="footer">
+
+  <div class="footer-top">
+    <div>
+      © 2026 Drawn Above, Inc. All rights reserved.
+    </div>
+
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Legal</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+
+  <div>
+    Designed & developed by Drawn Above Studios
+  </div>
+
+</footer>
 
 </body>
 </html>
