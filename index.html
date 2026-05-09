@@ -118,11 +118,22 @@ body {
   background: #000;
 }
 
+/* MAIN MEDIA */
 .card-media {
   width: 100%;
   height: 320px;
   object-fit: cover;
   display: block;
+}
+
+/* 🎯 WORLD ARCHIVE IMAGE FOCUS CONTROL */
+.world-image {
+  object-position: 85% 85%; /* bottom-right focus */
+}
+
+/* VISUAL TESTS FOCUS CONTROL */
+.visual-image {
+  object-position: 50% 80%; /* mid-bottom focus */
 }
 
 .card-info {
@@ -133,22 +144,6 @@ body {
   padding: 20px;
   background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
   color: white;
-}
-
-/* FIXED WORLD ARCHIVE IMAGE */
-.card-placeholder {
-  width: 100%;
-  height: 320px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.card-placeholder img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 .footer-wrap {
@@ -263,15 +258,14 @@ body {
 
   <!-- WORLD ARCHIVE (NOW WITH IMAGE) -->
   <div class="card">
-    <div class="card-placeholder">
-      <img src="./world.png" alt="World Archive">
-    </div>
+    <img class="card-media world-image" src="./world.png" alt="World Archive">
     <div class="card-info">
       <h2>WORLD ARCHIVE</h2>
       <p>Animatic Sequence</p>
     </div>
   </div>
 
+  <!-- CHARACTERS -->
   <div class="card">
     <img class="card-media" src="./characters.png">
     <div class="card-info">
@@ -280,56 +274,15 @@ body {
     </div>
   </div>
 
+  <!-- VISUAL TESTS -->
   <div class="card">
-    <img class="card-media" src="./holyfire.png">
+    <img class="card-media visual-image" src="./holyfire.png">
     <div class="card-info">
       <h2>VISUAL TESTS</h2>
       <p>Lighting / Experiments</p>
     </div>
   </div>
 
-</div>
-
-<div class="footer-wrap">
-  <div class="footer-grid">
-    <div>
-      <h4>FILMS</h4>
-      <a href="#">Features</a>
-      <a href="#">Shorts</a>
-      <a href="#">Series</a>
-      <a href="#">SparkShorts</a>
-    </div>
-
-    <div>
-      <h4>TECH</h4>
-      <a href="#">RenderMan</a>
-      <a href="#">OpenUSD</a>
-      <a href="#">Software</a>
-    </div>
-
-    <div>
-      <h4>CAREERS</h4>
-      <a href="#">Jobs</a>
-      <a href="#">Internships</a>
-      <a href="#">Life at Studio</a>
-    </div>
-
-    <div>
-      <h4>MORE</h4>
-      <a href="#">FAQ</a>
-      <a href="#">Events</a>
-      <a href="#">Contact</a>
-    </div>
-
-    <div>
-      <h4>SOCIAL</h4>
-      <div class="footer-socials">
-        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-        <a href="#"><i class="fa-brands fa-youtube"></i></a>
-      </div>
-    </div>
-  </div>
 </div>
 
 <div class="footer-legal">
