@@ -149,18 +149,16 @@ body {
   opacity: 1;
 }
 
-/* ===================== HERO (PIXAR FIXED PROPERLY) ===================== */
-
 .hero-card {
   position: relative;
   overflow: hidden;
   background: #000;
 
-  /* 🔥 PIXAR STYLE: centered like your container */
-  max-width: 1200px;
-  margin: 0 auto;
+  /* ✅ FIX: match topbar + container alignment exactly */
+  width: 100%;
+  padding: 0 60px;
+  box-sizing: border-box;
 
-  /* keep it slightly taller than cards */
   height: 640px;
 
   box-shadow: 0 10px 30px rgba(0,0,0,0.12);
