@@ -44,23 +44,27 @@ body {
   );
 }
 
-/* ✨ FIXED STAR GALAXY (NOW VISIBLE) */
+/* ✨ BEAUTIFUL GALAXY STAR FIELD (UPDATED + VISIBLE) */
 .construction-screen::after {
   content: "";
   position: absolute;
   inset: 0;
 
   background-image:
-    radial-gradient(2px 2px at 10% 15%, rgba(255,255,255,0.9), transparent),
-    radial-gradient(1.5px 1.5px at 20% 60%, rgba(255,255,255,0.8), transparent),
-    radial-gradient(2px 2px at 35% 30%, rgba(255,255,255,0.9), transparent),
-    radial-gradient(1px 1px at 45% 75%, rgba(255,255,255,0.7), transparent),
-    radial-gradient(2px 2px at 60% 40%, rgba(255,255,255,0.85), transparent),
-    radial-gradient(1.5px 1.5px at 70% 20%, rgba(255,255,255,0.8), transparent),
-    radial-gradient(1px 1px at 80% 65%, rgba(255,255,255,0.7), transparent),
-    radial-gradient(2px 2px at 90% 30%, rgba(255,255,255,0.85), transparent);
+    radial-gradient(3px 3px at 10% 15%, rgba(255,255,255,1), transparent 60%),
+    radial-gradient(2px 2px at 20% 60%, rgba(255,255,255,0.9), transparent 60%),
+    radial-gradient(2.5px 2.5px at 35% 30%, rgba(255,255,255,1), transparent 60%),
+    radial-gradient(1.8px 1.8px at 45% 75%, rgba(255,255,255,0.8), transparent 60%),
+    radial-gradient(2.5px 2.5px at 60% 40%, rgba(255,255,255,1), transparent 60%),
+    radial-gradient(2px 2px at 70% 20%, rgba(255,255,255,0.85), transparent 60%),
+    radial-gradient(1.8px 1.8px at 80% 65%, rgba(255,255,255,0.8), transparent 60%),
+    radial-gradient(2.6px 2.6px at 90% 30%, rgba(255,255,255,1), transparent 60%),
 
-  opacity: 0.9;
+    /* soft galaxy glow */
+    radial-gradient(circle at 50% 40%, rgba(120,180,255,0.18), transparent 65%);
+
+  opacity: 1;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.25));
 }
 
 /* ☁️ CLOUD LAYER */
