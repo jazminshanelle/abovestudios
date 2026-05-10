@@ -5,15 +5,15 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Cinematic / Pixar-style clean system font -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<!-- Disney / Pixar-style cinematic UI font -->
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@200;300;400;500&display=swap" rel="stylesheet">
 
 <style>
 
 body {
   margin: 0;
   background: #f7f7f4;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   overflow-x: hidden;
 }
 
@@ -65,7 +65,7 @@ body {
   opacity: 0.95;
 }
 
-/* ===================== WISH STAR (STATIC DISNEY STYLE) ===================== */
+/* ===================== WISH STAR ===================== */
 
 .wish-star {
   position: absolute;
@@ -115,12 +115,12 @@ body {
     120px 0px 0 rgba(255,255,255,0.9);
 }
 
-/* IMPORTANT: clouds pushed away from center so text is ALWAYS readable */
-.cloud1 { width: 180px; height: 80px; top: 10%; left: -40px; }
-.cloud2 { width: 220px; height: 90px; top: 55%; right: -60px; }
-.cloud3 { width: 260px; height: 100px; bottom: 10%; left: -60px; }
+/* clouds kept OUT of text area (important fix) */
+.cloud1 { width: 180px; height: 80px; top: 5%; left: -80px; }
+.cloud2 { width: 220px; height: 90px; top: 60%; right: -100px; }
+.cloud3 { width: 260px; height: 100px; bottom: 5%; left: -90px; }
 
-/* ===================== TEXT (PIXAR CLEAN CINEMATIC) ===================== */
+/* ===================== TEXT (DISNEY CINEMATIC STYLE) ===================== */
 
 .construction-content {
   position: relative;
@@ -128,16 +128,13 @@ body {
   color: white;
   text-align: center;
   padding: 20px;
-
-  /* KEY FIX: removes “boxed” feel completely */
   background: none;
-  backdrop-filter: none;
 }
 
 .construction-content h1 {
   font-size: 2.3rem;
-  font-weight: 300; /* Pixar-like airy title */
-  letter-spacing: 4px;
+  font-weight: 300;
+  letter-spacing: 5px;
   margin: 0;
   text-transform: uppercase;
 }
@@ -149,7 +146,7 @@ body {
   opacity: 0.95;
 }
 
-/* ===================== MOBILE FIX (CRITICAL) ===================== */
+/* ===================== MOBILE ===================== */
 
 @media (max-width: 768px) {
 
@@ -161,11 +158,6 @@ body {
   .construction-content p {
     font-size: 0.85rem;
   }
-
-  /* KEEP CLOUDS OUT OF TEXT ZONE */
-  .cloud1 { top: 5%; left: -80px; transform: scale(0.6); }
-  .cloud2 { top: 60%; right: -100px; transform: scale(0.6); }
-  .cloud3 { bottom: 5%; left: -90px; transform: scale(0.6); }
 
   .wish-star {
     top: 18%;
@@ -182,20 +174,16 @@ body {
 
 <div class="construction-screen">
 
-  <!-- ✨ STATIC WISH STAR -->
   <div class="wish-star"></div>
 
-  <!-- ☁️ CLOUDS -->
   <div class="cloud-layer">
     <div class="cloud cloud1"></div>
     <div class="cloud cloud2"></div>
     <div class="cloud cloud3"></div>
   </div>
 
-  <!-- TEXT -->
   <div class="construction-content">
     <h1>Coming soon</h1>
-    
   </div>
 
 </div>
