@@ -149,19 +149,24 @@ body {
   opacity: 1;
 }
 
+/* ===================== HERO FIX (NO BLACK SIDE BARS) ===================== */
+
 .hero-card {
   position: relative;
   overflow: hidden;
   background: #000;
 
-  /* ✅ FIX: match topbar + container alignment exactly */
   width: 100%;
-  padding: 0 60px;
-  box-sizing: border-box;
-
   height: 640px;
 
   box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+.hero-card .card-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* ===================== CONTENT CONTAINER ===================== */
@@ -364,7 +369,7 @@ body {
   </div>
 </div>
 
-<!-- HERO FULL WIDTH (NOW PIXAR-CENTERED) -->
+<!-- HERO -->
 <div class="hero-card">
   <video class="card-media" autoplay muted loop playsinline>
     <source src="./train-animatic.mp4" type="video/mp4">
