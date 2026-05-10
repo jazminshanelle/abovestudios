@@ -149,18 +149,18 @@ body {
   opacity: 1;
 }
 
-/* ===================== HERO (CHANGED ONLY HERE) ===================== */
+/* ===================== HERO (FIXED) ===================== */
 
 .hero-card {
   width: 100%;
   position: relative;
   overflow: hidden;
   background: #000;
-  height: 75vh; /* ⬅️ ONLY CHANGE: makes it taller but not full screen */
+  height: 620px; /* ✔ FIXED: slightly taller than cards, not fullscreen */
   box-shadow: 0 10px 30px rgba(0,0,0,0.12);
 }
 
-/* ===================== CONTENT CONTAINER (PIXAR FIX) ===================== */
+/* ===================== CONTENT CONTAINER ===================== */
 
 .container {
   max-width: 1200px;
@@ -187,18 +187,9 @@ body {
   box-shadow: 0 10px 30px rgba(0,0,0,0.12);
 }
 
-.card:nth-of-type(1) { /* world */
-  grid-column: 1 / span 7;
-}
-
-.card:nth-of-type(2) { /* characters */
-  grid-column: 8 / span 5;
-}
-
-.card:nth-of-type(3) { /* visual */
-  grid-column: 1 / -1;
-  height: 520px;
-}
+.card:nth-of-type(1) { grid-column: 1 / span 7; }
+.card:nth-of-type(2) { grid-column: 8 / span 5; }
+.card:nth-of-type(3) { grid-column: 1 / -1; height: 520px; }
 
 /* ===================== MEDIA ===================== */
 
@@ -249,7 +240,7 @@ body {
   font-size: 14px;
 }
 
-/* ===================== FOOTER (PIXAR STYLE FIX) ===================== */
+/* ===================== FOOTER ===================== */
 
 .footer-wrap {
   margin-top: 100px;
@@ -305,25 +296,15 @@ body {
   .hamburger { display: block; }
   .desktop-nav { display: none; }
 
-  .container {
-    padding: 0 20px;
-  }
+  .container { padding: 0 20px; }
 
-  .grid {
-    grid-template-columns: 1fr;
-  }
+  .grid { grid-template-columns: 1fr; }
 
-  .card {
-    height: 280px;
-  }
+  .card { height: 280px; }
 
-  .card:nth-of-type(3) {
-    height: 320px;
-  }
+  .card:nth-of-type(3) { height: 320px; }
 
-  .topbar {
-    padding: 22px 20px;
-  }
+  .topbar { padding: 22px 20px; }
 }
 
 </style>
@@ -356,7 +337,7 @@ body {
   </div>
 </div>
 
-<!-- HERO FULL WIDTH -->
+<!-- HERO -->
 <div class="hero-card">
   <video class="card-media" autoplay muted loop playsinline>
     <source src="./train-animatic.mp4" type="video/mp4">
@@ -368,9 +349,7 @@ body {
   </div>
 </div>
 
-<!-- PIXAR STYLE CENTERED CONTENT -->
 <div class="container">
-
   <div class="grid">
 
     <div class="card">
@@ -398,10 +377,8 @@ body {
     </div>
 
   </div>
-
 </div>
 
-<!-- FOOTER FULL WIDTH -->
 <div class="footer-wrap">
 
   <div class="footer-top">
@@ -416,13 +393,6 @@ body {
   </div>
 
   <div class="footer-bottom">
-    <div><a href="#">Do Not Sell or Share My Personal Information</a></div>
-    <div>
-      <a href="#">Privacy Policy</a> |
-      <a href="#">Your US State Privacy Rights</a> |
-      <a href="#">Children's Online Privacy Policy</a> |
-      <a href="#">Interest Based Ads</a>
-    </div>
     <div>© 2026 Drawn Above</div>
   </div>
 
