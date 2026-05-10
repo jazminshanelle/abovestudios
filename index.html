@@ -22,7 +22,7 @@ body {
 .construction-screen {
   position: fixed;
   inset: 0;
-  z-index: 100000;
+  z-index: 999999;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,23 +35,37 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, #6ec6ff, #1b4f9c);
+  background: linear-gradient(to bottom, #7fd3ff, #2a6fd6);
 }
 
-/* clouds layer */
-.clouds {
+/* soft cloud layer (non-Pixar but inspired, original feel) */
+.construction-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.9) 0%, transparent 40%),
+    radial-gradient(circle at 70% 40%, rgba(255,255,255,0.7) 0%, transparent 45%),
+    radial-gradient(circle at 40% 70%, rgba(255,255,255,0.6) 0%, transparent 50%),
+    radial-gradient(circle at 85% 20%, rgba(255,255,255,0.5) 0%, transparent 45%);
+  background-size: cover;
+  opacity: 0.9;
+}
+
+/* floating haze cloud drift layer */
+.cloud-drift {
   position: absolute;
   inset: 0;
   background: url("https://i.imgur.com/Q9kqN7B.png");
   background-size: cover;
-  opacity: 0.35;
-  animation: drift 60s linear infinite;
-  filter: blur(1px);
+  opacity: 0.25;
+  filter: blur(2px);
+  animation: drift 120s linear infinite;
 }
 
 @keyframes drift {
   from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  to { transform: translateX(-40%); }
 }
 
 /* text */
@@ -59,37 +73,21 @@ body {
   position: relative;
   z-index: 2;
   color: white;
+  padding: 20px;
 }
 
 .construction-content h1 {
   font-family: 'Cinzel', serif;
   letter-spacing: 6px;
-  font-size: 2.5rem;
+  font-size: 2.6rem;
   margin: 0;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
 .construction-content p {
   margin-top: 12px;
-  opacity: 0.9;
+  opacity: 0.95;
   font-size: 1rem;
-}
-
-/* ===================== OVERLAY ===================== */
-
-.menu-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.35);
-  backdrop-filter: blur(10px);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.35s ease;
-  z-index: 9998;
-}
-
-.menu-overlay.active {
-  opacity: 1;
-  pointer-events: auto;
 }
 
 /* ===================== TOP BAR ===================== */
@@ -131,7 +129,6 @@ body {
   background: #000;
   width: 100%;
   height: 640px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
 }
 
 .hero-card .card-media {
@@ -173,8 +170,6 @@ body {
   object-fit: cover;
 }
 
-/* ===================== TEXT ===================== */
-
 .card-info {
   position: absolute;
   bottom: 0;
@@ -185,18 +180,9 @@ body {
   color: white;
 }
 
-/* ===================== FOOTER ===================== */
-
-.footer-wrap {
-  margin-top: 100px;
-}
-
-/* ===================== MOBILE ===================== */
-
-@media (max-width: 768px) {
-  .container { padding: 0 20px; }
-  .grid { grid-template-columns: 1fr; }
-  .hero-card { height: 420px; }
+/* ===================== BLOCK WEBSITE UNDER IT ===================== */
+.main-site {
+  filter: blur(0px);
 }
 
 </style>
@@ -207,7 +193,7 @@ body {
 
 <!-- ===================== UNDER CONSTRUCTION OVERLAY ===================== -->
 <div class="construction-screen">
-  <div class="clouds"></div>
+  <div class="cloud-drift"></div>
 
   <div class="construction-content">
     <h1>UNDER CONSTRUCTION</h1>
@@ -215,7 +201,8 @@ body {
   </div>
 </div>
 
-<div class="menu-overlay" id="overlay" onclick="toggleMenu()"></div>
+<!-- ===================== YOUR SITE (LOCKED BEHIND OVERLAY) ===================== -->
+<div class="main-site">
 
 <div class="topbar">
   <div class="logo">ABOVE</div>
@@ -237,6 +224,8 @@ body {
     <h2>TIME'S ALMOST UP</h2>
     <p>Animatic / Film Concept</p>
   </div>
+</div>
+
 </div>
 
 </body>
