@@ -18,6 +18,7 @@ body {
 }
 
 /* ===================== OVERLAY ===================== */
+
 .menu-overlay {
   position: fixed;
   inset: 0;
@@ -35,14 +36,17 @@ body {
 }
 
 /* ===================== TOP BAR ===================== */
+
 .topbar {
-  margin: 15px 40px;
+  padding: 26px 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
   z-index: 10000;
 }
+
+/* LOGO */
 
 .logo {
   font-family: 'Cinzel', serif;
@@ -51,13 +55,36 @@ body {
   letter-spacing: 10px;
 }
 
+/* ===================== DESKTOP NAV ===================== */
+
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 42px;
+}
+
+.desktop-nav a {
+  text-decoration: none;
+  color: #111;
+  font-size: 12px;
+  letter-spacing: 2px;
+  transition: opacity 0.25s ease;
+}
+
+.desktop-nav a:hover {
+  opacity: 0.5;
+}
+
 /* ===================== HAMBURGER ===================== */
+
 .hamburger {
   width: 28px;
   height: 20px;
   position: relative;
   cursor: pointer;
   z-index: 10001;
+
+  display: none;
 }
 
 .hamburger span {
@@ -89,7 +116,8 @@ body {
   background: white;
 }
 
-/* ===================== MENU ===================== */
+/* ===================== MOBILE MENU ===================== */
+
 .menu {
   position: fixed;
   top: 50%;
@@ -126,8 +154,9 @@ body {
 }
 
 /* ===================== PIXAR STACKED LAYOUT ===================== */
+
 .grid {
-  margin-top: 60px;
+  margin-top: 40px;
 
   display: flex;
   flex-direction: column;
@@ -136,13 +165,14 @@ body {
   padding: 0 60px;
 }
 
-/* 🔥 PIXAR FIX: SHARP EDGES */
+/* ===================== CARDS ===================== */
+
 .card {
   position: relative;
   overflow: hidden;
   background: #000;
 
-  border-radius: 0px; /* IMPORTANT: sharp edges */
+  border-radius: 0px;
 
   height: 440px;
 
@@ -157,6 +187,7 @@ body {
 }
 
 /* WORLD */
+
 .world-image {
   object-position: right bottom;
   transform: scale(2.88) translateX(10.6%);
@@ -164,6 +195,7 @@ body {
 }
 
 /* CHARACTERS */
+
 .characters-image {
   object-position: 0% 0%;
   transform: scale(1.85);
@@ -171,11 +203,13 @@ body {
 }
 
 /* VISUAL */
+
 .visual-image {
   object-position: 50% 58%;
 }
 
 /* ===================== TEXT OVERLAY ===================== */
+
 .card-info {
   position: absolute;
   bottom: 0;
@@ -194,52 +228,68 @@ body {
   color: white;
 }
 
-/* ===================== FOOTER ===================== */
-.footer-wrap {
-  margin-top: 80px;
-  background: #e6e6e6;
-  padding: 60px 60px 25px;
-}
-
-.footer-grid {
-  display: flex;
-  justify-content: space-between;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.footer-col {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.footer-title {
-  font-size: 12px;
+.card-info h2 {
+  margin: 0;
+  font-size: 2rem;
   letter-spacing: 2px;
-  margin-bottom: 8px;
 }
 
-.footer-col a {
-  font-size: 12px;
-  color: #111;
-  opacity: 0.65;
+.card-info p {
+  margin-top: 8px;
+  opacity: 0.8;
+  font-size: 14px;
+}
+
+/* ===================== PIXAR FOOTER ===================== */
+
+.footer-wrap {
+  margin-top: 100px;
+  background: #efefec;
+  padding: 70px 60px 35px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+
+  margin-bottom: 40px;
+}
+
+.footer-links a {
   text-decoration: none;
+  color: #111;
+  font-size: 11px;
+  letter-spacing: 1.8px;
+  opacity: 0.7;
+  transition: opacity 0.25s ease;
 }
 
-.footer-col a:hover {
+.footer-links a:hover {
   opacity: 1;
 }
 
 .footer-bottom {
   text-align: center;
-  margin-top: 40px;
   font-size: 11px;
-  opacity: 0.6;
+  opacity: 0.55;
+  line-height: 1.8;
 }
 
-/* MOBILE */
+/* ===================== MOBILE ===================== */
+
 @media (max-width: 768px) {
+
+  /* SHOW MOBILE MENU */
+  .hamburger {
+    display: block;
+  }
+
+  /* HIDE DESKTOP NAV */
+  .desktop-nav {
+    display: none;
+  }
 
   .grid {
     padding: 0 20px;
@@ -250,10 +300,21 @@ body {
     height: 300px;
   }
 
-  .footer-grid {
+  .topbar {
+    padding: 22px 20px;
+  }
+
+  .footer-wrap {
+    padding: 55px 25px 30px;
+  }
+
+  .footer-links {
     flex-direction: column;
-    text-align: center;
-    gap: 30px;
+    gap: 18px;
+  }
+
+  .card-info h2 {
+    font-size: 1.3rem;
   }
 }
 
@@ -264,9 +325,11 @@ body {
 <body>
 
 <!-- OVERLAY -->
+
 <div class="menu-overlay" id="overlay" onclick="toggleMenu()"></div>
 
-<!-- MENU -->
+<!-- MOBILE MENU -->
+
 <div class="menu" id="menu">
   <a href="#">FILMS</a>
   <a href="#">CONCEPTS</a>
@@ -275,23 +338,39 @@ body {
 </div>
 
 <!-- TOPBAR -->
+
 <div class="topbar">
+
   <div class="logo">ABOVE</div>
+
+  <!-- DESKTOP NAV -->
+
+  <div class="desktop-nav">
+    <a href="#">FILMS</a>
+    <a href="#">CONCEPTS</a>
+    <a href="#">UNIVERSE</a>
+    <a href="#">ABOUT</a>
+  </div>
+
+  <!-- MOBILE HAMBURGER -->
 
   <div class="hamburger" id="hamburger" onclick="toggleMenu()">
     <span></span>
     <span></span>
     <span></span>
   </div>
+
 </div>
 
 <!-- GRID -->
+
 <div class="grid">
 
   <div class="card">
     <video class="card-media" autoplay muted loop playsinline>
       <source src="./train-animatic.mp4" type="video/mp4">
     </video>
+
     <div class="card-info">
       <h2>TIME'S ALMOST UP</h2>
       <p>Animatic / Film Concept</p>
@@ -300,6 +379,7 @@ body {
 
   <div class="card">
     <img class="card-media world-image" src="./world.png">
+
     <div class="card-info">
       <h2>WORLD ARCHIVE</h2>
       <p>Animatic Sequence</p>
@@ -308,6 +388,7 @@ body {
 
   <div class="card">
     <img class="card-media characters-image" src="./characters.png">
+
     <div class="card-info">
       <h2>CHARACTERS</h2>
       <p>Character Designs</p>
@@ -316,6 +397,7 @@ body {
 
   <div class="card">
     <img class="card-media visual-image" src="./holyfire.png">
+
     <div class="card-info">
       <h2>VISUAL TESTS</h2>
       <p>Lighting / Experiments</p>
@@ -325,37 +407,33 @@ body {
 </div>
 
 <!-- FOOTER -->
+
 <div class="footer-wrap">
-  <div class="footer-grid">
 
-    <div class="footer-col">
-      <div class="footer-title">STUDIO</div>
-      <a href="#">Films</a>
-      <a href="#">Concepts</a>
-      <a href="#">Universe</a>
-      <a href="#">About</a>
-    </div>
-
-    <div class="footer-col">
-      <div class="footer-title">LEGAL</div>
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Use</a>
-      <a href="#">Interest Based Ads</a>
-    </div>
-
+  <div class="footer-links">
+    <a href="#">FILMS</a>
+    <a href="#">CONCEPTS</a>
+    <a href="#">UNIVERSE</a>
+    <a href="#">ABOUT</a>
+    <a href="#">PRIVACY POLICY</a>
+    <a href="#">TERMS OF USE</a>
   </div>
 
   <div class="footer-bottom">
-    © 2026 Drawn Above, Inc.
+    © 2026 Drawn Above, Inc.<br>
+    All Rights Reserved.
   </div>
+
 </div>
 
 <script>
+
 function toggleMenu() {
   document.getElementById("menu").classList.toggle("active");
   document.getElementById("overlay").classList.toggle("active");
   document.getElementById("hamburger").classList.toggle("active");
 }
+
 </script>
 
 </body>
