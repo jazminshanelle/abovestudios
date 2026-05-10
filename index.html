@@ -149,19 +149,41 @@ body {
   opacity: 1;
 }
 
+/* ===================== HERO FIX (PIXAR PERFECT ALIGNMENT) ===================== */
+
 .hero-card {
   position: relative;
   overflow: hidden;
   background: #000;
-
   width: 100%;
-
-  /* ✅ removes the black side bars */
-  padding: 0;
-
   height: 640px;
+}
 
-  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+/* NEW: aligns EXACTLY with header/container system */
+.hero-inner {
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* video now fills hero correctly (no side bars) */
+.hero-card video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* text overlay */
+.card-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 22px;
+  background: linear-gradient(to top, rgba(0,0,0,0.88), rgba(0,0,0,0.35), transparent);
+  color: white;
 }
 
 /* ===================== CONTENT CONTAINER ===================== */
@@ -204,53 +226,11 @@ body {
   height: 520px;
 }
 
-/* ===================== MEDIA ===================== */
-
 .card-media {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-}
-
-.world-image {
-  object-position: right bottom;
-  transform: scale(2.88) translateX(10.6%);
-  transform-origin: bottom right;
-}
-
-.characters-image {
-  object-position: 0% 0%;
-  transform: scale(1.85);
-  transform-origin: left top;
-}
-
-.visual-image {
-  object-position: 50% 60%;
-}
-
-/* ===================== TEXT ===================== */
-
-.card-info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 22px;
-  background: linear-gradient(to top, rgba(0,0,0,0.88), rgba(0,0,0,0.35), transparent);
-  color: white;
-}
-
-.card-info h2 {
-  margin: 0;
-  font-size: 2rem;
-  letter-spacing: 2px;
-}
-
-.card-info p {
-  margin-top: 8px;
-  opacity: 0.8;
-  font-size: 14px;
 }
 
 /* ===================== FOOTER ===================== */
@@ -364,12 +344,11 @@ body {
   </div>
 </div>
 
-<!-- HERO FIXED TO MATCH TOPBAR GRID -->
+<!-- HERO FIXED (NOW PERFECT PIXAR ALIGNMENT) -->
 <div class="hero-card">
+  <div class="hero-inner">
 
-  <div class="container">
-
-    <video class="card-media" autoplay muted loop playsinline>
+    <video autoplay muted loop playsinline>
       <source src="./train-animatic.mp4" type="video/mp4">
     </video>
 
@@ -379,15 +358,13 @@ body {
     </div>
 
   </div>
-
 </div>
 
-<!-- REST UNCHANGED -->
 <div class="container">
   <div class="grid">
 
     <div class="card">
-      <img class="card-media world-image" src="./world.png">
+      <img class="card-media" src="./world.png">
       <div class="card-info">
         <h2>WORLD ARCHIVE</h2>
         <p>Animatic Sequence</p>
@@ -395,7 +372,7 @@ body {
     </div>
 
     <div class="card">
-      <img class="card-media characters-image" src="./characters.png">
+      <img class="card-media" src="./characters.png">
       <div class="card-info">
         <h2>CHARACTERS</h2>
         <p>Character Designs</p>
@@ -403,37 +380,13 @@ body {
     </div>
 
     <div class="card">
-      <img class="card-media visual-image" src="./holyfire.png">
+      <img class="card-media" src="./holyfire.png">
       <div class="card-info">
         <h2>VISUAL TESTS</h2>
         <p>Lighting / Experiments</p>
       </div>
     </div>
 
-  </div>
-</div>
-
-<div class="footer-wrap">
-  <div class="footer-top">
-    <div class="footer-inner">
-      <div class="footer-links">
-        <a href="#">FILMS</a>
-        <a href="#">CONCEPTS</a>
-        <a href="#">UNIVERSE</a>
-        <a href="#">ABOUT</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="footer-bottom">
-    <div><a href="#">Do Not Sell or Share My Personal Information</a></div>
-    <div>
-      <a href="#">Privacy Policy</a> |
-      <a href="#">Your US State Privacy Rights</a> |
-      <a href="#">Children's Online Privacy Policy</a> |
-      <a href="#">Interest Based Ads</a>
-    </div>
-    <div>© 2026 Drawn Above</div>
   </div>
 </div>
 
