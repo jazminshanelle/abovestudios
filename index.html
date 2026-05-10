@@ -16,7 +16,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ===================== CONSTRUCTION SKY ===================== */
+/* ===================== SKY ===================== */
 
 .construction-screen {
   position: fixed;
@@ -26,7 +26,6 @@ body {
   justify-content: center;
   text-align: center;
   overflow: hidden;
-  z-index: 999999;
 }
 
 /* SKY */
@@ -43,7 +42,7 @@ body {
   );
 }
 
-/* STARS + SKY GLOW */
+/* STARS */
 .construction-screen::after {
   content: "";
   position: absolute;
@@ -52,19 +51,15 @@ body {
 
   background:
     radial-gradient(circle at 50% 40%, rgba(140,190,255,0.25), transparent 60%),
-    radial-gradient(circle at 30% 70%, rgba(200,160,255,0.12), transparent 65%),
-
     radial-gradient(2px 2px at 10% 20%, white, transparent 60%),
-    radial-gradient(1.5px 1.5px at 25% 55%, white, transparent 60%),
     radial-gradient(2px 2px at 45% 30%, white, transparent 60%),
-    radial-gradient(2px 2px at 60% 70%, white, transparent 60%),
-    radial-gradient(2px 2px at 80% 40%, white, transparent 60%),
-    radial-gradient(2px 2px at 90% 25%, white, transparent 60%);
+    radial-gradient(2px 2px at 80% 40%, white, transparent 60%);
 
   opacity: 0.95;
 }
 
-/* 🌟 WISH UPON A STAR (STATIC — DISNEY STYLE) */
+/* ===================== WISH STAR ===================== */
+
 .wish-star {
   position: absolute;
   top: 22%;
@@ -74,40 +69,13 @@ body {
   background: white;
   border-radius: 50%;
   z-index: 2;
-
-  /* soft magical glow */
   box-shadow:
     0 0 10px rgba(255,255,255,0.9),
     0 0 25px rgba(255,255,255,0.6),
     0 0 45px rgba(180,220,255,0.35);
 }
 
-/* subtle star aura (like Disney shimmer) */
-.wish-star::before {
-  content: "";
-  position: absolute;
-  top: -12px;
-  left: -12px;
-  width: 30px;
-  height: 30px;
-  background: radial-gradient(circle, rgba(255,255,255,0.35), transparent 70%);
-  border-radius: 50%;
-}
-
-/* tiny sparkle cross */
-.wish-star::after {
-  content: "";
-  position: absolute;
-  top: -6px;
-  left: -1px;
-  width: 8px;
-  height: 18px;
-  background: linear-gradient(to bottom, transparent, white, transparent);
-  opacity: 0.8;
-  transform: rotate(20deg);
-}
-
-/* ===================== PIXAR CLOUDS ===================== */
+/* ===================== CLOUDS ===================== */
 
 .cloud-layer {
   position: absolute;
@@ -116,7 +84,6 @@ body {
   pointer-events: none;
 }
 
-/* soft Pixar-style clouds */
 .cloud {
   position: absolute;
   background: rgba(255,255,255,0.92);
@@ -125,21 +92,28 @@ body {
   box-shadow:
     0 10px 25px rgba(0,0,0,0.15),
     40px 10px 0 rgba(255,255,255,0.9),
-    80px 20px 0 rgba(255,255,255,0.85),
-    120px 0px 0 rgba(255,255,255,0.9);
+    80px 20px 0 rgba(255,255,255,0.85);
 }
 
+/* desktop placement */
 .cloud1 { width: 180px; height: 80px; top: 18%; left: 8%; }
 .cloud2 { width: 220px; height: 90px; top: 40%; right: 10%; }
 .cloud3 { width: 260px; height: 100px; bottom: 18%; left: 20%; }
 
-/* TEXT */
+/* ===================== TEXT SAFE ZONE (KEY FIX) ===================== */
+
 .construction-content {
   position: relative;
   z-index: 3;
   color: white;
   text-align: center;
-  padding: 20px;
+  padding: 22px 28px;
+
+  /* THIS is what stops cloud interference */
+  background: rgba(0,0,0,0.18);
+  backdrop-filter: blur(6px);
+  border-radius: 18px;
+  max-width: 90%;
 }
 
 .construction-content h1 {
@@ -156,8 +130,13 @@ body {
   opacity: 0.95;
 }
 
-/* MOBILE */
+/* ===================== MOBILE FIX (IMPORTANT) ===================== */
+
 @media (max-width: 768px) {
+
+  .construction-content {
+    padding: 18px;
+  }
 
   .construction-content h1 {
     font-size: 1.4rem;
@@ -167,14 +146,31 @@ body {
     font-size: 0.85rem;
   }
 
-  .cloud1 { top: 10%; left: -20px; transform: scale(0.7); }
-  .cloud2 { top: 45%; right: -30px; transform: scale(0.7); }
-  .cloud3 { bottom: 12%; left: -40px; transform: scale(0.7); }
+  /* PUSH CLOUDS OUT OF TEXT ZONE */
+  .cloud1 {
+    top: 5%;
+    left: -80px;
+    transform: scale(0.7);
+    opacity: 0.6;
+  }
+
+  .cloud2 {
+    top: 60%;
+    right: -100px;
+    transform: scale(0.7);
+    opacity: 0.5;
+  }
+
+  .cloud3 {
+    bottom: 5%;
+    left: -120px;
+    transform: scale(0.7);
+    opacity: 0.5;
+  }
 
   .wish-star {
     top: 18%;
-    right: 12%;
-    transform: scale(0.8);
+    right: 10%;
   }
 }
 
@@ -186,7 +182,6 @@ body {
 
 <div class="construction-screen">
 
-  <!-- 🌟 DISNEY WISH STAR -->
   <div class="wish-star"></div>
 
   <div class="cloud-layer">
