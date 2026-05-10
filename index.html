@@ -17,6 +17,35 @@ body {
   overflow-x: hidden;
 }
 
+/* ===================== UNDER CONSTRUCTION LOCK SCREEN ===================== */
+
+.under-construction {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.95);
+  z-index: 100000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
+
+.under-construction h1 {
+  font-family: 'Cinzel', serif;
+  letter-spacing: 6px;
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.under-construction p {
+  opacity: 0.7;
+  max-width: 500px;
+  line-height: 1.6;
+}
+
 /* ===================== OVERLAY ===================== */
 
 .menu-overlay {
@@ -149,7 +178,7 @@ body {
   opacity: 1;
 }
 
-/* ===================== HERO FIX (NO BLACK SIDE BARS) ===================== */
+/* ===================== HERO FIXED ALIGNMENT ===================== */
 
 .hero-card {
   position: relative;
@@ -157,6 +186,8 @@ body {
   background: #000;
 
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;   /* THIS aligns it with your container */
   height: 640px;
 
   box-shadow: 0 10px 30px rgba(0,0,0,0.12);
@@ -344,6 +375,12 @@ body {
 </head>
 
 <body>
+
+<!-- 🔒 UNDER CONSTRUCTION SCREEN -->
+<div class="under-construction">
+  <h1>UNDER CONSTRUCTION</h1>
+  <p>This website is currently being built. Please check back soon as we prepare something special.</p>
+</div>
 
 <div class="menu-overlay" id="overlay" onclick="toggleMenu()"></div>
 
