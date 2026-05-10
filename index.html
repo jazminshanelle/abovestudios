@@ -83,7 +83,6 @@ body {
   position: relative;
   cursor: pointer;
   z-index: 10001;
-
   display: none;
 }
 
@@ -142,7 +141,6 @@ body {
   letter-spacing: 3px;
   color: white;
   text-decoration: none;
-
   transform: translateY(20px);
   opacity: 0;
   transition: 0.4s ease;
@@ -157,11 +155,9 @@ body {
 
 .grid {
   margin-top: 40px;
-
   display: flex;
   flex-direction: column;
   gap: 70px;
-
   padding: 0 60px;
 }
 
@@ -171,11 +167,8 @@ body {
   position: relative;
   overflow: hidden;
   background: #000;
-
   border-radius: 0px;
-
   height: 440px;
-
   box-shadow: 0 10px 30px rgba(0,0,0,0.12);
 }
 
@@ -244,8 +237,13 @@ body {
 
 .footer-wrap {
   margin-top: 100px;
+}
+
+/* TOP GRAY BANNER */
+
+.footer-top {
   background: #efefec;
-  padding: 70px 60px 35px;
+  padding: 70px 40px;
 }
 
 .footer-links {
@@ -253,8 +251,6 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   gap: 30px;
-
-  margin-bottom: 40px;
 }
 
 .footer-links a {
@@ -262,7 +258,7 @@ body {
   color: #111;
   font-size: 11px;
   letter-spacing: 1.8px;
-  opacity: 0.7;
+  opacity: 0.72;
   transition: opacity 0.25s ease;
 }
 
@@ -270,23 +266,36 @@ body {
   opacity: 1;
 }
 
+/* BOTTOM WHITE LEGAL SECTION */
+
 .footer-bottom {
+  background: #f7f7f4;
   text-align: center;
+  padding: 30px 20px 42px;
   font-size: 11px;
-  opacity: 0.55;
-  line-height: 1.8;
+  line-height: 2.1;
+  color: #111;
+  opacity: 0.62;
+}
+
+.footer-bottom a {
+  color: #111;
+  text-decoration: none;
+  opacity: 0.78;
+}
+
+.footer-bottom a:hover {
+  opacity: 1;
 }
 
 /* ===================== MOBILE ===================== */
 
 @media (max-width: 768px) {
 
-  /* SHOW MOBILE MENU */
   .hamburger {
     display: block;
   }
 
-  /* HIDE DESKTOP NAV */
   .desktop-nav {
     display: none;
   }
@@ -304,13 +313,19 @@ body {
     padding: 22px 20px;
   }
 
-  .footer-wrap {
-    padding: 55px 25px 30px;
+  .footer-top {
+    padding: 55px 25px;
   }
 
   .footer-links {
     flex-direction: column;
+    align-items: center;
     gap: 18px;
+  }
+
+  .footer-bottom {
+    padding: 24px 20px 34px;
+    line-height: 2.2;
   }
 
   .card-info h2 {
@@ -410,18 +425,38 @@ body {
 
 <div class="footer-wrap">
 
-  <div class="footer-links">
-    <a href="#">FILMS</a>
-    <a href="#">CONCEPTS</a>
-    <a href="#">UNIVERSE</a>
-    <a href="#">ABOUT</a>
-    <a href="#">PRIVACY POLICY</a>
-    <a href="#">TERMS OF USE</a>
+  <!-- TOP GRAY AREA -->
+
+  <div class="footer-top">
+
+    <div class="footer-links">
+      <a href="#">FILMS</a>
+      <a href="#">CONCEPTS</a>
+      <a href="#">UNIVERSE</a>
+      <a href="#">ABOUT</a>
+    </div>
+
   </div>
 
+  <!-- BOTTOM WHITE LEGAL AREA -->
+
   <div class="footer-bottom">
-    © 2026 Drawn Above, Inc.<br>
-    All Rights Reserved.
+
+    <div>
+      <a href="#">Do Not Sell or Share My Personal Information</a>
+    </div>
+
+    <div>
+      <a href="#">Privacy Policy</a> |
+      <a href="#">Your US State Privacy Rights</a> |
+      <a href="#">Children's Online Privacy Policy</a> |
+      <a href="#">Interest Based Ads</a>
+    </div>
+
+    <div>
+      © 2026 Drawn Above
+    </div>
+
   </div>
 
 </div>
