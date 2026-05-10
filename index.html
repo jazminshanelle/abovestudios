@@ -216,7 +216,7 @@ body {
   transform-origin: left top;
 }
 
-/* VISUAL */
+/* VISUAL — MOVED DOWN SLIGHTLY (FIX) */
 .visual-image {
   object-position: 50% 60%;
 }
@@ -233,90 +233,101 @@ body {
   color: white;
 }
 
-/* ===================== FOOTER (PIXAR STYLE FIXED) ===================== */
+.card-info h2 {
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: 2px;
+}
+
+.card-info p {
+  margin-top: 8px;
+  opacity: 0.8;
+  font-size: 14px;
+}
+
+/* ===================== FOOTER ===================== */
 
 .footer-wrap {
-  margin-top: 120px;
-  background: #f7f7f4;
-  border-top: 1px solid #ddd;
+  margin-top: 100px;
 }
 
-/* TOP FOOTER GRID */
 .footer-top {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 40px;
-  padding: 70px 60px;
+  background: #efefec;
+  padding: 70px 40px;
 }
 
-.footer-col h4 {
-  font-size: 12px;
-  letter-spacing: 2px;
-  margin-bottom: 15px;
+.footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
 }
 
-.footer-col a {
-  display: block;
-  font-size: 11px;
-  color: #111;
+.footer-links a {
   text-decoration: none;
-  margin: 6px 0;
-  opacity: 0.75;
+  color: #111;
+  font-size: 11px;
+  letter-spacing: 1.8px;
+  opacity: 0.72;
+  transition: opacity 0.25s ease;
 }
 
-.footer-col a:hover {
+.footer-links a:hover {
   opacity: 1;
 }
 
-/* SOCIAL ICONS */
-.social {
-  display: flex;
-  gap: 12px;
-  margin-top: 10px;
-}
-
-.social a {
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #111;
-  border-radius: 50%;
-  color: #111;
-  text-decoration: none;
-  font-size: 14px;
-  transition: 0.2s ease;
-}
-
-.social a:hover {
-  background: #111;
-  color: white;
-}
-
-/* BOTTOM FOOTER */
 .footer-bottom {
+  background: #f7f7f4;
   text-align: center;
-  padding: 30px 20px 50px;
+  padding: 30px 20px 42px;
   font-size: 11px;
-  opacity: 0.7;
+  line-height: 2.1;
+  color: #111;
+  opacity: 0.62;
 }
 
 .footer-bottom a {
   color: #111;
   text-decoration: none;
-  margin: 0 8px;
+  opacity: 0.78;
+}
+
+.footer-bottom a:hover {
+  opacity: 1;
 }
 
 /* ===================== MOBILE ===================== */
 
 @media (max-width: 768px) {
 
-  .footer-top {
-    grid-template-columns: 1fr 1fr;
-    padding: 50px 20px;
+  .hamburger { display: block; }
+  .desktop-nav { display: none; }
+
+  .grid {
+    grid-template-columns: 1fr;
+    padding: 0 20px;
   }
 
+  .hero-card,
+  .card {
+    grid-column: 1 / -1 !important;
+  }
+
+  .hero-card {
+    height: 420px;
+  }
+
+  .card {
+    height: 280px;
+  }
+
+  .card:nth-of-type(4) {
+    height: 320px;
+  }
+
+  .topbar {
+    padding: 22px 20px;
+  }
 }
 
 </style>
@@ -325,60 +336,102 @@ body {
 
 <body>
 
-<!-- YOUR SITE CONTENT ABOVE (UNCHANGED) -->
+<!-- (unchanged HTML below) -->
+
+<div class="menu-overlay" id="overlay" onclick="toggleMenu()"></div>
+
+<div class="menu" id="menu">
+  <a href="#">FILMS</a>
+  <a href="#">CONCEPTS</a>
+  <a href="#">UNIVERSE</a>
+  <a href="#">ABOUT</a>
+</div>
+
+<div class="topbar">
+  <div class="logo">ABOVE</div>
+
+  <div class="desktop-nav">
+    <a href="#">FILMS</a>
+    <a href="#">CONCEPTS</a>
+    <a href="#">UNIVERSE</a>
+    <a href="#">ABOUT</a>
+  </div>
+
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</div>
+
+<div class="grid">
+
+  <div class="hero-card">
+    <video class="card-media" autoplay muted loop playsinline>
+      <source src="./train-animatic.mp4" type="video/mp4">
+    </video>
+
+    <div class="card-info">
+      <h2>TIME'S ALMOST UP</h2>
+      <p>Animatic / Film Concept</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <img class="card-media world-image" src="./world.png">
+    <div class="card-info">
+      <h2>WORLD ARCHIVE</h2>
+      <p>Animatic Sequence</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <img class="card-media characters-image" src="./characters.png">
+    <div class="card-info">
+      <h2>CHARACTERS</h2>
+      <p>Character Designs</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <img class="card-media visual-image" src="./holyfire.png">
+    <div class="card-info">
+      <h2>VISUAL TESTS</h2>
+      <p>Lighting / Experiments</p>
+    </div>
+  </div>
+
+</div>
 
 <div class="footer-wrap">
 
   <div class="footer-top">
-
-    <div class="footer-col">
-      <h4>FILMS</h4>
-      <a href="#">Features</a>
-      <a href="#">Shorts</a>
-      <a href="#">Series</a>
+    <div class="footer-links">
+      <a href="#">FILMS</a>
+      <a href="#">CONCEPTS</a>
+      <a href="#">UNIVERSE</a>
+      <a href="#">ABOUT</a>
     </div>
-
-    <div class="footer-col">
-      <h4>UNIVERSE</h4>
-      <a href="#">World</a>
-      <a href="#">Characters</a>
-      <a href="#">Lore</a>
-    </div>
-
-    <div class="footer-col">
-      <h4>ABOUT</h4>
-      <a href="#">Studio</a>
-      <a href="#">Story</a>
-      <a href="#">Contact</a>
-    </div>
-
-    <div class="footer-col">
-      <h4>SOCIAL</h4>
-      <div class="social">
-        <a href="https://instagram.com" target="_blank">IG</a>
-        <a href="https://youtube.com" target="_blank">YT</a>
-        <a href="https://tiktok.com" target="_blank">TT</a>
-        <a href="https://x.com" target="_blank">X</a>
-      </div>
-    </div>
-
-    <div class="footer-col">
-      <h4>LEGAL</h4>
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms</a>
-      <a href="#">Cookies</a>
-    </div>
-
   </div>
 
   <div class="footer-bottom">
-    Do Not Sell or Share My Personal Information |
-    Privacy Policy |
-    Your US State Privacy Rights |
-    © 2026 Drawn Above
+    <div><a href="#">Do Not Sell or Share My Personal Information</a></div>
+    <div>
+      <a href="#">Privacy Policy</a> |
+      <a href="#">Your US State Privacy Rights</a> |
+      <a href="#">Children's Online Privacy Policy</a> |
+      <a href="#">Interest Based Ads</a>
+    </div>
+    <div>© 2026 Drawn Above</div>
   </div>
 
 </div>
+
+<script>
+function toggleMenu() {
+  document.getElementById("menu").classList.toggle("active");
+  document.getElementById("overlay").classList.toggle("active");
+  document.getElementById("hamburger").classList.toggle("active");
+}
+</script>
 
 </body>
 </html>
