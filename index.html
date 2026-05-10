@@ -149,7 +149,7 @@ body {
   opacity: 1;
 }
 
-/* ===================== PIXAR COLLAGE GRID ===================== */
+/* ===================== PIXAR GRID ===================== */
 
 .grid {
   margin-top: 40px;
@@ -159,18 +159,18 @@ body {
   padding: 0 60px;
 }
 
-/* ===================== HERO CARD ===================== */
+/* ===================== HERO (FIXED HEIGHT LIKE PIXAR) ===================== */
 
 .hero-card {
   grid-column: 1 / -1;
   position: relative;
   overflow: hidden;
   background: #000;
-  height: 620px;
+  height: 560px; /* FIXED: more Pixar-like proportion */
   box-shadow: 0 10px 30px rgba(0,0,0,0.12);
 }
 
-/* ===================== COLLAGE POSITIONS ===================== */
+/* ===================== COLLAGE CARDS ===================== */
 
 .card {
   position: relative;
@@ -180,7 +180,6 @@ body {
   box-shadow: 0 10px 30px rgba(0,0,0,0.12);
 }
 
-/* Pixar-style collage layout */
 .card:nth-of-type(2) {
   grid-column: 1 / span 7;
 }
@@ -222,7 +221,7 @@ body {
   object-position: 50% 58%;
 }
 
-/* ===================== TEXT OVERLAY ===================== */
+/* ===================== TEXT ===================== */
 
 .card-info {
   position: absolute;
@@ -230,15 +229,7 @@ body {
   left: 0;
   right: 0;
   padding: 22px;
-  z-index: 5;
-
-  background: linear-gradient(
-    to top,
-    rgba(0,0,0,0.88),
-    rgba(0,0,0,0.35),
-    transparent
-  );
-
+  background: linear-gradient(to top, rgba(0,0,0,0.88), rgba(0,0,0,0.35), transparent);
   color: white;
 }
 
@@ -254,11 +245,13 @@ body {
   font-size: 14px;
 }
 
-/* ===================== FOOTER ===================== */
+/* ===================== FOOTER (RESTORED PIXAR STYLE) ===================== */
 
 .footer-wrap {
   margin-top: 100px;
 }
+
+/* TOP GRAY BANNER */
 
 .footer-top {
   background: #efefec;
@@ -285,6 +278,8 @@ body {
   opacity: 1;
 }
 
+/* BOTTOM LEGAL */
+
 .footer-bottom {
   background: #f7f7f4;
   text-align: center;
@@ -309,13 +304,8 @@ body {
 
 @media (max-width: 768px) {
 
-  .hamburger {
-    display: block;
-  }
-
-  .desktop-nav {
-    display: none;
-  }
+  .hamburger { display: block; }
+  .desktop-nav { display: none; }
 
   .grid {
     grid-template-columns: 1fr;
@@ -342,7 +332,6 @@ body {
   .topbar {
     padding: 22px 20px;
   }
-
 }
 
 </style>
@@ -412,6 +401,40 @@ body {
       <h2>VISUAL TESTS</h2>
       <p>Lighting / Experiments</p>
     </div>
+  </div>
+
+</div>
+
+<!-- FOOTER (RESTORED) -->
+
+<div class="footer-wrap">
+
+  <div class="footer-top">
+    <div class="footer-links">
+      <a href="#">FILMS</a>
+      <a href="#">CONCEPTS</a>
+      <a href="#">UNIVERSE</a>
+      <a href="#">ABOUT</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+
+    <div>
+      <a href="#">Do Not Sell or Share My Personal Information</a>
+    </div>
+
+    <div>
+      <a href="#">Privacy Policy</a> |
+      <a href="#">Your US State Privacy Rights</a> |
+      <a href="#">Children's Online Privacy Policy</a> |
+      <a href="#">Interest Based Ads</a>
+    </div>
+
+    <div>
+      © 2026 Drawn Above
+    </div>
+
   </div>
 
 </div>
