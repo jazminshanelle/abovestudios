@@ -5,137 +5,130 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Pixar/Disney-like modern cinematic font -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- Pixar-style modern cinematic font system -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 
 body {
   margin: 0;
   background: #f7f7f4;
-  color: #111;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   overflow-x: hidden;
 }
 
-/* ===================== UNDER CONSTRUCTION GATE ===================== */
+/* ===================== CONSTRUCTION SKY ===================== */
 
 .construction-screen {
   position: fixed;
   inset: 0;
-  z-index: 999999;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   overflow: hidden;
+  z-index: 999999;
 }
 
-/* 🌌 SKY BACKGROUND */
+/* SKY GRADIENT */
 .construction-screen::before {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to bottom,
-    #7fd0ff 0%,
-    #4f8fff 40%,
+    #a6e0ff 0%,
+    #4f8fff 45%,
     #1f3f86 75%,
     #0b1025 100%
   );
 }
 
-/* ✨ GALAXY STAR FIELD */
+/* 🌌 PIXAR-STYLE GLOWING SKY + STARS */
 .construction-screen::after {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 1;
 
-  background-image:
-    radial-gradient(3px 3px at 12% 18%, rgba(255,255,255,1), transparent 55%),
-    radial-gradient(2px 2px at 22% 55%, rgba(255,255,255,0.9), transparent 60%),
-    radial-gradient(2.5px 2.5px at 35% 30%, rgba(255,255,255,1), transparent 55%),
-    radial-gradient(2px 2px at 48% 70%, rgba(255,255,255,0.85), transparent 60%),
-    radial-gradient(3px 3px at 60% 40%, rgba(255,255,255,1), transparent 55%),
-    radial-gradient(2px 2px at 70% 20%, rgba(255,255,255,0.9), transparent 60%),
-    radial-gradient(2px 2px at 82% 60%, rgba(255,255,255,0.85), transparent 60%),
-    radial-gradient(3px 3px at 90% 30%, rgba(255,255,255,1), transparent 55%),
-    radial-gradient(circle at 50% 45%, rgba(120,180,255,0.35), transparent 60%);
+  background:
+    radial-gradient(circle at 50% 40%, rgba(140,190,255,0.25), transparent 60%),
+    radial-gradient(circle at 30% 70%, rgba(200,160,255,0.12), transparent 65%),
 
-  opacity: 1;
+    radial-gradient(2px 2px at 10% 20%, white, transparent 60%),
+    radial-gradient(1.5px 1.5px at 25% 55%, white, transparent 60%),
+    radial-gradient(2px 2px at 45% 30%, white, transparent 60%),
+    radial-gradient(2px 2px at 60% 70%, white, transparent 60%),
+    radial-gradient(2px 2px at 80% 40%, white, transparent 60%),
+    radial-gradient(2px 2px at 90% 25%, white, transparent 60%);
+
+  opacity: 0.95;
 }
 
-/* ☁️ CLOUDS */
+/* ===================== PIXAR CLOUDS ===================== */
+
 .cloud-layer {
   position: absolute;
   inset: 0;
   z-index: 2;
-  opacity: 0.95;
-  transform: scale(1);
 }
 
-/* CLOUD BASE */
+/* soft painterly cloud */
 .cloud {
   position: absolute;
-  background: rgba(255,255,255,0.92);
-  border-radius: 100px;
-  filter: blur(0.4px);
+  background: rgba(255,255,255,0.95);
+  border-radius: 50%;
+  filter: blur(1px);
+  box-shadow:
+    40px 10px 0 rgba(255,255,255,0.9),
+    80px 20px 0 rgba(255,255,255,0.85),
+    120px 0px 0 rgba(255,255,255,0.9);
 }
 
-.cloud:before,
-.cloud:after {
-  content: "";
-  position: absolute;
-  background: rgba(255,255,255,0.92);
-  border-radius: 100px;
-}
-
-/* cloud 1 */
+/* cloud placements (Pixar floating style) */
 .cloud1 {
-  width: 240px;
-  height: 75px;
+  width: 180px;
+  height: 80px;
   top: 18%;
   left: 10%;
 }
 
-/* cloud 2 */
 .cloud2 {
-  width: 280px;
-  height: 85px;
-  top: 35%;
+  width: 220px;
+  height: 90px;
+  top: 38%;
   right: 12%;
 }
 
-/* cloud 3 */
 .cloud3 {
-  width: 320px;
-  height: 95px;
-  bottom: 18%;
-  left: 22%;
+  width: 260px;
+  height: 100px;
+  bottom: 15%;
+  left: 25%;
 }
 
-/* TEXT */
+/* ===================== TEXT (PIXAR CLEAN STYLE) ===================== */
+
 .construction-content {
   position: relative;
   z-index: 3;
   color: white;
+  text-align: center;
   padding: 20px;
-  text-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
 .construction-content h1 {
-  font-family: "Cinzel", serif;
-  letter-spacing: 6px;
-  font-size: 2.4rem;
+  font-size: 2.2rem;
+  font-weight: 500;
+  letter-spacing: 3px;
   margin: 0;
+  text-transform: uppercase;
 }
 
 .construction-content p {
   margin-top: 12px;
-  opacity: 0.95;
   font-size: 1rem;
   font-weight: 300;
+  opacity: 0.95;
 }
 
 /* ===================== TOP BAR ===================== */
@@ -150,15 +143,13 @@ body {
 }
 
 .logo {
-  font-family: "Cinzel", serif;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 600;
-  letter-spacing: 8px;
+  letter-spacing: 6px;
 }
 
 .desktop-nav {
   display: flex;
-  align-items: center;
   gap: 42px;
 }
 
@@ -167,7 +158,6 @@ body {
   color: #111;
   font-size: 12px;
   letter-spacing: 2px;
-  font-weight: 400;
 }
 
 /* ===================== HERO ===================== */
@@ -186,55 +176,12 @@ body {
   object-fit: cover;
 }
 
-/* ===================== CONTENT ===================== */
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 60px;
-}
-
-.grid {
-  margin-top: 40px;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 35px;
-}
-
-.card {
-  position: relative;
-  overflow: hidden;
-  background: #000;
-  height: 430px;
-}
-
-.card:nth-of-type(1) { grid-column: 1 / span 7; }
-.card:nth-of-type(2) { grid-column: 8 / span 5; }
-.card:nth-of-type(3) { grid-column: 1 / -1; height: 520px; }
-
-.card-media {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.card-info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 22px;
-  background: linear-gradient(to top, rgba(0,0,0,0.88), rgba(0,0,0,0.35), transparent);
-  color: white;
-}
-
-/* ===================== MOBILE FIX ===================== */
+/* ===================== MOBILE ===================== */
 
 @media (max-width: 768px) {
 
   .construction-content h1 {
-    font-size: 1.6rem;
-    letter-spacing: 4px;
+    font-size: 1.5rem;
   }
 
   .construction-content p {
@@ -242,7 +189,7 @@ body {
   }
 
   .cloud {
-    transform: scale(0.6);
+    transform: scale(0.65);
   }
 
   .topbar {
@@ -255,22 +202,6 @@ body {
 
   .hero-card {
     height: 420px;
-  }
-
-  .container {
-    padding: 0 20px;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .card {
-    height: 280px;
-  }
-
-  .card:nth-of-type(3) {
-    height: 320px;
   }
 }
 
@@ -318,11 +249,6 @@ body {
   <video class="card-media" autoplay muted loop playsinline>
     <source src="./train-animatic.mp4" type="video/mp4">
   </video>
-
-  <div class="card-info">
-    <h2>TIME'S ALMOST UP</h2>
-    <p>Animatic / Film Concept</p>
-  </div>
 </div>
 
 </div>
