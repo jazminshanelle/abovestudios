@@ -149,17 +149,18 @@ body {
   opacity: 1;
 }
 
-/* ===================== HERO (FIXED ONLY HERE) ===================== */
+/* ===================== HERO (FIXED PROPER PIXAR STYLE) ===================== */
 
 .hero-card {
   position: relative;
   overflow: hidden;
   background: #000;
 
-  width: 100%;
-  margin: 0;
+  /* 🔥 PIXAR FIX: match centered layout like container */
+  max-width: 1200px;
+  margin: 0 auto;   /* THIS is what prevents edge touching */
 
-  /* ✅ FIX: slightly taller than 520px bottom card */
+  /* slightly taller than cards */
   height: 640px;
 
   box-shadow: 0 10px 30px rgba(0,0,0,0.12);
@@ -192,18 +193,9 @@ body {
   box-shadow: 0 10px 30px rgba(0,0,0,0.12);
 }
 
-.card:nth-of-type(1) {
-  grid-column: 1 / span 7;
-}
-
-.card:nth-of-type(2) {
-  grid-column: 8 / span 5;
-}
-
-.card:nth-of-type(3) {
-  grid-column: 1 / -1;
-  height: 520px;
-}
+.card:nth-of-type(1) { grid-column: 1 / span 7; }
+.card:nth-of-type(2) { grid-column: 8 / span 5; }
+.card:nth-of-type(3) { grid-column: 1 / -1; height: 520px; }
 
 /* ===================== MEDIA ===================== */
 
@@ -310,29 +302,17 @@ body {
   .hamburger { display: block; }
   .desktop-nav { display: none; }
 
-  .container {
-    padding: 0 20px;
-  }
+  .container { padding: 0 20px; }
 
-  .grid {
-    grid-template-columns: 1fr;
-  }
+  .grid { grid-template-columns: 1fr; }
 
-  .card {
-    height: 280px;
-  }
+  .card { height: 280px; }
 
-  .card:nth-of-type(3) {
-    height: 320px;
-  }
+  .card:nth-of-type(3) { height: 320px; }
 
-  .hero-card {
-    height: 420px;
-  }
+  .hero-card { height: 420px; }
 
-  .topbar {
-    padding: 22px 20px;
-  }
+  .topbar { padding: 22px 20px; }
 }
 
 </style>
