@@ -30,7 +30,7 @@ body {
   overflow: hidden;
 }
 
-/* 🌌 SKY + GALAXY BACKGROUND */
+/* 🌌 SKY BACKGROUND */
 .construction-screen::before {
   content: "";
   position: absolute;
@@ -44,19 +44,23 @@ body {
   );
 }
 
-/* ✨ STAR FIELD (STATIC GALAXY) */
+/* ✨ FIXED STAR GALAXY (NOW VISIBLE) */
 .construction-screen::after {
   content: "";
   position: absolute;
   inset: 0;
+
   background-image:
-    radial-gradient(1px 1px at 15% 20%, rgba(255,255,255,0.9), transparent),
-    radial-gradient(1px 1px at 35% 60%, rgba(255,255,255,0.7), transparent),
-    radial-gradient(1px 1px at 55% 30%, rgba(255,255,255,0.8), transparent),
-    radial-gradient(1px 1px at 75% 50%, rgba(255,255,255,0.6), transparent),
-    radial-gradient(1px 1px at 85% 25%, rgba(255,255,255,0.7), transparent),
-    radial-gradient(1px 1px at 25% 80%, rgba(255,255,255,0.5), transparent);
-  opacity: 0.65;
+    radial-gradient(2px 2px at 10% 15%, rgba(255,255,255,0.9), transparent),
+    radial-gradient(1.5px 1.5px at 20% 60%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(2px 2px at 35% 30%, rgba(255,255,255,0.9), transparent),
+    radial-gradient(1px 1px at 45% 75%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(2px 2px at 60% 40%, rgba(255,255,255,0.85), transparent),
+    radial-gradient(1.5px 1.5px at 70% 20%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 80% 65%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(2px 2px at 90% 30%, rgba(255,255,255,0.85), transparent);
+
+  opacity: 0.9;
 }
 
 /* ☁️ CLOUD LAYER */
@@ -66,7 +70,7 @@ body {
   opacity: 0.95;
 }
 
-/* base cloud */
+/* CLOUD BASE */
 .cloud {
   position: absolute;
   background: rgba(255,255,255,0.92);
@@ -272,7 +276,7 @@ body {
 
 <body>
 
-<!-- ===================== UNDER CONSTRUCTION OVERLAY ===================== -->
+<!-- UNDER CONSTRUCTION -->
 <div class="construction-screen">
 
   <div class="cloud-layer">
@@ -288,7 +292,7 @@ body {
 
 </div>
 
-<!-- YOUR SITE (BLOCKED) -->
+<!-- SITE -->
 <div class="main-site">
 
 <div class="topbar">
