@@ -1,82 +1,384 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+body {
+  margin: 0;
+  background: #f7f7f4;
+  color: #111;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ===================== OVERLAY ===================== */
+
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  z-index: 9998;
+}
+
+.menu-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ===================== TOP BAR ===================== */
+
+.topbar {
+  padding: 26px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 10000;
+}
+
+.logo {
+  font-family: 'Cinzel', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 10px;
+}
+
+/* ===================== DESKTOP NAV ===================== */
+
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 42px;
+}
+
+.desktop-nav a {
+  text-decoration: none;
+  color: #111;
+  font-size: 12px;
+  letter-spacing: 2px;
+  transition: opacity 0.25s ease;
+}
+
+.desktop-nav a:hover {
+  opacity: 0.5;
+}
+
+/* ===================== HAMBURGER ===================== */
+
+.hamburger {
+  width: 28px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+  z-index: 10001;
+  display: none;
+}
+
+.hamburger span {
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: #111;
+  left: 0;
+  transition: 0.35s ease;
+}
+
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { top: 9px; }
+.hamburger span:nth-child(3) { top: 18px; }
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 9px;
+  background: white;
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 9px;
+  background: white;
+}
+
+/* ===================== MOBILE MENU ===================== */
+
+.menu {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.35s ease;
+}
+
+.menu.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.menu a {
+  display: block;
+  margin: 18px 0;
+  font-size: 1.5rem;
+  letter-spacing: 3px;
+  color: white;
+  text-decoration: none;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: 0.4s ease;
+}
+
+.menu.active a {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ===================== PIXAR GRID ===================== */
+
+.grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 35px;
+  padding: 0 60px;
+}
+
+/* ===================== HERO ===================== */
+
+.hero-card {
+  grid-column: 1 / -1;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+  height: 560px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+/* ===================== COLLAGE CARDS ===================== */
+
+.card {
+  position: relative;
+  overflow: hidden;
+  background: #000;
+  height: 430px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+.card:nth-of-type(2) {
+  grid-column: 1 / span 7;
+}
+
+.card:nth-of-type(3) {
+  grid-column: 8 / span 5;
+}
+
+.card:nth-of-type(4) {
+  grid-column: 1 / -1;
+  height: 520px;
+}
+
+/* ===================== MEDIA ===================== */
+
+.card-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* WORLD */
+.world-image {
+  object-position: right bottom;
+  transform: scale(2.88) translateX(10.6%);
+  transform-origin: bottom right;
+}
+
+/* CHARACTERS */
+.characters-image {
+  object-position: 0% 0%;
+  transform: scale(1.85);
+  transform-origin: left top;
+}
+
+/* VISUAL */
+.visual-image {
+  object-position: 50% 60%;
+}
+
+/* ===================== TEXT ===================== */
+
+.card-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 22px;
+  background: linear-gradient(to top, rgba(0,0,0,0.88), rgba(0,0,0,0.35), transparent);
+  color: white;
+}
+
+/* ===================== FOOTER (PIXAR STYLE FIXED) ===================== */
+
+.footer-wrap {
+  margin-top: 120px;
+  background: #f7f7f4;
+  border-top: 1px solid #ddd;
+}
+
+/* TOP FOOTER GRID */
+.footer-top {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 40px;
+  padding: 70px 60px;
+}
+
+.footer-col h4 {
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.footer-col a {
+  display: block;
+  font-size: 11px;
+  color: #111;
+  text-decoration: none;
+  margin: 6px 0;
+  opacity: 0.75;
+}
+
+.footer-col a:hover {
+  opacity: 1;
+}
+
+/* SOCIAL ICONS */
+.social {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.social a {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #111;
+  border-radius: 50%;
+  color: #111;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.social a:hover {
+  background: #111;
+  color: white;
+}
+
+/* BOTTOM FOOTER */
+.footer-bottom {
+  text-align: center;
+  padding: 30px 20px 50px;
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+.footer-bottom a {
+  color: #111;
+  text-decoration: none;
+  margin: 0 8px;
+}
+
+/* ===================== MOBILE ===================== */
+
+@media (max-width: 768px) {
+
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    padding: 50px 20px;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- YOUR SITE CONTENT ABOVE (UNCHANGED) -->
+
 <div class="footer-wrap">
 
-  <!-- ===================== TOP FOOTER (PIXAR STYLE GRID) ===================== -->
   <div class="footer-top">
 
-    <div class="footer-grid">
-
-      <div class="footer-col">
-        <h4>FILMS</h4>
-        <a href="#">Features</a>
-        <a href="#">Shorts</a>
-        <a href="#">Series</a>
-        <a href="#">SparkShorts</a>
-        <a href="#">Documentaries</a>
-      </div>
-
-      <div class="footer-col">
-        <h4>TECH</h4>
-        <a href="#">Tech Studio</a>
-        <a href="#">Render Pipeline</a>
-        <a href="#">Software R&D</a>
-        <a href="#">Tools</a>
-      </div>
-
-      <div class="footer-col">
-        <h4>CAREERS</h4>
-        <a href="#">Open Roles</a>
-        <a href="#">Internships</a>
-        <a href="#">Life At Studio</a>
-      </div>
-
-      <div class="footer-col">
-        <h4>MORE</h4>
-        <a href="#">About</a>
-        <a href="#">Events</a>
-        <a href="#">FAQ</a>
-        <a href="#">Contact</a>
-      </div>
-
+    <div class="footer-col">
+      <h4>FILMS</h4>
+      <a href="#">Features</a>
+      <a href="#">Shorts</a>
+      <a href="#">Series</a>
     </div>
 
-    <!-- SOCIAL ICONS -->
-    <div class="footer-social">
+    <div class="footer-col">
+      <h4>UNIVERSE</h4>
+      <a href="#">World</a>
+      <a href="#">Characters</a>
+      <a href="#">Lore</a>
+    </div>
 
-      <a href="https://instagram.com" target="_blank">
-        <svg viewBox="0 0 24 24"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5zm0 2A2.5 2.5 0 1 1 9.5 12 2.5 2.5 0 0 1 12 9.5zM17.5 6a1 1 0 1 0 1 1 1 1 0 0 0-1-1z"/></svg>
-      </a>
+    <div class="footer-col">
+      <h4>ABOUT</h4>
+      <a href="#">Studio</a>
+      <a href="#">Story</a>
+      <a href="#">Contact</a>
+    </div>
 
-      <a href="https://youtube.com" target="_blank">
-        <svg viewBox="0 0 24 24"><path d="M10 15l5.2-3L10 9v6zm12-3c0 5-1 7-6 7H8c-5 0-6-2-6-7s1-7 6-7h8c5 0 6 2 6 7z"/></svg>
-      </a>
+    <div class="footer-col">
+      <h4>SOCIAL</h4>
+      <div class="social">
+        <a href="https://instagram.com" target="_blank">IG</a>
+        <a href="https://youtube.com" target="_blank">YT</a>
+        <a href="https://tiktok.com" target="_blank">TT</a>
+        <a href="https://x.com" target="_blank">X</a>
+      </div>
+    </div>
 
-      <a href="https://x.com" target="_blank">
-        <svg viewBox="0 0 24 24"><path d="M18.9 2H22l-7.5 8.6L23 22h-6.8l-5.3-6.4L5.4 22H2l8-9.2L1 2h6.9l4.8 5.8L18.9 2z"/></svg>
-      </a>
-
-      <a href="https://tiktok.com" target="_blank">
-        <svg viewBox="0 0 24 24"><path d="M16 3c.5 2.8 2.2 4.5 5 5v4c-2.1 0-3.9-.7-5-1.8V16c0 3.3-2.7 6-6 6S4 19.3 4 16s2.7-6 6-6c.3 0 .7 0 1 .1v4.1c-.3-.1-.6-.2-1-.2-1.7 0-3 1.3-3 3s1.3 3 3 3 3-1.3 3-3V3h3z"/></svg>
-      </a>
-
+    <div class="footer-col">
+      <h4>LEGAL</h4>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms</a>
+      <a href="#">Cookies</a>
     </div>
 
   </div>
 
-  <!-- ===================== BOTTOM LEGAL BAR ===================== -->
   <div class="footer-bottom">
-
-    <div class="legal-links">
-      <a href="#">Do Not Sell or Share My Personal Information</a>
-      <a href="#">Privacy Policy</a>
-      <a href="#">Your US State Privacy Rights</a>
-      <a href="#">Children's Online Privacy Policy</a>
-      <a href="#">Interest Based Ads</a>
-    </div>
-
-    <div class="copyright">
-      © 2026 Drawn Above
-    </div>
-
+    Do Not Sell or Share My Personal Information |
+    Privacy Policy |
+    Your US State Privacy Rights |
+    © 2026 Drawn Above
   </div>
 
 </div>
+
+</body>
+</html>
