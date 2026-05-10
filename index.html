@@ -17,24 +17,6 @@ body {
   overflow-x: hidden;
 }
 
-/* ===================== OVERLAY ===================== */
-
-.menu-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.35);
-  backdrop-filter: blur(10px);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.35s ease;
-  z-index: 9998;
-}
-
-.menu-overlay.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
 /* ===================== TOP BAR ===================== */
 
 .topbar {
@@ -42,8 +24,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
-  z-index: 10000;
 }
 
 .logo {
@@ -53,103 +33,12 @@ body {
   letter-spacing: 10px;
 }
 
-/* ===================== DESKTOP NAV ===================== */
+/* ===================== HERO (PIXAR STYLE FIX) ===================== */
 
-.desktop-nav {
-  display: flex;
-  align-items: center;
-  gap: 42px;
+.hero-wrap {
+  padding: 0 60px; /* THIS is the key Pixar feel */
+  margin-top: 20px;
 }
-
-.desktop-nav a {
-  text-decoration: none;
-  color: #111;
-  font-size: 12px;
-  letter-spacing: 2px;
-  transition: opacity 0.25s ease;
-}
-
-.desktop-nav a:hover {
-  opacity: 0.5;
-}
-
-/* ===================== HAMBURGER ===================== */
-
-.hamburger {
-  width: 28px;
-  height: 20px;
-  position: relative;
-  cursor: pointer;
-  z-index: 10001;
-  display: none;
-}
-
-.hamburger span {
-  position: absolute;
-  height: 2px;
-  width: 100%;
-  background: #111;
-  left: 0;
-  transition: 0.35s ease;
-}
-
-.hamburger span:nth-child(1) { top: 0; }
-.hamburger span:nth-child(2) { top: 9px; }
-.hamburger span:nth-child(3) { top: 18px; }
-
-.hamburger.active span:nth-child(1) {
-  transform: rotate(45deg);
-  top: 9px;
-  background: white;
-}
-
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg);
-  top: 9px;
-  background: white;
-}
-
-/* ===================== MOBILE MENU ===================== */
-
-.menu {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  text-align: center;
-  z-index: 9999;
-  opacity: 0;
-  pointer-events: none;
-  transition: 0.35s ease;
-}
-
-.menu.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.menu a {
-  display: block;
-  margin: 18px 0;
-  font-size: 1.5rem;
-  letter-spacing: 3px;
-  color: white;
-  text-decoration: none;
-  transform: translateY(20px);
-  opacity: 0;
-  transition: 0.4s ease;
-}
-
-.menu.active a {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-/* ===================== HERO (FULL WIDTH LIKE PIXAR) ===================== */
 
 .hero-card {
   width: 100%;
@@ -158,23 +47,22 @@ body {
   background: #000;
   height: 560px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  border-radius: 2px;
 }
 
-/* ===================== CONTENT CONTAINER (PIXAR FIX) ===================== */
+/* ===================== GRID CONTAINER (TIGHTER LIKE PIXAR) ===================== */
 
 .container {
-  max-width: 1200px;
+  max-width: 1100px; /* tighter than before */
   margin: 0 auto;
-  padding: 0 60px;
+  padding: 0 40px;
 }
-
-/* ===================== GRID ===================== */
 
 .grid {
   margin-top: 40px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: 35px;
+  gap: 30px;
 }
 
 /* ===================== CARDS ===================== */
@@ -183,21 +71,22 @@ body {
   position: relative;
   overflow: hidden;
   background: #000;
-  height: 430px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  height: 420px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.10);
+  border-radius: 2px;
 }
 
-.card:nth-of-type(1) { /* world */
+.card:nth-of-type(1) {
   grid-column: 1 / span 7;
 }
 
-.card:nth-of-type(2) { /* characters */
+.card:nth-of-type(2) {
   grid-column: 8 / span 5;
 }
 
-.card:nth-of-type(3) { /* visual */
+.card:nth-of-type(3) {
   grid-column: 1 / -1;
-  height: 520px;
+  height: 500px;
 }
 
 /* ===================== MEDIA ===================== */
@@ -211,13 +100,13 @@ body {
 
 .world-image {
   object-position: right bottom;
-  transform: scale(2.88) translateX(10.6%);
+  transform: scale(2.7) translateX(10%);
   transform-origin: bottom right;
 }
 
 .characters-image {
   object-position: 0% 0%;
-  transform: scale(1.85);
+  transform: scale(1.8);
   transform-origin: left top;
 }
 
@@ -249,11 +138,10 @@ body {
   font-size: 14px;
 }
 
-/* ===================== FOOTER (PIXAR STYLE FIX) ===================== */
+/* ===================== FOOTER (PIXAR STYLE) ===================== */
 
 .footer-wrap {
   margin-top: 100px;
-  width: 100%;
 }
 
 .footer-top {
@@ -262,9 +150,9 @@ body {
 }
 
 .footer-inner {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 0 60px;
+  padding: 0 40px;
   text-align: center;
 }
 
@@ -281,11 +169,6 @@ body {
   font-size: 11px;
   letter-spacing: 1.8px;
   opacity: 0.72;
-  transition: opacity 0.25s ease;
-}
-
-.footer-links a:hover {
-  opacity: 1;
 }
 
 .footer-bottom {
@@ -294,7 +177,6 @@ body {
   padding: 30px 20px 42px;
   font-size: 11px;
   line-height: 2.1;
-  color: #111;
   opacity: 0.62;
 }
 
@@ -302,8 +184,13 @@ body {
 
 @media (max-width: 768px) {
 
-  .hamburger { display: block; }
-  .desktop-nav { display: none; }
+  .hero-wrap {
+    padding: 0 20px;
+  }
+
+  .hero-card {
+    height: 420px;
+  }
 
   .container {
     padding: 0 20px;
@@ -321,10 +208,6 @@ body {
     height: 320px;
   }
 
-  .hero-card {
-    height: 420px;
-  }
-
   .topbar {
     padding: 22px 20px;
   }
@@ -336,43 +219,25 @@ body {
 
 <body>
 
-<div class="menu-overlay" id="overlay" onclick="toggleMenu()"></div>
-
-<div class="menu" id="menu">
-  <a href="#">FILMS</a>
-  <a href="#">CONCEPTS</a>
-  <a href="#">UNIVERSE</a>
-  <a href="#">ABOUT</a>
-</div>
-
 <div class="topbar">
   <div class="logo">ABOVE</div>
+</div>
 
-  <div class="desktop-nav">
-    <a href="#">FILMS</a>
-    <a href="#">CONCEPTS</a>
-    <a href="#">UNIVERSE</a>
-    <a href="#">ABOUT</a>
-  </div>
+<!-- HERO (slightly inset like Pixar) -->
+<div class="hero-wrap">
+  <div class="hero-card">
+    <video class="card-media" autoplay muted loop playsinline>
+      <source src="./train-animatic.mp4" type="video/mp4">
+    </video>
 
-  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
+    <div class="card-info">
+      <h2>TIME'S ALMOST UP</h2>
+      <p>Animatic / Film Concept</p>
+    </div>
   </div>
 </div>
 
-<!-- HERO FULL WIDTH -->
-<div class="hero-card">
-  <video class="card-media" autoplay muted loop playsinline>
-    <source src="./train-animatic.mp4" type="video/mp4">
-  </video>
-
-  <div class="card-info">
-    <h2>TIME'S ALMOST UP</h2>
-    <p>Animatic / Film Concept</p>
-  </div>
-</div>
-
-<!-- PIXAR STYLE CENTERED CONTENT -->
+<!-- CONTENT -->
 <div class="container">
 
   <div class="grid">
@@ -405,7 +270,7 @@ body {
 
 </div>
 
-<!-- FOOTER FULL WIDTH -->
+<!-- FOOTER -->
 <div class="footer-wrap">
 
   <div class="footer-top">
@@ -420,25 +285,10 @@ body {
   </div>
 
   <div class="footer-bottom">
-    <div><a href="#">Do Not Sell or Share My Personal Information</a></div>
-    <div>
-      <a href="#">Privacy Policy</a> |
-      <a href="#">Your US State Privacy Rights</a> |
-      <a href="#">Children's Online Privacy Policy</a> |
-      <a href="#">Interest Based Ads</a>
-    </div>
-    <div>© 2026 Drawn Above</div>
+    © 2026 Drawn Above
   </div>
 
 </div>
-
-<script>
-function toggleMenu() {
-  document.getElementById("menu").classList.toggle("active");
-  document.getElementById("overlay").classList.toggle("active");
-  document.getElementById("hamburger").classList.toggle("active");
-}
-</script>
 
 </body>
 </html>
