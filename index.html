@@ -5,8 +5,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="icon" type="image/png" href="featherlogo.png">
-
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -99,6 +97,22 @@ body {
 .hamburger span:nth-child(2) { top: 9px; }
 .hamburger span:nth-child(3) { top: 18px; }
 
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 9px;
+  background: white;
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 9px;
+  background: white;
+}
+
 /* ===================== MOBILE MENU ===================== */
 
 .menu {
@@ -135,55 +149,21 @@ body {
   opacity: 1;
 }
 
-/* ===================== HERO (FIXED PROPER PIXAR STYLE) ===================== */
+/* ===================== HERO (PIXAR FIXED PROPERLY) ===================== */
 
 .hero-card {
   position: relative;
-  background: #000;
-  width: 100%;
   overflow: hidden;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.25);
-}
+  background: #000;
 
-/* 👇 THIS is the alignment fix (same width as topbar + grid) */
-.hero-inner {
+  /* 🔥 PIXAR STYLE: centered like your container */
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 60px;
-  position: relative;
-  height: 92vh;
-  min-height: 780px;
-  max-height: 1050px;
-}
 
-/* video fills inner container */
-.hero-inner video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
+  /* keep it slightly taller than cards */
+  height: 640px;
 
-/* hero text overlays inside aligned container */
-.hero-text {
-  position: absolute;
-  bottom: 0;
-  left: 60px;
-  right: 60px;
-  padding-bottom: 22px;
-  color: white;
-}
-
-.hero-text h2 {
-  margin: 0;
-  font-size: 2rem;
-  letter-spacing: 2px;
-}
-
-.hero-text p {
-  margin-top: 8px;
-  opacity: 0.8;
-  font-size: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
 }
 
 /* ===================== CONTENT CONTAINER ===================== */
@@ -203,16 +183,30 @@ body {
   gap: 35px;
 }
 
+/* ===================== CARDS ===================== */
+
 .card {
   position: relative;
   overflow: hidden;
   background: #000;
   height: 430px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
 }
 
-.card:nth-of-type(1) { grid-column: 1 / span 7; }
-.card:nth-of-type(2) { grid-column: 8 / span 5; }
-.card:nth-of-type(3) { grid-column: 1 / -1; height: 520px; }
+.card:nth-of-type(1) {
+  grid-column: 1 / span 7;
+}
+
+.card:nth-of-type(2) {
+  grid-column: 8 / span 5;
+}
+
+.card:nth-of-type(3) {
+  grid-column: 1 / -1;
+  height: 520px;
+}
+
+/* ===================== MEDIA ===================== */
 
 .card-media {
   width: 100%;
@@ -220,6 +214,24 @@ body {
   object-fit: cover;
   display: block;
 }
+
+.world-image {
+  object-position: right bottom;
+  transform: scale(2.88) translateX(10.6%);
+  transform-origin: bottom right;
+}
+
+.characters-image {
+  object-position: 0% 0%;
+  transform: scale(1.85);
+  transform-origin: left top;
+}
+
+.visual-image {
+  object-position: 50% 60%;
+}
+
+/* ===================== TEXT ===================== */
 
 .card-info {
   position: absolute;
@@ -234,11 +246,21 @@ body {
 .card-info h2 {
   margin: 0;
   font-size: 2rem;
+  letter-spacing: 2px;
 }
 
-/* ===================== FOOTER (UNCHANGED) ===================== */
+.card-info p {
+  margin-top: 8px;
+  opacity: 0.8;
+  font-size: 14px;
+}
 
-.footer-wrap { margin-top: 100px; width: 100%; }
+/* ===================== FOOTER ===================== */
+
+.footer-wrap {
+  margin-top: 100px;
+  width: 100%;
+}
 
 .footer-top {
   background: #efefec;
@@ -252,11 +274,33 @@ body {
   text-align: center;
 }
 
+.footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #111;
+  font-size: 11px;
+  letter-spacing: 1.8px;
+  opacity: 0.72;
+  transition: opacity 0.25s ease;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+}
+
 .footer-bottom {
   background: #f7f7f4;
   text-align: center;
   padding: 30px 20px 42px;
   font-size: 11px;
+  line-height: 2.1;
+  color: #111;
   opacity: 0.62;
 }
 
@@ -267,7 +311,7 @@ body {
   .hamburger { display: block; }
   .desktop-nav { display: none; }
 
-  .container, .hero-inner {
+  .container {
     padding: 0 20px;
   }
 
@@ -275,16 +319,21 @@ body {
     grid-template-columns: 1fr;
   }
 
-  .hero-inner {
-    height: 420px;
-    min-height: auto;
+  .card {
+    height: 280px;
   }
-}
 
-/* ===================== ALIGNMENT FIX (PIXAR STYLE) ===================== */
-.topbar {
-  max-width: 1200px;
-  margin: 0 auto;
+  .card:nth-of-type(3) {
+    height: 320px;
+  }
+
+  .hero-card {
+    height: 420px;
+  }
+
+  .topbar {
+    padding: 22px 20px;
+  }
 }
 
 </style>
@@ -317,38 +366,44 @@ body {
   </div>
 </div>
 
+<!-- HERO FULL WIDTH (NOW PIXAR-CENTERED) -->
 <div class="hero-card">
+  <video class="card-media" autoplay muted loop playsinline>
+    <source src="./train-animatic.mp4" type="video/mp4">
+  </video>
 
-  <div class="hero-inner">
-
-    <video autoplay muted loop playsinline>
-      <source src="./train-animatic.mp4" type="video/mp4">
-    </video>
-
-    <div class="hero-text">
-      <h2>TIME'S ALMOST UP</h2>
-      <p>Animatic / Film Concept</p>
-    </div>
-
+  <div class="card-info">
+    <h2>TIME'S ALMOST UP</h2>
+    <p>Animatic / Film Concept</p>
   </div>
 </div>
 
+<!-- REST UNCHANGED -->
 <div class="container">
   <div class="grid">
 
     <div class="card">
-      <img class="card-media" src="./world.png">
-      <div class="card-info"><h2>WORLD ARCHIVE</h2></div>
+      <img class="card-media world-image" src="./world.png">
+      <div class="card-info">
+        <h2>WORLD ARCHIVE</h2>
+        <p>Animatic Sequence</p>
+      </div>
     </div>
 
     <div class="card">
-      <img class="card-media" src="./characters.png">
-      <div class="card-info"><h2>CHARACTERS</h2></div>
+      <img class="card-media characters-image" src="./characters.png">
+      <div class="card-info">
+        <h2>CHARACTERS</h2>
+        <p>Character Designs</p>
+      </div>
     </div>
 
     <div class="card">
-      <img class="card-media" src="./holyfire.png">
-      <div class="card-info"><h2>VISUAL TESTS</h2></div>
+      <img class="card-media visual-image" src="./holyfire.png">
+      <div class="card-info">
+        <h2>VISUAL TESTS</h2>
+        <p>Lighting / Experiments</p>
+      </div>
     </div>
 
   </div>
@@ -367,6 +422,13 @@ body {
   </div>
 
   <div class="footer-bottom">
+    <div><a href="#">Do Not Sell or Share My Personal Information</a></div>
+    <div>
+      <a href="#">Privacy Policy</a> |
+      <a href="#">Your US State Privacy Rights</a> |
+      <a href="#">Children's Online Privacy Policy</a> |
+      <a href="#">Interest Based Ads</a>
+    </div>
     <div>© 2026 Drawn Above</div>
   </div>
 </div>
