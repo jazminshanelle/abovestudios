@@ -1,4 +1,4 @@
-please insert all of this in for me please : "<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -152,16 +152,17 @@ body {
   opacity: 1;
 }
 
-/* ===================== HERO (PIXAR CINEMA SCALE FIX) ===================== */
+/* ===================== HERO (FIXED PIXAR ALIGNMENT) ===================== */
 
 .hero-card {
   position: relative;
   overflow: hidden;
   background: #000;
 
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  
+  /* ✅ FIXED: now aligns perfectly with topbar + container */
+  max-width: 1200px;
+  margin: 0 auto;
+
   height: 92vh;
   min-height: 780px;
   max-height: 1050px;
