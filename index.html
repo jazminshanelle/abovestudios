@@ -67,7 +67,6 @@ body {
   background: #111;
   left: 0;
   transition: 0.35s ease;
-  border-radius: 2px;
 }
 
 .hamburger span:nth-child(1) { top: 0; }
@@ -126,30 +125,30 @@ body {
   opacity: 1;
 }
 
-/* ===================== 🔥 PIXAR-STYLE STACKED LAYOUT FIX ===================== */
+/* ===================== PIXAR STACKED LAYOUT ===================== */
 .grid {
   margin-top: 60px;
 
   display: flex;
-  flex-direction: column;   /* KEY PIXAR FIX */
-  gap: 60px;                /* big cinematic spacing */
+  flex-direction: column;
+  gap: 70px;
 
   padding: 0 60px;
-  position: relative;
-  z-index: 2;
 }
 
-/* BIG HERO STYLE CARDS */
+/* 🔥 PIXAR FIX: SHARP EDGES */
 .card {
   position: relative;
   overflow: hidden;
-  border-radius: 12px;
   background: #000;
 
-  height: 420px; /* Pixar-style large panels */
+  border-radius: 0px; /* IMPORTANT: sharp edges */
+
+  height: 440px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
 }
 
-/* MEDIA */
 .card-media {
   width: 100%;
   height: 100%;
@@ -176,18 +175,18 @@ body {
   object-position: 50% 58%;
 }
 
-/* ===================== FIXED TEXT OVERLAY ===================== */
+/* ===================== TEXT OVERLAY ===================== */
 .card-info {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 20px;
+  padding: 22px;
   z-index: 5;
 
   background: linear-gradient(
     to top,
-    rgba(0,0,0,0.85),
+    rgba(0,0,0,0.88),
     rgba(0,0,0,0.35),
     transparent
   );
@@ -195,7 +194,7 @@ body {
   color: white;
 }
 
-/* ===================== PIXAR-STYLE FOOTER ===================== */
+/* ===================== FOOTER ===================== */
 .footer-wrap {
   margin-top: 80px;
   background: #e6e6e6;
@@ -248,7 +247,7 @@ body {
   }
 
   .card {
-    height: 280px;
+    height: 300px;
   }
 
   .footer-grid {
@@ -286,7 +285,7 @@ body {
   </div>
 </div>
 
-<!-- GRID (PIXAR STACKED) -->
+<!-- GRID -->
 <div class="grid">
 
   <div class="card">
@@ -327,7 +326,6 @@ body {
 
 <!-- FOOTER -->
 <div class="footer-wrap">
-
   <div class="footer-grid">
 
     <div class="footer-col">
@@ -350,7 +348,6 @@ body {
   <div class="footer-bottom">
     © 2026 Drawn Above, Inc.
   </div>
-
 </div>
 
 <script>
