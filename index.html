@@ -5,7 +5,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Pixar-style modern cinematic font system -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
@@ -30,7 +29,7 @@ body {
   z-index: 999999;
 }
 
-/* SKY GRADIENT */
+/* SKY */
 .construction-screen::before {
   content: "";
   position: absolute;
@@ -44,11 +43,12 @@ body {
   );
 }
 
-/* 🌌 PIXAR-STYLE GLOWING SKY + STARS */
+/* STARS + GLOW */
 .construction-screen::after {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: 1;
 
   background:
     radial-gradient(circle at 50% 40%, rgba(140,190,255,0.25), transparent 60%),
@@ -64,49 +64,55 @@ body {
   opacity: 0.95;
 }
 
-/* ===================== PIXAR CLOUDS ===================== */
+/* ===================== PIXAR CLOUDS (FIXED VISIBILITY) ===================== */
 
 .cloud-layer {
   position: absolute;
   inset: 0;
   z-index: 2;
+  pointer-events: none;
 }
 
-/* soft painterly cloud */
+/* base cloud shape */
 .cloud {
   position: absolute;
-  background: rgba(255,255,255,0.95);
+  background: rgba(255,255,255,0.92);
   border-radius: 50%;
   filter: blur(1px);
+
+  /* KEY FIX: makes clouds visible on bright sky */
   box-shadow:
+    0 8px 20px rgba(0,0,0,0.15),
     40px 10px 0 rgba(255,255,255,0.9),
     80px 20px 0 rgba(255,255,255,0.85),
     120px 0px 0 rgba(255,255,255,0.9);
+  
+  opacity: 0.95;
 }
 
-/* cloud placements (Pixar floating style) */
+/* cloud positions */
 .cloud1 {
   width: 180px;
   height: 80px;
   top: 18%;
-  left: 10%;
+  left: 8%;
 }
 
 .cloud2 {
   width: 220px;
   height: 90px;
-  top: 38%;
-  right: 12%;
+  top: 40%;
+  right: 10%;
 }
 
 .cloud3 {
   width: 260px;
   height: 100px;
-  bottom: 15%;
-  left: 25%;
+  bottom: 18%;
+  left: 20%;
 }
 
-/* ===================== TEXT (PIXAR CLEAN STYLE) ===================== */
+/* ===================== TEXT ===================== */
 
 .construction-content {
   position: relative;
@@ -121,7 +127,6 @@ body {
   font-weight: 500;
   letter-spacing: 3px;
   margin: 0;
-  text-transform: uppercase;
 }
 
 .construction-content p {
@@ -176,21 +181,22 @@ body {
   object-fit: cover;
 }
 
-/* ===================== MOBILE ===================== */
+/* ===================== MOBILE FIX (IMPORTANT) ===================== */
 
 @media (max-width: 768px) {
 
   .construction-content h1 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   .construction-content p {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 
-  .cloud {
-    transform: scale(0.65);
-  }
+  /* FIX: clouds reposition so they don’t cover text */
+  .cloud1 { top: 10%; left: -20px; transform: scale(0.7); }
+  .cloud2 { top: 45%; right: -30px; transform: scale(0.7); }
+  .cloud3 { bottom: 12%; left: -40px; transform: scale(0.7); }
 
   .topbar {
     padding: 20px;
