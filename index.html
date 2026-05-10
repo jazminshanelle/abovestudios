@@ -152,24 +152,23 @@ body {
   opacity: 1;
 }
 
-/* ===================== HERO (PIXAR + BIG CINEMATIC FIX) ===================== */
+/* ===================== HERO (PIXAR CINEMA SCALE FIX) ===================== */
 
 .hero-card {
   position: relative;
   overflow: hidden;
   background: #000;
 
-  /* Pixar-style centered container */
-  max-width: 1200px;
-  margin: 20px auto 0 auto;
+  /* 🔥 BREAK PIXAR CONTAINER LIMIT ONLY FOR HERO */
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  
+  /* BIG cinematic height */
+  height: 92vh;
+  min-height: 780px;
+  max-height: 1050px;
 
-  /* 🔥 FIX: make it feel MUCH bigger */
-  height: clamp(680px, 85vh, 860px);
-
-  /* subtle upscale feel */
-  border-radius: 2px;
-
-  box-shadow: 0 25px 60px rgba(0,0,0,0.18);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.25);
 }
 
 /* ===================== CONTENT CONTAINER ===================== */
