@@ -157,7 +157,14 @@ body {
   padding: 0 60px;
 }
 
-/* ===================== HERO (PIXAR STYLE FIXED) ===================== */
+/* ===================== HERO WRAP ===================== */
+/* THIS fixes the Pixar alignment */
+
+.hero-wrap {
+  padding: 0 60px;
+}
+
+/* ===================== HERO ===================== */
 
 .hero-card {
   position: relative;
@@ -167,7 +174,6 @@ body {
   height: 640px;
 
   background: transparent;
-
   box-shadow: none;
 }
 
@@ -319,6 +325,10 @@ body {
     padding: 0 20px;
   }
 
+  .hero-wrap {
+    padding: 0 20px;
+  }
+
   .grid {
     grid-template-columns: 1fr;
   }
@@ -370,10 +380,9 @@ body {
   </div>
 </div>
 
-<!-- HERO + CONTENT WRAPPED TOGETHER -->
-<div class="container">
+<!-- HERO -->
+<div class="hero-wrap">
 
-  <!-- HERO -->
   <div class="hero-card">
     <video class="card-media" autoplay muted loop playsinline>
       <source src="./train-animatic.mp4" type="video/mp4">
@@ -385,7 +394,11 @@ body {
     </div>
   </div>
 
-  <!-- GRID -->
+</div>
+
+<!-- GRID -->
+<div class="container">
+
   <div class="grid">
 
     <div class="card">
