@@ -5,7 +5,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- PIXAR-STYLE TYPOGRAPHY ADDED -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 
@@ -13,7 +14,7 @@ body {
   margin: 0;
   background: #f7f7f4;
   color: #111;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   overflow-x: hidden;
 }
 
@@ -35,10 +36,10 @@ body {
   pointer-events: auto;
 }
 
-/* ===================== TOP BAR ===================== */
+/* ===================== TOP BAR (PIXAR STYLE TYPOGRAPHY) ===================== */
 
 .topbar {
-  padding: 26px 60px;
+  padding: 32px 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -46,31 +47,50 @@ body {
   z-index: 10000;
 }
 
+/* LOGO (clean studio mark) */
 .logo {
-  font-family: 'Cinzel', serif;
-  font-size: 1.4rem;
-  font-weight: 700;
-  letter-spacing: 10px;
+  font-family: "Cinzel", serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 14px;
 }
 
-/* ===================== DESKTOP NAV ===================== */
-
-.desktop-nav {
-  display: flex;
-  align-items: center;
-  gap: 42px;
-}
-
+/* NAV (minimal Pixar-style UI text) */
 .desktop-nav a {
   text-decoration: none;
   color: #111;
-  font-size: 12px;
-  letter-spacing: 2px;
+  font-size: 11px;
+  letter-spacing: 2.4px;
+  font-weight: 400;
   transition: opacity 0.25s ease;
 }
 
 .desktop-nav a:hover {
   opacity: 0.5;
+}
+
+/* ===================== HERO TYPOGRAPHY ===================== */
+
+.card-info h2 {
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  font-size: 2.6rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  line-height: 1.1;
+}
+
+.hero-card .card-info h2 {
+  font-size: 3.2rem;
+  letter-spacing: 2px;
+}
+
+.card-info p {
+  margin-top: 10px;
+  opacity: 0.75;
+  font-size: 13px;
+  letter-spacing: 0.8px;
+  font-weight: 300;
 }
 
 /* ===================== HAMBURGER ===================== */
@@ -158,7 +178,6 @@ body {
 }
 
 /* ===================== HERO WRAP ===================== */
-/* THIS fixes the Pixar alignment */
 
 .hero-wrap {
   padding: 0 60px;
@@ -169,10 +188,8 @@ body {
 .hero-card {
   position: relative;
   overflow: hidden;
-
   width: 100%;
   height: 640px;
-
   background: transparent;
   box-shadow: none;
 }
@@ -228,41 +245,15 @@ body {
 .world-image {
   object-position: right bottom;
   transform: scale(2.88) translateX(10.6%);
-  transform-origin: bottom right;
 }
 
 .characters-image {
   object-position: 0% 0%;
   transform: scale(1.85);
-  transform-origin: left top;
 }
 
 .visual-image {
   object-position: 50% 60%;
-}
-
-/* ===================== TEXT ===================== */
-
-.card-info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 22px;
-  background: linear-gradient(to top, rgba(0,0,0,0.88), rgba(0,0,0,0.35), transparent);
-  color: white;
-}
-
-.card-info h2 {
-  margin: 0;
-  font-size: 2rem;
-  letter-spacing: 2px;
-}
-
-.card-info p {
-  margin-top: 8px;
-  opacity: 0.8;
-  font-size: 14px;
 }
 
 /* ===================== FOOTER ===================== */
@@ -297,7 +288,6 @@ body {
   font-size: 11px;
   letter-spacing: 1.8px;
   opacity: 0.72;
-  transition: opacity 0.25s ease;
 }
 
 .footer-links a:hover {
@@ -321,10 +311,7 @@ body {
   .hamburger { display: block; }
   .desktop-nav { display: none; }
 
-  .container {
-    padding: 0 20px;
-  }
-
+  .container,
   .hero-wrap {
     padding: 0 20px;
   }
@@ -375,12 +362,11 @@ body {
     <a href="#">ABOUT</a>
   </div>
 
-  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+  <div class="hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
   </div>
 </div>
 
-<!-- HERO -->
 <div class="hero-wrap">
 
   <div class="hero-card">
@@ -396,7 +382,6 @@ body {
 
 </div>
 
-<!-- GRID -->
 <div class="container">
 
   <div class="grid">
@@ -428,35 +413,10 @@ body {
   </div>
 </div>
 
-<div class="footer-wrap">
-  <div class="footer-top">
-    <div class="footer-inner">
-      <div class="footer-links">
-        <a href="#">FILMS</a>
-        <a href="#">CONCEPTS</a>
-        <a href="#">UNIVERSE</a>
-        <a href="#">ABOUT</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="footer-bottom">
-    <div><a href="#">Do Not Sell or Share My Personal Information</a></div>
-    <div>
-      <a href="#">Privacy Policy</a> |
-      <a href="#">Your US State Privacy Rights</a> |
-      <a href="#">Children's Online Privacy Policy</a> |
-      <a href="#">Interest Based Ads</a>
-    </div>
-    <div>© 2026 Drawn Above</div>
-  </div>
-</div>
-
 <script>
 function toggleMenu() {
   document.getElementById("menu").classList.toggle("active");
   document.getElementById("overlay").classList.toggle("active");
-  document.getElementById("hamburger").classList.toggle("active");
 }
 </script>
 
