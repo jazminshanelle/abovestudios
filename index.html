@@ -149,17 +149,26 @@ body {
   opacity: 1;
 }
 
-/* ===================== HERO FIX (NO BLACK SIDE BARS) ===================== */
+/* ===================== CONTENT CONTAINER ===================== */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 60px;
+}
+
+/* ===================== HERO (PIXAR STYLE FIXED) ===================== */
 
 .hero-card {
   position: relative;
   overflow: hidden;
-  background: #000;
 
   width: 100%;
   height: 640px;
 
-  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  background: transparent;
+
+  box-shadow: none;
 }
 
 .hero-card .card-media {
@@ -167,14 +176,6 @@ body {
   height: 100%;
   object-fit: cover;
   display: block;
-}
-
-/* ===================== CONTENT CONTAINER ===================== */
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 60px;
 }
 
 /* ===================== GRID ===================== */
@@ -191,7 +192,7 @@ body {
 .card {
   position: relative;
   overflow: hidden;
-  background: #000;
+  background: transparent;
   height: 430px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.12);
 }
@@ -369,20 +370,22 @@ body {
   </div>
 </div>
 
-<!-- HERO -->
-<div class="hero-card">
-  <video class="card-media" autoplay muted loop playsinline>
-    <source src="./train-animatic.mp4" type="video/mp4">
-  </video>
-
-  <div class="card-info">
-    <h2>TIME'S ALMOST UP</h2>
-    <p>Animatic / Film Concept</p>
-  </div>
-</div>
-
-<!-- REST UNCHANGED -->
+<!-- HERO + CONTENT WRAPPED TOGETHER -->
 <div class="container">
+
+  <!-- HERO -->
+  <div class="hero-card">
+    <video class="card-media" autoplay muted loop playsinline>
+      <source src="./train-animatic.mp4" type="video/mp4">
+    </video>
+
+    <div class="card-info">
+      <h2>TIME'S ALMOST UP</h2>
+      <p>Animatic / Film Concept</p>
+    </div>
+  </div>
+
+  <!-- GRID -->
   <div class="grid">
 
     <div class="card">
