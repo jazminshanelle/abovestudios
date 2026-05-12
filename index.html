@@ -2,7 +2,6 @@
 <html>
 
 <head>
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
@@ -11,333 +10,57 @@
 
 body {
   margin: 0;
+  height: 100vh;
   background: #f7f7f4;
-  color: #111;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  overflow-x: hidden;
-}
-
-/* ===================== OVERLAY ===================== */
-
-.menu-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.35);
-  backdrop-filter: blur(10px);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.35s ease;
-  z-index: 9998;
-}
-
-.menu-overlay.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* ===================== TOP BAR ===================== */
-
-.topbar {
-  padding: 26px 60px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  position: relative;
-  z-index: 10000;
+  justify-content: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #111;
 }
 
+/* CENTER WRAP */
+.wrapper {
+  text-align: center;
+  max-width: 600px;
+  padding: 40px;
+}
+
+/* LOGO STYLE (PIXAR-INSPIRED MINIMAL) */
 .logo {
   font-family: 'Cinzel', serif;
-  font-size: 1.4rem;
-  font-weight: 700;
-  letter-spacing: 10px;
+  letter-spacing: 12px;
+  font-size: 1.6rem;
+  margin-bottom: 30px;
 }
 
-/* ===================== DESKTOP NAV ===================== */
-
-.desktop-nav {
-  display: flex;
-  align-items: center;
-  gap: 42px;
-}
-
-.desktop-nav a {
-  text-decoration: none;
-  color: #111;
-  font-size: 12px;
-  letter-spacing: 2px;
-  transition: opacity 0.25s ease;
-}
-
-.desktop-nav a:hover {
-  opacity: 0.5;
-}
-
-/* ===================== HAMBURGER ===================== */
-
-.hamburger {
-  width: 28px;
-  height: 20px;
-  position: relative;
-  cursor: pointer;
-  z-index: 10001;
-  display: none;
-}
-
-.hamburger span {
-  position: absolute;
-  height: 2px;
-  width: 100%;
-  background: #111;
-  left: 0;
-  transition: 0.35s ease;
-}
-
-.hamburger span:nth-child(1) { top: 0; }
-.hamburger span:nth-child(2) { top: 9px; }
-.hamburger span:nth-child(3) { top: 18px; }
-
-.hamburger.active span:nth-child(1) {
-  transform: rotate(45deg);
-  top: 9px;
-  background: white;
-}
-
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg);
-  top: 9px;
-  background: white;
-}
-
-/* ===================== MOBILE MENU ===================== */
-
-.menu {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  text-align: center;
-  z-index: 9999;
-  opacity: 0;
-  pointer-events: none;
-  transition: 0.35s ease;
-}
-
-.menu.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.menu a {
-  display: block;
-  margin: 18px 0;
-  font-size: 1.5rem;
-  letter-spacing: 3px;
-  color: white;
-  text-decoration: none;
-  transform: translateY(20px);
-  opacity: 0;
-  transition: 0.4s ease;
-}
-
-.menu.active a {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-/* ===================== CONTENT CONTAINER ===================== */
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 60px;
-}
-
-.hero-wrap {
-  padding: 0 60px;
-}
-
-.hero-card {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  height: 640px;
-  background: transparent;
-  box-shadow: none;
-}
-
-.hero-card .card-media {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.grid {
-  margin-top: 40px;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 35px;
-}
-
-.card {
-  position: relative;
-  overflow: hidden;
-  background: transparent;
-  height: 430px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-}
-
-.card:nth-of-type(1) { grid-column: 1 / span 7; }
-.card:nth-of-type(2) { grid-column: 8 / span 5; }
-.card:nth-of-type(3) { grid-column: 1 / -1; height: 520px; }
-
-.card-media {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.world-image {
-  object-position: right bottom;
-  transform: scale(2.88) translateX(10.6%);
-  transform-origin: bottom right;
-}
-
-.characters-image {
-  object-position: 0% 0%;
-  transform: scale(1.85);
-  transform-origin: left top;
-}
-
-.visual-image {
-  object-position: 50% 60%;
-}
-
-.card-info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 22px;
-  background: linear-gradient(to top, rgba(0,0,0,0.88), rgba(0,0,0,0.35), transparent);
-  color: white;
-}
-
-.card-info h2 {
-  margin: 0;
+/* MAIN TITLE */
+.title {
   font-size: 2rem;
   letter-spacing: 2px;
+  margin-bottom: 10px;
 }
 
-.card-info p {
-  margin-top: 8px;
-  opacity: 0.8;
+/* SUBTEXT */
+.subtitle {
   font-size: 14px;
-}
-
-/* ===================== PIXAR-STYLE FOOTER (FIXED) ===================== */
-
-.footer-wrap {
-  margin-top: 100px;
-  width: 100%;
-  border-top: 1px solid rgba(0,0,0,0.08);
-}
-
-.footer-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 70px 60px;
-}
-
-/* LEFT SIDE (SOCIAL) */
-.footer-social {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.footer-social-title {
-  font-size: 11px;
-  letter-spacing: 2px;
   opacity: 0.6;
+  line-height: 1.8;
 }
 
-.footer-icons {
-  display: flex;
-  gap: 14px;
+/* SMALL DIVIDER LINE */
+.line {
+  width: 60px;
+  height: 1px;
+  background: rgba(0,0,0,0.2);
+  margin: 30px auto;
 }
 
-.footer-icons a {
-  text-decoration: none;
-  color: #111;
-  font-size: 14px;
-  opacity: 0.7;
-  transition: opacity 0.2s ease;
-}
-
-.footer-icons a:hover {
-  opacity: 1;
-}
-
-/* RIGHT SIDE LINKS */
-.footer-links {
-  display: flex;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-
-.footer-links a {
-  text-decoration: none;
-  color: #111;
+/* FOOTER NOTE */
+.footer {
+  margin-top: 40px;
   font-size: 11px;
-  letter-spacing: 1.5px;
-  opacity: 0.65;
-}
-
-.footer-links a:hover {
-  opacity: 1;
-}
-
-/* BOTTOM BAR */
-.footer-bottom {
-  text-align: center;
-  padding: 30px 20px 42px;
-  font-size: 10px;
-  opacity: 0.55;
-  border-top: 1px solid rgba(0,0,0,0.06);
-}
-
-/* ===================== MOBILE ===================== */
-
-@media (max-width: 768px) {
-
-  .hamburger { display: block; }
-  .desktop-nav { display: none; }
-
-  .container { padding: 0 20px; }
-  .hero-wrap { padding: 0 20px; }
-
-  .grid { grid-template-columns: 1fr; }
-
-  .card { height: 280px; }
-  .card:nth-of-type(3) { height: 320px; }
-
-  .hero-card { height: 420px; }
-
-  .topbar { padding: 22px 20px; }
-
-  .footer-top {
-    flex-direction: column;
-    gap: 30px;
-    padding: 50px 20px;
-  }
+  opacity: 0.5;
 }
 
 </style>
@@ -346,147 +69,27 @@ body {
 
 <body>
 
-<div class="menu-overlay" id="overlay" onclick="toggleMenu()"></div>
+<div class="wrapper">
 
-<div class="menu" id="menu">
-  <a href="#">FILMS</a>
-  <a href="#">CONCEPTS</a>
-  <a href="#">UNIVERSE</a>
-  <a href="#">ABOUT</a>
-</div>
-
-<div class="topbar">
   <div class="logo">ABOVE</div>
 
-  <div class="desktop-nav">
-    <a href="#">FILMS</a>
-    <a href="#">CONCEPTS</a>
-    <a href="#">UNIVERSE</a>
-    <a href="#">ABOUT</a>
+  <div class="title">Under Construction</div>
+
+  <div class="line"></div>
+
+  <div class="subtitle">
+    We are currently refining this experience.<br>
+    Please check back soon.
   </div>
 
-  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
+  <div class="footer">
+    © 2026 Drawn Above
   </div>
+
 </div>
 
-<!-- HERO -->
-<div class="hero-wrap">
-  <div class="hero-card">
-    <video class="card-media" autoplay muted loop playsinline>
-      <source src="./train-animatic.mp4" type="video/mp4">
-    </video>
-    <div class="card-info">
-      <h2>TIME'S ALMOST UP</h2>
-      <p>Animatic / Film Concept</p>
-    </div>
-  </div>
-</div>
-
-<!-- GRID -->
-<div class="container">
-  <div class="grid">
-
-    <div class="card">
-      <img class="card-media world-image" src="./world.png">
-      <div class="card-info">
-        <h2>WORLD ARCHIVE</h2>
-        <p>Animatic Sequence</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img class="card-media characters-image" src="./characters.png">
-      <div class="card-info">
-        <h2>CHARACTERS</h2>
-        <p>Character Designs</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img class="card-media visual-image" src="./holyfire.png">
-      <div class="card-info">
-        <h2>VISUAL TESTS</h2>
-        <p>Lighting / Experiments</p>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- FOOTER -->
-<!-- FOOTER -->
-<!-- ===================== PIXAR-STYLE FOOTER ===================== -->
-
-<div class="footer-wrap">
-
-  <!-- DARK NAV SECTION -->
-  <div class="footer-top">
-
-    <div class="footer-column">
-      <div class="footer-title">FILMS</div>
-      <a href="#">Features</a>
-      <a href="#">Shorts</a>
-      <a href="#">Series</a>
-      <a href="#">SparkShorts</a>
-      <a href="#">Documentaries</a>
-    </div>
-
-    <div class="footer-column">
-      <div class="footer-title">TECH</div>
-      <a href="#">Tech at Pixar</a>
-      <a href="#">RenderMan</a>
-      <a href="#">OpenUSD</a>
-      <a href="#">Software R&D</a>
-      <a href="#">Libraries</a>
-    </div>
-
-    <div class="footer-column">
-      <div class="footer-title">CAREERS</div>
-      <a href="#">Careers At Pixar</a>
-      <a href="#">Internships</a>
-      <a href="#">Life At Pixar</a>
-    </div>
-
-    <div class="footer-column">
-      <div class="footer-title">MORE</div>
-      <a href="#">Leaders</a>
-      <a href="#">Our Story</a>
-      <a href="#">Events</a>
-      <a href="#">Pixar In A Box</a>
-      <a href="#">FAQ’s</a>
-    </div>
-
-    <!-- SOCIAL ICONS (LEFT SIDE LIKE PIXAR) -->
-    <div class="footer-social">
-      <div class="social-icons">
-        <a href="#">⬛</a>
-        <a href="#">⬛</a>
-        <a href="#">⬛</a>
-        <a href="#">⬛</a>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- GRAY SYSTEM BAR (PIXAR STYLE) -->
-  <div class="footer-gray">
-
-    <div class="footer-legal">
-      Do Not Sell or Share My Personal Information
-    </div>
-
-    <div class="footer-legal-links">
-      <a href="#">Privacy Policy</a>
-      | <a href="#">Your US State Privacy Rights</a>
-      | <a href="#">Children's Online Privacy Policy</a>
-      | <a href="#">Interest Based Ads</a>
-    </div>
-
-    <div class="footer-copy">
-      © 2026 Drawn Above
-    </div>
-
+</body>
+</html>
   </div>
 
 </div>
